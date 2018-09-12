@@ -10,6 +10,9 @@ module.exports = {
     'shared-node-browser': true,
     es6: true
   },
+  globals: {
+    fetch: true
+  },
   settings: {
     react: {
       version: '16.4'

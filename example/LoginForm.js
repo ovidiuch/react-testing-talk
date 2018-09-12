@@ -1,8 +1,9 @@
-import { string, func } from 'prop-types';
+import { string, func, oneOf } from 'prop-types';
 import React, { Component } from 'react';
 
 export class LoginForm extends Component {
   static propTypes = {
+    status: oneOf(['pending', 'loading', 'success', 'error']).isRequired,
     username: string.isRequired,
     password: string.isRequired,
     onChange: func.isRequired,
@@ -10,11 +11,14 @@ export class LoginForm extends Component {
   };
 
   render() {
-    const { username, password } = this.props;
+    const { status, username, password } = this.props;
 
     return (
       <form onSubmit={this.handleSubmit}>
         <h1>Login</h1>
+        {status === 'loading' && msg('Loading...')}
+        {status === 'success' && msg('Success!')}
+        {status === 'error' && msg('Oh no.')}
         <div>
           <label htmlFor="username">Username</label>
           <input
@@ -49,4 +53,12 @@ export class LoginForm extends Component {
 
     this.props.onSubmit();
   };
+}
+
+function msg(msg) {
+  return (
+    <p>
+      <strong>{msg}</strong>
+    </p>
+  );
 }

@@ -1,11 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { LoginForm } from '../../LoginForm';
-import {
-  formReducer,
-  mapStateToProps,
-  mapDispatchToProps
-} from '../../ConnectedLoginForm';
+import { LoginForm } from '../LoginForm';
+import { mapStateToProps, mapDispatchToProps } from '../ConnectedLoginForm';
+import { formReducer } from '../ConnectedLoginForm/reducer';
 
 describe('reducer', () => {
   it('adds username state on CHANGE action', () => {
@@ -28,8 +25,8 @@ describe('reducer', () => {
 });
 
 describe('connect', () => {
-  it('maps state to props', () => {
-    const username = 'Franko';
+  it('maps username & password to props', () => {
+    const username = 'franko';
     const password = '#fffferrari';
     expect(mapStateToProps({ username, password })).toEqual({
       username,
@@ -37,7 +34,7 @@ describe('connect', () => {
     });
   });
 
-  it('maps dispatch to props', () => {
+  it('maps CHANGE action to props', () => {
     const dispatch = jest.fn();
     const props = mapDispatchToProps(dispatch);
 
@@ -48,6 +45,8 @@ describe('connect', () => {
       value: 'pink+white'
     });
   });
+
+  // TODO: maps SUBMIT action to props
 });
 
 describe('component', () => {
@@ -56,7 +55,7 @@ describe('component', () => {
     const onSubmit = jest.fn();
     const instance = mount(
       <LoginForm
-        username="Franko"
+        username="franko"
         password="#fffferrari"
         onChange={onChange}
         onSubmit={onSubmit}
@@ -69,12 +68,15 @@ describe('component', () => {
   const getUserInput = instance => instance.find('input#username');
   const getPassInput = instance => instance.find('input#password');
 
+  const changeInput = (input, value) =>
+    input.prop('onChange')({ currentTarget: { value } });
+
   it('renders input field', () => {
     const { instance } = getTestData();
     const input = getUserInput(instance);
 
     expect(input).toHaveLength(1);
-    expect(input.props().value).toBe('Franko');
+    expect(input.prop('value')).toBe('franko');
   });
 
   it('renders password field', () => {
@@ -82,30 +84,29 @@ describe('component', () => {
     const input = getPassInput(instance);
 
     expect(input).toHaveLength(1);
-    expect(input.props().value).toBe('#fffferrari');
+    expect(input.prop('value')).toBe('#fffferrari');
   });
 
   it('responds to username change', () => {
     const { onChange, instance } = getTestData();
-    const props = getUserInput(instance).props();
+    const input = getUserInput(instance);
 
-    props.onChange({ currentTarget: { value: 'forrestgump' } });
+    changeInput(input, 'forrestgump');
     expect(onChange).toBeCalledWith('username', 'forrestgump');
   });
 
   it('responds to password change', () => {
     const { onChange, instance } = getTestData();
-    const props = getPassInput(instance).props();
+    const input = getPassInput(instance);
 
-    props.onChange({ currentTarget: { value: '#fffferrari' } });
-    expect(onChange).toBeCalledWith('password', '#fffferrari');
+    changeInput(input, 'pink+white');
+    expect(onChange).toBeCalledWith('password', 'pink+white');
   });
 
   it('responds to submit action', () => {
     const { onSubmit, instance } = getTestData();
-    const props = instance.find('form').props();
 
-    props.onSubmit({ preventDefault: jest.fn() });
+    instance.find('form').prop('onSubmit')({ preventDefault: jest.fn() });
     expect(onSubmit).toBeCalled();
   });
 });

@@ -1,9 +1,13 @@
 import React from 'react';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { ConnectedLoginForm, formReducer } from '../ConnectedLoginForm';
+import { ConnectedLoginForm } from '../ConnectedLoginForm';
+import { createStore } from '../ConnectedLoginForm/store';
 
-const store = createStore(formReducer);
+const store = createStore({
+  status: 'pending',
+  username: 'franko',
+  password: '#fffferrari'
+});
 
 export default (
   <Provider store={store}>
