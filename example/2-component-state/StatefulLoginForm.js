@@ -28,10 +28,21 @@ export class StatefulLoginForm extends Component {
     });
   };
 
-  handleSubmit = () => {
-    const { username, password } = this.state;
+  handleSubmit = async () => {
+    this.setState({ status: 'loading' });
 
-    // TODO: Fetch request
-    console.log({ username, password });
+    try {
+      const { username, password } = this.state;
+      const body = JSON.stringify({ username, password });
+      const res = await fetch('/login', { method: 'POST', body });
+
+      if (res.status !== 200) {
+        throw new Error('Unauthorized');
+      }
+
+      this.setState({ status: 'success' });
+    } catch (err) {
+      this.setState({ status: 'error' });
+    }
   };
 }

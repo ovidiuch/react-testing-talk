@@ -1,22 +1,23 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import fetchMock from 'fetch-mock';
+// TODO: Import { StateMock } from '@react-mock/state';
+import { ComponentState } from 'react-cosmos-fixture';
 import { retry } from '../../../future-libs/async-retry';
 import { delay } from '../../../future-libs/delay';
-import { ConnectedLoginForm } from '../ConnectedLoginForm';
-import { createStore } from '../ConnectedLoginForm/store';
+import { StatefulLoginForm } from '../StatefulLoginForm';
 
 const getTestData = () => {
-  const store = createStore({
-    status: 'pending',
-    username: 'franko',
-    password: '#fffferrari'
-  });
   const wrapper = mount(
-    <Provider store={store}>
-      <ConnectedLoginForm />
-    </Provider>
+    <ComponentState
+      state={{
+        status: 'pending',
+        username: 'franko',
+        password: '#fffferrari'
+      }}
+    >
+      <StatefulLoginForm />
+    </ComponentState>
   );
 
   return { wrapper };
