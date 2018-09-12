@@ -7,8 +7,13 @@ export async function submit(dispatch, getState) {
 
   const { username, password } = getState();
   try {
-    await new Promise(res => setTimeout(res, 500)); // Artificial delay
-    await fetch('/login', { username, password });
+    const body = JSON.stringify({ username, password });
+    const res = await fetch('/login', { method: 'POST', body });
+
+    if (res.status !== 200) {
+      throw new Error('Unauthorized');
+    }
+
     dispatch(status('success'));
   } catch (err) {
     dispatch(status('error'));

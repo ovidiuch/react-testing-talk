@@ -1,7 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
-import { retry } from '../../future-libs/async-retry';
+import fetchMock from 'fetch-mock';
+import { retry } from '../../../future-libs/async-retry';
+import { delay } from '../../../future-libs/delay';
 import { ConnectedLoginForm } from '../ConnectedLoginForm';
 import { createStore } from '../ConnectedLoginForm/store';
 
@@ -23,7 +25,11 @@ const getTestData = ({ status = 'pending' } = {}) => {
 const getUserInput = wrapper => wrapper.find('input#username');
 const getPassInput = wrapper => wrapper.find('input#password');
 
+const changeInput = (input, value) =>
+  input.prop('onChange')({ currentTarget: { value } });
 const submitForm = form => form.prop('onSubmit')({ preventDefault: jest.fn() });
+
+afterEach(fetchMock.reset);
 
 it('renders input field', () => {
   const { wrapper } = getTestData();
@@ -41,8 +47,29 @@ it('renders password field', () => {
   expect(input.prop('value')).toBe('#fffferrari');
 });
 
+it('posts user data', () => {
+  fetchMock.post('/login', delay({ ok: true }));
+
+  const { wrapper } = getTestData();
+  const userInput = getUserInput(wrapper);
+  const passInput = getPassInput(wrapper);
+
+  changeInput(userInput, 'forrestgump');
+  changeInput(passInput, 'pink+white');
+  submitForm(wrapper.find('form'));
+
+  const [, { body }] = fetchMock.lastCall('/login', 'post');
+  expect(body).toEqual(
+    JSON.stringify({
+      username: 'forrestgump',
+      password: 'pink+white'
+    })
+  );
+});
+
 it('renders loading state', async () => {
-  // TODO: Mock fetch
+  fetchMock.post('/login', delay({ ok: true }));
+
   const { wrapper } = getTestData();
   submitForm(wrapper.find('form'));
 
@@ -50,7 +77,8 @@ it('renders loading state', async () => {
 });
 
 it('renders error state', async () => {
-  // TODO: Mock fetch
+  fetchMock.post('/login', delay(401));
+
   const { wrapper } = getTestData();
   submitForm(wrapper.find('form'));
 
@@ -59,13 +87,13 @@ it('renders error state', async () => {
   });
 });
 
-// TODO: Success path
-// it('renders success state', async () => {
-//   // TODO: Mock fetch
-//   const { wrapper } = getTestData();
-//   submitForm(wrapper.find('form'));
-//
-//   await retry(() => {
-//     expect(wrapper.text()).toMatch('Success.');
-//   });
-// });
+it('renders success state', async () => {
+  fetchMock.post('/login', delay({ ok: true }));
+
+  const { wrapper } = getTestData();
+  submitForm(wrapper.find('form'));
+
+  await retry(() => {
+    expect(wrapper.text()).toMatch('Success!');
+  });
+});
