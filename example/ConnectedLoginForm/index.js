@@ -2,9 +2,8 @@ import { connect } from 'react-redux';
 import { LoginForm } from '../LoginForm';
 import { change, submit } from './actions';
 
-// TODO: Map `status` state
-export function mapStateToProps({ username, password }) {
-  return { username, password };
+export function mapStateToProps({ status, username, password }) {
+  return { status, username, password };
 }
 
 export function mapDispatchToProps(dispatch) {

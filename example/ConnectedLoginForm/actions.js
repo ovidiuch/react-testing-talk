@@ -7,6 +7,7 @@ export async function submit(dispatch, getState) {
 
   const { username, password } = getState();
   try {
+    await new Promise(res => setTimeout(res, 500)); // Artificial delay
     await fetch('/login', { username, password });
     dispatch(status('success'));
   } catch (err) {

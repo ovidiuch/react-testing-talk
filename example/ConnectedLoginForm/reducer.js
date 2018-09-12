@@ -4,14 +4,19 @@ export const initialState = {
   password: ''
 };
 
-// TODO: Reduce STATUS action
 export function formReducer(state = initialState, action) {
-  if (action.type === 'CHANGE') {
-    return {
-      ...state,
-      [action.key]: action.value
-    };
+  switch (action.type) {
+    case 'CHANGE':
+      return {
+        ...state,
+        [action.key]: action.value
+      };
+    case 'STATUS':
+      return {
+        ...state,
+        status: action.status
+      };
+    default:
+      return state;
   }
-
-  return state;
 }

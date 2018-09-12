@@ -1,66 +1,71 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
+import { retry } from '../../future-libs/async-retry';
 import { ConnectedLoginForm } from '../ConnectedLoginForm';
 import { createStore } from '../ConnectedLoginForm/store';
 
-const getTestData = () => {
+const getTestData = ({ status = 'pending' } = {}) => {
   const store = createStore({
-    status: 'pending',
+    status,
     username: 'franko',
     password: '#fffferrari'
   });
-  const instance = mount(
+  const wrapper = mount(
     <Provider store={store}>
       <ConnectedLoginForm />
     </Provider>
   );
 
-  return { instance };
+  return { wrapper };
 };
 
-const getUserInput = instance => instance.find('input#username');
-const getPassInput = instance => instance.find('input#password');
+const getUserInput = wrapper => wrapper.find('input#username');
+const getPassInput = wrapper => wrapper.find('input#password');
 
-// const changeInput = (input, value) =>
-//   input.prop('onChange')({ currentTarget: { value } });
+const submitForm = form => form.prop('onSubmit')({ preventDefault: jest.fn() });
 
 it('renders input field', () => {
-  const { instance } = getTestData();
-  const input = getUserInput(instance);
+  const { wrapper } = getTestData();
+  const input = getUserInput(wrapper);
 
   expect(input).toHaveLength(1);
   expect(input.prop('value')).toBe('franko');
 });
 
 it('renders password field', () => {
-  const { instance } = getTestData();
-  const input = getPassInput(instance);
+  const { wrapper } = getTestData();
+  const input = getPassInput(wrapper);
 
   expect(input).toHaveLength(1);
   expect(input.prop('value')).toBe('#fffferrari');
 });
 
-// it('responds to username change', async () => {
-//   const { instance } = getTestData();
-//   changeInput(getUserInput(instance), 'forrestgump');
-//
-//   instance.update(); // Enzyme quirk
-//   expect(getUserInput(instance).prop('value')).toBe('forrestgump');
-// });
-//
-// it('responds to password change', () => {
-//   const { instance } = getTestData();
-//   changeInput(getPassInput(instance), 'pink+white');
-//
-//   instance.update(); // Enzyme quirk
-//   expect(getPassInput(instance).prop('value')).toBe('pink+white');
-// });
+it('renders loading state', async () => {
+  // TODO: Mock fetch
+  const { wrapper } = getTestData();
+  submitForm(wrapper.find('form'));
 
-// it('responds to submit action', () => {
-//   const { onSubmit, instance } = getTestData();
-//   const props = instance.find('form').props();
+  expect(wrapper.text()).toMatch('Loading...');
+});
+
+it('renders error state', async () => {
+  // TODO: Mock fetch
+  const { wrapper } = getTestData();
+  submitForm(wrapper.find('form'));
+
+  await retry(() => {
+    expect(wrapper.text()).toMatch('Oh no.');
+  });
+});
+
+// TODO: Success path
+// it('renders success state', async () => {
+//   // TODO: Mock fetch
+//   const { wrapper } = getTestData();
+//   submitForm(wrapper.find('form'));
 //
-//   props.onSubmit({ preventDefault: jest.fn() });
-//   expect(onSubmit).toBeCalled();
+//   await retry(() => {
+//     expect(wrapper.text()).toMatch('Success.');
+//   });
 // });
