@@ -16,7 +16,16 @@ module.exports = {
     }
   },
   rules: {
+    'no-console': 1,
     // I don't believe in default exports anymore
     'import/default': 0
-  }
+  },
+  overrides: [
+    {
+      files: ['**/__tests__/**'],
+      env: {
+        jest: true
+      }
+    }
+  ]
 };

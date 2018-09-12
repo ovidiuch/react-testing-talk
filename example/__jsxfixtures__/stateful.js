@@ -1,9 +1,9 @@
 import React from 'react';
 import { ComponentState } from 'react-cosmos-fixture';
-import { LoginForm } from '../LoginForm';
+import { StatefulLoginForm } from '../StatefulLoginForm';
 
 export default (
   <ComponentState>
-    <LoginForm />
+    <StatefulLoginForm />
   </ComponentState>
 );

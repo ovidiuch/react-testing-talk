@@ -1,13 +1,16 @@
+import { string, func } from 'prop-types';
 import React, { Component } from 'react';
 
-export class PureLoginForm extends Component {
-  state = {
-    username: '',
-    password: ''
+export class LoginForm extends Component {
+  static propTypes = {
+    username: string.isRequired,
+    password: string.isRequired,
+    onChange: func.isRequired,
+    onSubmit: func.isRequired
   };
 
   render() {
-    const { username, password } = this.state;
+    const { username, password } = this.props;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -37,18 +40,13 @@ export class PureLoginForm extends Component {
     );
   }
 
-  createInputHandler = name => e => {
-    this.setState({
-      [name]: e.currentTarget.value
-    });
+  createInputHandler = key => e => {
+    this.props.onChange(key, e.currentTarget.value);
   };
 
   handleSubmit = e => {
     e.preventDefault();
 
-    const { username, password } = this.state;
-    console.log({ username, password });
+    this.props.onSubmit();
   };
 }
-
-export const LoginForm = PureLoginForm;
