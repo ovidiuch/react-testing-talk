@@ -1,4 +1,4 @@
-import { formReducer } from '../ConnectedLoginForm/reducer';
+import { formReducer } from '../reducer';
 
 it('sets username state on CHANGE action', () => {
   const state = formReducer(undefined, {

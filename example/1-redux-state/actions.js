@@ -1,9 +1,9 @@
-export function change(key, value) {
+export function changeInput(key, value) {
   return { type: 'CHANGE', key, value };
 }
 
-export async function submit(dispatch, getState) {
-  dispatch(status('loading'));
+export async function submitForm(dispatch, getState) {
+  dispatch(changeStatus('loading'));
 
   const { username, password } = getState();
   try {
@@ -14,13 +14,13 @@ export async function submit(dispatch, getState) {
       throw new Error('Unauthorized');
     }
 
-    dispatch(status('success'));
+    dispatch(changeStatus('success'));
   } catch (err) {
-    dispatch(status('error'));
+    dispatch(changeStatus('error'));
   }
 }
 
-function status(status) {
+function changeStatus(status) {
   return {
     type: 'STATUS',
     status

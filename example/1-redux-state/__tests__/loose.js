@@ -5,7 +5,7 @@ import fetchMock from 'fetch-mock';
 import { retry } from '../../../future-libs/async-retry';
 import { delay } from '../../../future-libs/delay';
 import { ConnectedLoginForm } from '../ConnectedLoginForm';
-import { createStore } from '../ConnectedLoginForm/store';
+import { createStore } from '../store';
 
 const getTestData = () => {
   const store = createStore({

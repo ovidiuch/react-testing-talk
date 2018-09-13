@@ -1,23 +1,17 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import fetchMock from 'fetch-mock';
-// TODO: Import { StateMock } from '@react-mock/state';
-import { ComponentState as StateMock } from 'react-cosmos-fixture';
 import { retry } from '../../../future-libs/async-retry';
 import { delay } from '../../../future-libs/delay';
 import { StatefulLoginForm } from '../StatefulLoginForm';
 
 const getTestData = () => {
-  const state = {
+  const wrapper = mount(<StatefulLoginForm />);
+  wrapper.setState({
     status: 'pending',
     username: 'franko',
     password: '#fffferrari'
-  };
-  const wrapper = mount(
-    <StateMock state={state}>
-      <StatefulLoginForm />
-    </StateMock>
-  );
+  });
 
   return { wrapper };
 };
