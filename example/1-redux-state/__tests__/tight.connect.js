@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock';
-import { retry } from '../../../future-libs/async-retry';
+import { changeForm, submitForm } from '../actions';
 import { mapStateToProps, mapDispatchToProps } from '../ConnectedLoginForm';
 
 afterEach(fetchMock.reset);
@@ -10,16 +10,22 @@ const state = {
   password: '#fffferrari'
 };
 
-it('maps "status" state', () => {
+it('maps state.status', () => {
   expect(mapStateToProps(state).status).toEqual('pending');
 });
 
-it('maps "username" state', () => {
+it('maps state.username', () => {
   expect(mapStateToProps(state).username).toEqual('franko');
 });
 
-it('maps "password" state', () => {
+it('maps state.password', () => {
   expect(mapStateToProps(state).password).toEqual('#fffferrari');
 });
 
-// TODO: Mock actions
+it('maps change action', () => {
+  expect(mapDispatchToProps.onChange).toBe(changeForm);
+});
+
+it('maps change action', () => {
+  expect(mapDispatchToProps.onSubmit).toBe(submitForm);
+});

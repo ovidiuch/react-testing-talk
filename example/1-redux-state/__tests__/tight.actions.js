@@ -1,7 +1,6 @@
 import fetchMock from 'fetch-mock';
-import { retry } from '../../../future-libs/async-retry';
 import { delay } from '../../../future-libs/delay';
-import { changeInput, submitForm } from '../actions';
+import { changeForm, submitForm } from '../actions';
 
 afterEach(fetchMock.reset);
 
@@ -14,14 +13,14 @@ const getLastLoginCallBody = () => {
 };
 
 it('creates CHANGE action', () => {
-  expect(changeInput('password', 'pink+white')).toEqual({
+  expect(changeForm('password', 'pink+white')).toEqual({
     type: 'CHANGE',
     key: 'password',
     value: 'pink+white'
   });
 });
 
-it('posts user data', () => {
+it('posts user data', async () => {
   mockLoginCall({ ok: true });
 
   const dispatch = jest.fn();
@@ -30,7 +29,7 @@ it('posts user data', () => {
     password: 'pink+white'
   });
 
-  submitForm(dispatch, getState);
+  await submitForm()(dispatch, getState);
   expect(getLastLoginCallBody()).toEqual({
     username: 'forrestgump',
     password: 'pink+white'
@@ -46,7 +45,7 @@ it('dispatches "loading" STATUS action', () => {
     password: 'pink+white'
   });
 
-  submitForm(dispatch, getState);
+  submitForm()(dispatch, getState);
   expect(dispatch).toBeCalledWith({
     type: 'STATUS',
     status: 'loading'
@@ -62,12 +61,10 @@ it('dispatches "error" STATUS action', async () => {
     password: 'pink+white'
   });
 
-  submitForm(dispatch, getState);
-  await retry(() => {
-    expect(dispatch).toBeCalledWith({
-      type: 'STATUS',
-      status: 'error'
-    });
+  await submitForm()(dispatch, getState);
+  expect(dispatch).toBeCalledWith({
+    type: 'STATUS',
+    status: 'error'
   });
 });
 
@@ -80,11 +77,9 @@ it('dispatches "success" STATUS action', async () => {
     password: 'pink+white'
   });
 
-  submitForm(dispatch, getState);
-  await retry(() => {
-    expect(dispatch).toBeCalledWith({
-      type: 'STATUS',
-      status: 'success'
-    });
+  await submitForm()(dispatch, getState);
+  expect(dispatch).toBeCalledWith({
+    type: 'STATUS',
+    status: 'success'
   });
 });

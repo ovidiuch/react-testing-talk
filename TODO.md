@@ -1,6 +1,6 @@
 - [ ] Test examples
   - [x] Separate _tight_ action tests
-    - [ ] Create new connect tests (with mocked actions)
+    - [x] Create connect tests
   - [ ] Write _tight_ tests for component state example
   - [ ] Create form abstraction example
 - [ ] Example preview generator
