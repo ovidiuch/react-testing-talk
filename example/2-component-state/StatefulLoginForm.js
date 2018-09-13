@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { LoginForm } from '../1-redux-state/LoginForm';
+import { LoginForm } from './LoginForm';
 
 export class StatefulLoginForm extends Component {
   state = {
