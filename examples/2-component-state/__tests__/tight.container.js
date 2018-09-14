@@ -4,7 +4,7 @@ import fetchMock from 'fetch-mock';
 import { retry } from '../../../future-libs/async-retry';
 import { delay } from '../../../future-libs/delay';
 import { StatefulLoginForm } from '../StatefulLoginForm';
-import { LoginForm } from '../../1-redux-state/LoginForm';
+import { LoginForm } from '../LoginForm';
 
 const getTestData = () => {
   const wrapper = shallow(<StatefulLoginForm />);

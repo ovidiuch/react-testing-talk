@@ -2,6 +2,7 @@
   - [x] Separate _tight_ action tests
     - [x] Create connect tests
   - [x] Write _tight_ tests for component state example
+  - [x] Generate duplicate files automatically
   - [ ] Create form abstraction example
 - [ ] Example preview generator
   - [ ] Extract test names per test file statically
