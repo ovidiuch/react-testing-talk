@@ -8,13 +8,8 @@ import { ConnectedLoginForm } from '../ConnectedLoginForm';
 import { createStore } from '../store';
 
 const getTestData = () => {
-  const store = createStore({
-    status: 'pending',
-    username: 'franko',
-    password: '#fffferrari'
-  });
   const wrapper = mount(
-    <Provider store={store}>
+    <Provider store={createStore()}>
       <ConnectedLoginForm />
     </Provider>
   );
@@ -22,56 +17,69 @@ const getTestData = () => {
   return { wrapper };
 };
 
-const getUserInput = wrapper => wrapper.find('input#username');
-const getPassInput = wrapper => wrapper.find('input#password');
+const getInput = (wrapper, inputId) => wrapper.find(`input#${inputId}`);
 
-const changeInput = (input, value) =>
-  input.prop('onChange')({ currentTarget: { value } });
-const submitForm = form => form.prop('onSubmit')({ preventDefault: jest.fn() });
+const changeInput = (wrapper, inputId, value) => {
+  getInput(wrapper, inputId).prop('onChange')({
+    currentTarget: { value }
+  });
+  wrapper.update();
+};
+
+const submitForm = wrapper =>
+  wrapper.find('form').prop('onSubmit')({ preventDefault: jest.fn() });
+
+const getLastCallBody = (url, method) =>
+  JSON.parse(fetchMock.lastCall(url, method)[1].body);
 
 afterEach(fetchMock.reset);
 
-it('renders input field', () => {
+it('renders username input', () => {
   const { wrapper } = getTestData();
-  const input = getUserInput(wrapper);
 
-  expect(input).toHaveLength(1);
-  expect(input.prop('value')).toBe('franko');
+  expect(getInput(wrapper, 'username')).toHaveLength(1);
 });
 
-it('renders password field', () => {
+it('renders password input', () => {
   const { wrapper } = getTestData();
-  const input = getPassInput(wrapper);
 
-  expect(input).toHaveLength(1);
-  expect(input.prop('value')).toBe('#fffferrari');
+  expect(getInput(wrapper, 'password')).toHaveLength(1);
+});
+
+it('updates username input', () => {
+  const { wrapper } = getTestData();
+  changeInput(wrapper, 'username', 'franko');
+
+  expect(getInput(wrapper, 'username').prop('value')).toBe('franko');
+});
+
+it('updates password input', () => {
+  const { wrapper } = getTestData();
+  changeInput(wrapper, 'password', '#fffferrari');
+
+  expect(getInput(wrapper, 'password').prop('value')).toBe('#fffferrari');
 });
 
 it('posts user data', () => {
   fetchMock.post('/login', delay({ ok: true }));
 
   const { wrapper } = getTestData();
-  const userInput = getUserInput(wrapper);
-  const passInput = getPassInput(wrapper);
 
-  changeInput(userInput, 'forrestgump');
-  changeInput(passInput, 'pink+white');
-  submitForm(wrapper.find('form'));
+  changeInput(wrapper, 'username', 'forrestgump');
+  changeInput(wrapper, 'password', 'pink+white');
+  submitForm(wrapper);
 
-  const [, { body }] = fetchMock.lastCall('/login', 'post');
-  expect(body).toEqual(
-    JSON.stringify({
-      username: 'forrestgump',
-      password: 'pink+white'
-    })
-  );
+  expect(getLastCallBody('/login', 'post')).toEqual({
+    username: 'forrestgump',
+    password: 'pink+white'
+  });
 });
 
 it('renders loading state', async () => {
   fetchMock.post('/login', delay({ ok: true }));
 
   const { wrapper } = getTestData();
-  submitForm(wrapper.find('form'));
+  submitForm(wrapper);
 
   expect(wrapper.text()).toMatch('Loading...');
 });
@@ -80,7 +88,7 @@ it('renders error state', async () => {
   fetchMock.post('/login', delay(401));
 
   const { wrapper } = getTestData();
-  submitForm(wrapper.find('form'));
+  submitForm(wrapper);
 
   await retry(() => {
     expect(wrapper.text()).toMatch('Oh no.');
@@ -91,7 +99,7 @@ it('renders success state', async () => {
   fetchMock.post('/login', delay({ ok: true }));
 
   const { wrapper } = getTestData();
-  submitForm(wrapper.find('form'));
+  submitForm(wrapper);
 
   await retry(() => {
     expect(wrapper.text()).toMatch('Success!');

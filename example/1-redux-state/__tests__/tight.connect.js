@@ -1,8 +1,5 @@
-import fetchMock from 'fetch-mock';
 import { changeForm, submitForm } from '../actions';
 import { mapStateToProps, mapDispatchToProps } from '../ConnectedLoginForm';
-
-afterEach(fetchMock.reset);
 
 const state = {
   status: 'pending',

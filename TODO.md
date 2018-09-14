@@ -1,7 +1,7 @@
 - [ ] Test examples
   - [x] Separate _tight_ action tests
     - [x] Create connect tests
-  - [ ] Write _tight_ tests for component state example
+  - [x] Write _tight_ tests for component state example
   - [ ] Create form abstraction example
 - [ ] Example preview generator
   - [ ] Extract test names per test file statically

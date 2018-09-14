@@ -2,15 +2,10 @@ import fetchMock from 'fetch-mock';
 import { delay } from '../../../future-libs/delay';
 import { changeForm, submitForm } from '../actions';
 
+const getLastCallBody = (url, method) =>
+  JSON.parse(fetchMock.lastCall(url, method)[1].body);
+
 afterEach(fetchMock.reset);
-
-const mockLoginCall = res => fetchMock.post('/login', delay(res));
-
-const getLastLoginCallBody = () => {
-  const [, { body }] = fetchMock.lastCall('/login', 'post');
-
-  return JSON.parse(body);
-};
 
 it('creates CHANGE action', () => {
   expect(changeForm('password', 'pink+white')).toEqual({
@@ -21,7 +16,7 @@ it('creates CHANGE action', () => {
 });
 
 it('posts user data', async () => {
-  mockLoginCall({ ok: true });
+  fetchMock.post('/login', delay({ ok: true }));
 
   const dispatch = jest.fn();
   const getState = () => ({
@@ -30,14 +25,14 @@ it('posts user data', async () => {
   });
 
   await submitForm()(dispatch, getState);
-  expect(getLastLoginCallBody()).toEqual({
+  expect(getLastCallBody('/login', 'post')).toEqual({
     username: 'forrestgump',
     password: 'pink+white'
   });
 });
 
 it('dispatches "loading" STATUS action', () => {
-  mockLoginCall({ ok: true });
+  fetchMock.post('/login', delay({ ok: true }));
 
   const dispatch = jest.fn();
   const getState = () => ({
@@ -53,7 +48,7 @@ it('dispatches "loading" STATUS action', () => {
 });
 
 it('dispatches "error" STATUS action', async () => {
-  mockLoginCall(401);
+  fetchMock.post('/login', delay(401));
 
   const dispatch = jest.fn();
   const getState = () => ({
@@ -69,7 +64,7 @@ it('dispatches "error" STATUS action', async () => {
 });
 
 it('dispatches "success" STATUS action', async () => {
-  mockLoginCall({ ok: true });
+  fetchMock.post('/login', delay({ ok: true }));
 
   const dispatch = jest.fn();
   const getState = () => ({
