@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import fetchMock from 'fetch-mock';
-import { retry } from '../../../future-libs/async-retry';
-import { delay } from '../../../future-libs/delay';
-import { StatefulLoginForm } from '../StatefulLoginForm';
-import { LoginForm } from '../LoginForm';
+import { retry } from '../../../../future-libs/async-retry';
+import { delay } from '../../../../future-libs/delay';
+import { StatefulLoginForm } from '../../StatefulLoginForm';
+import { LoginForm } from '../../LoginForm';
 
 const getTestData = () => {
   const wrapper = shallow(<StatefulLoginForm />);

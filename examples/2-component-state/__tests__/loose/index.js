@@ -1,9 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import fetchMock from 'fetch-mock';
-import { retry } from '../../../future-libs/async-retry';
-import { delay } from '../../../future-libs/delay';
-import { StatefulLoginForm } from '../StatefulLoginForm';
+import { retry } from '../../../../future-libs/async-retry';
+import { delay } from '../../../../future-libs/delay';
+import { StatefulLoginForm } from '../../StatefulLoginForm';
 
 const getTestData = () => {
   const wrapper = mount(<StatefulLoginForm />);

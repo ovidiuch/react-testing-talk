@@ -1,0 +1,85 @@
+{
+  "1-redux-state": {
+    "loose": {
+      "index": [
+        "renders username input",
+        "renders password input",
+        "updates username input",
+        "updates password input",
+        "posts user data",
+        "renders loading state",
+        "renders error state",
+        "renders success state"
+      ]
+    },
+    "tight": {
+      "connect": [
+        "maps state.status",
+        "maps state.username",
+        "maps state.password",
+        "maps change action",
+        "maps submit action"
+      ],
+      "actions": [
+        "creates CHANGE action",
+        "posts user data",
+        "dispatches \"loading\" STATUS action",
+        "dispatches \"error\" STATUS action",
+        "dispatches \"success\" STATUS action"
+      ],
+      "component": [
+        "renders input field",
+        "renders password field",
+        "responds to username change",
+        "responds to password change",
+        "responds to submit action",
+        "renders loading state",
+        "renders success state",
+        "renders error state"
+      ],
+      "reducer": [
+        "sets username state on CHANGE action",
+        "sets password state on CHANGE action",
+        "sets status state on STATUS action"
+      ]
+    }
+  },
+  "2-component-state": {
+    "loose": {
+      "index": [
+        "renders username input",
+        "renders password input",
+        "updates username input",
+        "updates password input",
+        "posts user data",
+        "renders loading state",
+        "renders error state",
+        "renders success state"
+      ]
+    },
+    "tight": {
+      "component": [
+        "renders input field",
+        "renders password field",
+        "responds to username change",
+        "responds to password change",
+        "responds to submit action",
+        "renders loading state",
+        "renders success state",
+        "renders error state"
+      ],
+      "container": [
+        "renders LoginForm",
+        "passes \"pending\" status",
+        "passes blank username",
+        "passes blank password",
+        "updates username",
+        "updates password",
+        "posts user data",
+        "passes \"loading\" status on submit",
+        "passes \"error\" status on submit",
+        "passes \"success\" status on submit"
+      ]
+    }
+  }
+}

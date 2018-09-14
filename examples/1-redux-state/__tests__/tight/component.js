@@ -1,8 +1,6 @@
-// NOTE: Auto copied from 1-redux-state/__tests__/tight.component.js.
-// Don't edit by hand! Edit source and run `yarn copy-example-files` instead.
 import React from 'react';
 import { shallow } from 'enzyme';
-import { LoginForm } from '../LoginForm';
+import { LoginForm } from '../../LoginForm';
 
 const getTestData = ({ status = 'pending' } = {}) => {
   const onChange = jest.fn();

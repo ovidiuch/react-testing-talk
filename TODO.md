@@ -4,7 +4,7 @@
   - [x] Write _tight_ tests for component state example
   - [x] Generate duplicate files automatically
   - [ ] Create form abstraction example
-- [ ] Example preview generator
-  - [ ] Extract test names per test file statically
+- [ ] Example preview (static) generator
+  - [x] Extract test names per test file
   - [ ] Extract line counts per file
   - [ ] Create diff view between test names in different examples

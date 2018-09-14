@@ -1,5 +1,5 @@
-import { changeForm, submitForm } from '../actions';
-import { mapStateToProps, mapDispatchToProps } from '../ConnectedLoginForm';
+import { changeForm, submitForm } from '../../actions';
+import { mapStateToProps, mapDispatchToProps } from '../../ConnectedLoginForm';
 
 const state = {
   status: 'pending',
@@ -23,6 +23,6 @@ it('maps change action', () => {
   expect(mapDispatchToProps.onChange).toBe(changeForm);
 });
 
-it('maps change action', () => {
+it('maps submit action', () => {
   expect(mapDispatchToProps.onSubmit).toBe(submitForm);
 });

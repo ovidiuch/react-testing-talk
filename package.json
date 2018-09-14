@@ -1,8 +1,8 @@
 {
   "scripts": {
     "copy-example-files": "babel-node ./scripts/copyExampleFiles.js",
-    "extract-test-meta": "babel-node ./scripts/extractTestMeta.js",
-    "test": "jest",
+    "extract-test-meta": "yarn copy-example-files && babel-node ./scripts/extractTestMeta.js",
+    "test": "yarn copy-example-files && jest",
     "test:watch": "jest --watch"
   },
   "dependencies": {
@@ -30,6 +30,7 @@
     "html-webpack-plugin": "^3.2.0",
     "jest": "^23.6.0",
     "jscodeshift": "^0.5.1",
+    "lodash": "^4.17.11",
     "prettier": "^1.14.2",
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
@@ -40,5 +41,6 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^3.4.5",
     "webpack": "^4.18.0"
-  }
+  },
+  "license": "MIT"
 }

@@ -2,14 +2,17 @@
 import { join } from 'path';
 import { promisify } from 'util';
 import assert from 'assert';
-import { readFile } from 'fs-extra';
+import { readFile, writeFile } from 'fs-extra';
 import glob from 'glob';
+import { set } from 'lodash';
 import j from 'jscodeshift';
 
 const globAsync = promisify(glob);
 
 const TEST_MATCH = '*/__tests__/**/*.js';
+const TEST_TYPES = ['loose', 'tight'];
 const EXAMPLES_DIR = join(__dirname, '../examples');
+const OUTPUT_PATH = join(__dirname, '../test.metadata.json');
 
 (async () => {
   const testPaths = await globAsync(TEST_MATCH, {
@@ -17,19 +20,29 @@ const EXAMPLES_DIR = join(__dirname, '../examples');
     absolute: false
   });
 
+  const tests = {};
+
   await Promise.all(
     testPaths.map(async testPath => {
-      const testMeta = await getTestMetadataFromFile(
+      const exampleName = getExampleNameFromTestPath(testPath);
+      const testType = getTestTypeFromTestPath(testPath);
+      const fileName = getFileNameFromTestPath(testPath);
+
+      const testMetadata = await getMetadataFromTestFile(
         join(EXAMPLES_DIR, testPath)
       );
 
-      console.log({ testPath });
-      console.log(testMeta.map(test => test.title));
+      // TODO: Include test.body as well
+      const titles = testMetadata.map(test => test.title);
+
+      set(tests, `${exampleName}.${testType}.${fileName}`, titles);
     })
   );
+
+  await writeFile(OUTPUT_PATH, JSON.stringify(tests, null, 2), 'utf8');
 })();
 
-async function getTestMetadataFromFile(filePath) {
+async function getMetadataFromTestFile(filePath) {
   const testFileSource = await readFile(filePath, 'utf8');
   const root = j(testFileSource);
 
@@ -62,4 +75,22 @@ function assertTestNode(node) {
   assert.strictEqual(node.callee.name, 'it');
   assert.strictEqual(node.arguments[0].type, 'Literal');
   assert.strictEqual(node.arguments[1].type, 'ArrowFunctionExpression');
+}
+
+function getExampleNameFromTestPath(testPath) {
+  return testPath.split('/')[0];
+}
+
+function getTestTypeFromTestPath(testPath) {
+  const testType = testPath.match(/__tests__\/(.+?)\//)[1];
+  assert(TEST_TYPES.indexOf(testType) !== -1);
+
+  return testType;
+}
+
+function getFileNameFromTestPath(testPath) {
+  return testPath
+    .split('/')
+    .pop()
+    .replace(/\.js$/, '');
 }

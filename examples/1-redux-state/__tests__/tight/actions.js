@@ -1,6 +1,6 @@
 import fetchMock from 'fetch-mock';
-import { delay } from '../../../future-libs/delay';
-import { changeForm, submitForm } from '../actions';
+import { delay } from '../../../../future-libs/delay';
+import { changeForm, submitForm } from '../../actions';
 
 const getLastCallBody = (url, method) =>
   JSON.parse(fetchMock.lastCall(url, method)[1].body);
