@@ -13,13 +13,6 @@
       ]
     },
     "tight": {
-      "connect": [
-        "maps state.status",
-        "maps state.username",
-        "maps state.password",
-        "maps change action",
-        "maps submit action"
-      ],
       "actions": [
         "creates CHANGE action",
         "posts user data",
@@ -36,6 +29,13 @@
         "renders loading state",
         "renders success state",
         "renders error state"
+      ],
+      "connect": [
+        "maps state.status",
+        "maps state.username",
+        "maps state.password",
+        "maps change action",
+        "maps submit action"
       ],
       "reducer": [
         "sets username state on CHANGE action",

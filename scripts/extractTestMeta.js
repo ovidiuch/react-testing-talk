@@ -22,22 +22,24 @@ const OUTPUT_PATH = join(__dirname, '../test.metadata.json');
 
   const tests = {};
 
-  await Promise.all(
-    testPaths.map(async testPath => {
-      const exampleName = getExampleNameFromTestPath(testPath);
-      const testType = getTestTypeFromTestPath(testPath);
-      const fileName = getFileNameFromTestPath(testPath);
+  // Run serially on purpose to ensure output is deterministic (ie. that the
+  // object keys are created in the same order).
+  for (let i = 0; i < testPaths.length; i++) {
+    const testPath = testPaths[i];
 
-      const testMetadata = await getMetadataFromTestFile(
-        join(EXAMPLES_DIR, testPath)
-      );
+    const exampleName = getExampleNameFromTestPath(testPath);
+    const testType = getTestTypeFromTestPath(testPath);
+    const fileName = getFileNameFromTestPath(testPath);
 
-      // TODO: Include test.body as well
-      const titles = testMetadata.map(test => test.title);
+    const testMetadata = await getMetadataFromTestFile(
+      join(EXAMPLES_DIR, testPath)
+    );
 
-      set(tests, `${exampleName}.${testType}.${fileName}`, titles);
-    })
-  );
+    // TODO: Include test.body as well
+    const titles = testMetadata.map(test => test.title);
+
+    set(tests, `${exampleName}.${testType}.${fileName}`, titles);
+  }
 
   await writeFile(OUTPUT_PATH, JSON.stringify(tests, null, 2), 'utf8');
 })();
