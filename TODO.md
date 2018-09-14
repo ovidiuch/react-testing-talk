@@ -1,10 +1,11 @@
-- [ ] Test examples
-  - [x] Separate _tight_ action tests
-    - [x] Create connect tests
-  - [x] Write _tight_ tests for component state example
-  - [x] Generate duplicate files automatically
-  - [ ] Create form abstraction example
-- [ ] Example preview (static) generator
-  - [x] Extract test names per test file
-  - [ ] Extract line counts per file
-  - [ ] Create diff view between test names in different examples
+- [ ] Refactor case study
+  - [ ] Create test examples
+    - [x] Separate _tight_ action tests
+      - [x] Create connect tests
+    - [x] Write _tight_ tests for component state example
+    - [x] Generate duplicate files automatically
+    - [ ] Create form abstraction example
+  - [x] Create static generator for extracting test metadata
+  - [ ] Illustrate _unit_ breakdown between test types
+  - [ ] Illustrate test comparison between test types (per example)
+  - [ ] Illustrate test diff between examples (ie. on refactor)
