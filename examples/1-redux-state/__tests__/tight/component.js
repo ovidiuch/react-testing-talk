@@ -24,7 +24,7 @@ const getPassInput = wrapper => wrapper.find('input#password');
 const changeInput = (input, value) =>
   input.prop('onChange')({ currentTarget: { value } });
 
-it('renders input field', () => {
+it('renders input input', () => {
   const { wrapper } = getTestData();
   const input = getUserInput(wrapper);
 
@@ -32,7 +32,7 @@ it('renders input field', () => {
   expect(input.prop('value')).toBe('franko');
 });
 
-it('renders password field', () => {
+it('renders password input', () => {
   const { wrapper } = getTestData();
   const input = getPassInput(wrapper);
 
@@ -56,7 +56,7 @@ it('responds to password change', () => {
   expect(onChange).toBeCalledWith('password', 'pink+white');
 });
 
-it('responds to submit action', () => {
+it('responds to form submit', () => {
   const { onSubmit, wrapper } = getTestData();
 
   wrapper.find('form').prop('onSubmit')({ preventDefault: jest.fn() });

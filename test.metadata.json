@@ -21,11 +21,11 @@
         "dispatches \"success\" STATUS action"
       ],
       "component": [
-        "renders input field",
-        "renders password field",
+        "renders input input",
+        "renders password input",
         "responds to username change",
         "responds to password change",
-        "responds to submit action",
+        "responds to form submit",
         "renders loading state",
         "renders success state",
         "renders error state"
@@ -38,9 +38,9 @@
         "maps submit action"
       ],
       "reducer": [
-        "sets username state on CHANGE action",
-        "sets password state on CHANGE action",
-        "sets status state on STATUS action"
+        "sets username on CHANGE action",
+        "sets password on CHANGE action",
+        "sets status on STATUS action"
       ]
     }
   },
@@ -59,11 +59,11 @@
     },
     "tight": {
       "component": [
-        "renders input field",
-        "renders password field",
+        "renders input input",
+        "renders password input",
         "responds to username change",
         "responds to password change",
-        "responds to submit action",
+        "responds to form submit",
         "renders loading state",
         "renders success state",
         "renders error state"
