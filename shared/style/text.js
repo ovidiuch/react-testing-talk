@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const P = styled.p`
   margin-top: 24px;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 20px;
+  line-height: 30px;
 `;
 
 export const H1 = styled.h1`

@@ -2,8 +2,15 @@ import { number } from 'prop-types';
 import React from 'react';
 import { ComponentState } from 'react-cosmos-fixture';
 import { Pres } from '..';
-import { Center, Rows, Cols, Main, RowSeparator } from '../../style/layout';
-import { P, H1, H2, List, DarkBlue, NoWrap } from '../../style/text';
+import {
+  Center,
+  Rows,
+  Cols,
+  Main,
+  RowSeparator
+} from '../../../shared/style/layout';
+import { P, H1, H2, List, DarkBlue, NoWrap } from '../../../shared/style/text';
+import { LoginForm } from '../../../shared/LoginForm';
 import { Emoji } from '../../Emoji';
 
 export default (
@@ -141,6 +148,14 @@ export default (
           </List>
         </Main>
       </Rows>
+      <Center>
+        <LoginForm
+          status="pending"
+          username=""
+          password=""
+          onSubmit={() => {}}
+        />
+      </Center>
     </Pres>
   </ComponentState>
 );

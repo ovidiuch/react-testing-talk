@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { LoginForm } from './LoginForm';
+import { LoginForm } from '../../shared/LoginForm';
 import { changeForm, submitForm } from './actions';
 
 export function mapStateToProps({ status, username, password }) {

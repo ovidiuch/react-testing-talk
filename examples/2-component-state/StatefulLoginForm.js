@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { LoginForm } from './LoginForm';
+import { LoginForm } from '../../shared/LoginForm';
 
 export class StatefulLoginForm extends Component {
   state = {

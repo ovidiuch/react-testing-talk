@@ -3,6 +3,7 @@
     "copy-example-files": "babel-node ./scripts/copyExampleFiles.js",
     "extract-test-meta": "yarn copy-example-files && babel-node ./scripts/extractTestMeta.js",
     "copy-emojis": "babel-node ./scripts/copyEmojis.js",
+    "lint": "eslint '**/*.js' --quiet",
     "test": "yarn copy-example-files && jest",
     "test:watch": "jest --watch"
   },

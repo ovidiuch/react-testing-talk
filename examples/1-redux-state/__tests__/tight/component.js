@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { LoginForm } from '../../LoginForm';
+import { LoginForm } from '../../../../shared/LoginForm';
 
 const getTestData = ({ status = 'pending' } = {}) => {
   const onChange = jest.fn();
@@ -18,8 +18,8 @@ const getTestData = ({ status = 'pending' } = {}) => {
   return { onChange, onSubmit, wrapper };
 };
 
-const getUserInput = wrapper => wrapper.find('input#username');
-const getPassInput = wrapper => wrapper.find('input#password');
+const getUserInput = wrapper => wrapper.find('#username');
+const getPassInput = wrapper => wrapper.find('#password');
 
 const changeInput = (input, value) =>
   input.prop('onChange')({ currentTarget: { value } });
@@ -65,15 +65,15 @@ it('responds to form submit', () => {
 
 it('renders loading state', () => {
   const { wrapper } = getTestData({ status: 'loading' });
-  expect(wrapper.text()).toMatch('Loading...');
+  expect(wrapper.find('[children="Loading..."]')).toHaveLength(1);
 });
 
 it('renders success state', () => {
   const { wrapper } = getTestData({ status: 'success' });
-  expect(wrapper.text()).toMatch('Success!');
+  expect(wrapper.find('[children="Success!"]')).toHaveLength(1);
 });
 
 it('renders error state', () => {
   const { wrapper } = getTestData({ status: 'error' });
-  expect(wrapper.text()).toMatch('Oh no.');
+  expect(wrapper.find('[children="Oh no."]')).toHaveLength(1);
 });

@@ -2,5 +2,5 @@
 module.exports = {
   next: true,
   publicPath: 'static',
-  globalImports: ['global']
+  globalImports: ['shared/style/global']
 };
