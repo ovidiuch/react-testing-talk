@@ -2,6 +2,7 @@
   "scripts": {
     "copy-example-files": "babel-node ./scripts/copyExampleFiles.js",
     "extract-test-meta": "yarn copy-example-files && babel-node ./scripts/extractTestMeta.js",
+    "copy-emojis": "babel-node ./scripts/copyEmojis.js",
     "test": "yarn copy-example-files && jest",
     "test:watch": "jest --watch"
   },
@@ -40,6 +41,7 @@
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
     "styled-components": "^3.4.5",
+    "twemoji": "^11.0.1",
     "webpack": "^4.18.0"
   },
   "license": "MIT"

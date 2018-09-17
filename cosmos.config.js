@@ -1,4 +1,5 @@
 /* eslint-env node */
 module.exports = {
-  next: true
+  next: true,
+  publicPath: 'static'
 };

@@ -9,3 +9,5 @@
   - [ ] Illustrate _unit_ breakdown between test types
   - [ ] Illustrate test comparison between test types (per example)
   - [ ] Illustrate test diff between examples (ie. on refactor)
+- [ ] Presentation
+  - [ ] Integrate SVG emoji library (SVG for infinite scaling)
