@@ -9,7 +9,8 @@ export class Emoji extends Component {
 
   render() {
     return (
-      <span
+      <div
+        style={{ width: 128, height: 128 }}
         dangerouslySetInnerHTML={{
           __html: twemoji.parse(this.props.children, {
             ext: '.svg',

@@ -1,5 +1,6 @@
 /* eslint-env node */
 module.exports = {
   next: true,
-  publicPath: 'static'
+  publicPath: 'static',
+  globalImports: ['global']
 };
