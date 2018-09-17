@@ -7,7 +7,7 @@ import {
   Rows,
   Cols,
   Main,
-  RowSeparator
+  ColSeparator
 } from '../../../shared/style/layout';
 import { P, H1, H2, List, DarkBlue, NoWrap } from '../../../shared/style/text';
 import { LoginForm } from '../../../shared/LoginForm';
@@ -32,7 +32,7 @@ export default (
                 <NoWrap>React coding</NoWrap>
               </P>
             </Rows>
-            <RowSeparator />
+            <ColSeparator />
             <Rows>
               <Emoji>😕</Emoji>
               <P>
@@ -52,14 +52,14 @@ export default (
                 <NoWrap>No testing</NoWrap>
               </P>
             </Rows>
-            <RowSeparator />
+            <ColSeparator />
             <Rows>
               <Emoji>🤕</Emoji>
               <P>
                 <NoWrap>Testing pain</NoWrap>
               </P>
             </Rows>
-            <RowSeparator />
+            <ColSeparator />
             <Rows style={{ opacity: 0.5 }}>
               <Emoji>😇</Emoji>
               <P>
@@ -91,14 +91,14 @@ export default (
                 <NoWrap>Clarity</NoWrap>
               </P>
             </Rows>
-            <RowSeparator />
+            <ColSeparator />
             <Rows>
               <Emoji>😎</Emoji>
               <P>
                 <NoWrap>Confidence</NoWrap>
               </P>
             </Rows>
-            <RowSeparator />
+            <ColSeparator />
             <Rows>
               <Emoji>🚨</Emoji>
               <P>
@@ -118,7 +118,7 @@ export default (
                 <NoWrap>More typing</NoWrap>
               </P>
             </Rows>
-            <RowSeparator />
+            <ColSeparator />
             <Rows>
               <Emoji>⏳</Emoji>
               <P>
@@ -153,6 +153,7 @@ export default (
           status="pending"
           username=""
           password=""
+          onChange={() => {}}
           onSubmit={() => {}}
         />
       </Center>

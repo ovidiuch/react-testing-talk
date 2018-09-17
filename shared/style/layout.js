@@ -19,6 +19,6 @@ export const Main = styled.div`
   margin-top: 64px;
 `;
 
-export const RowSeparator = styled.div`
+export const ColSeparator = styled.div`
   width: 64px;
 `;
