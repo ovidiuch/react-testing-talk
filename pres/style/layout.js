@@ -7,11 +7,11 @@ export const Center = styled.div`
   align-items: center;
 `;
 
-export const Rows = Center.extend`
+export const Rows = styled(Center)`
   flex-direction: column;
 `;
 
-export const Cols = Center.extend`
+export const Cols = styled(Center)`
   flex-direction: row;
 `;
 
