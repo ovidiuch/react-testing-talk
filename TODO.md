@@ -10,4 +10,4 @@
   - [ ] Illustrate test comparison between test types (per example)
   - [ ] Illustrate test diff between examples (ie. on refactor)
 - [ ] Presentation
-  - [ ] Integrate SVG emoji library (SVG for infinite scaling)
+  - [x] Integrate SVG emoji library (SVG for infinite scaling)
