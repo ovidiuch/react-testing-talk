@@ -4,7 +4,7 @@ import twemoji from 'twemoji';
 
 export class Emoji extends Component {
   static propTypes = {
-    children: string
+    children: string.isRequired
   };
 
   render() {
