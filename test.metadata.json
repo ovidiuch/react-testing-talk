@@ -20,16 +20,6 @@
         "dispatches \"error\" STATUS action",
         "dispatches \"success\" STATUS action"
       ],
-      "component": [
-        "renders input input",
-        "renders password input",
-        "responds to username change",
-        "responds to password change",
-        "responds to form submit",
-        "renders loading state",
-        "renders success state",
-        "renders error state"
-      ],
       "connect": [
         "maps state.status",
         "maps state.username",
@@ -41,6 +31,16 @@
         "sets username on CHANGE action",
         "sets password on CHANGE action",
         "sets status on STATUS action"
+      ],
+      "ui": [
+        "renders input input",
+        "renders password input",
+        "responds to username change",
+        "responds to password change",
+        "responds to form submit",
+        "renders loading state",
+        "renders success state",
+        "renders error state"
       ]
     }
   },
@@ -58,17 +58,7 @@
       ]
     },
     "tight": {
-      "component": [
-        "renders input input",
-        "renders password input",
-        "responds to username change",
-        "responds to password change",
-        "responds to form submit",
-        "renders loading state",
-        "renders success state",
-        "renders error state"
-      ],
-      "container": [
+      "state": [
         "renders LoginForm",
         "passes \"pending\" status",
         "passes blank username",
@@ -79,6 +69,16 @@
         "passes \"loading\" status on submit",
         "passes \"error\" status on submit",
         "passes \"success\" status on submit"
+      ],
+      "ui": [
+        "renders input input",
+        "renders password input",
+        "responds to username change",
+        "responds to password change",
+        "responds to form submit",
+        "renders loading state",
+        "renders success state",
+        "renders error state"
       ]
     }
   }

@@ -3,8 +3,8 @@ import { join } from 'path';
 import { readFile, writeFile } from 'fs-extra';
 
 const FILES = {
-  '1-redux-state/__tests__/tight/component.js':
-    '2-component-state/__tests__/tight/component.js'
+  '1-redux-state/__tests__/tight/ui.js':
+    '2-component-state/__tests__/tight/ui.js'
 };
 
 const EXAMPLES_DIR = join(__dirname, '../examples');
