@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const P = styled.p`
   margin-top: 24px;
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 24px;
+  line-height: 36px;
 `;
 
 export const H1 = styled.h1`
@@ -18,7 +18,6 @@ export const H2 = styled.h2`
   font-size: 32px;
   line-height: 40px;
   font-weight: 600;
-  font-style: italic;
   color: rgb(32, 35, 42);
   opacity: 0.6;
 `;

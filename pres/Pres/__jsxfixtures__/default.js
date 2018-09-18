@@ -1,7 +1,6 @@
 import { number } from 'prop-types';
 import React from 'react';
 import { ComponentState } from 'react-cosmos-fixture';
-import { Pres } from '..';
 import {
   Center,
   Rows,
@@ -11,7 +10,10 @@ import {
 } from '../../../shared/style/layout';
 import { P, H1, H2, List, DarkBlue, NoWrap } from '../../../shared/style/text';
 import { LoginForm } from '../../../shared/LoginForm';
+import testMetadata from '../../../test.metadata.json';
 import { Emoji } from '../../Emoji';
+import { TestComparison } from '../../TestComparison';
+import { Pres } from '..';
 
 export default (
   <ComponentState>
@@ -157,6 +159,120 @@ export default (
           onSubmit={() => {}}
         />
       </Center>
+      <TestComparison tests={testMetadata['1-redux-state']} />
+      <TestComparison tests={testMetadata['2-component-state']} />
+      <Rows>
+        <H1>Takeaway</H1>
+        <Main>
+          <List>
+            <li>Tight units are unproductive</li>
+            <li>Many abstractions are transitory</li>
+            <li>Loose units are more stable</li>
+          </List>
+        </Main>
+      </Rows>
+      <Rows>
+        <H1>The catch</H1>
+        <H2>Test setup complexity</H2>
+      </Rows>
+      <Rows>
+        <H1>f=(props, state)</H1>
+        <Main>
+          <Emoji>🙈</Emoji>
+        </Main>
+      </Rows>
+      <Rows>
+        <H1>f=(props, state, env)</H1>
+        <Main>
+          <Emoji>🐵</Emoji>
+        </Main>
+      </Rows>
+      <Rows>
+        <H1>Component input</H1>
+        <Main>
+          <List>
+            <li>Props</li>
+            <li>State (explicit, implicit)</li>
+            <li>Env (platform, external)</li>
+          </List>
+        </Main>
+      </Rows>
+      <Rows>
+        <H1>Declarative mocks</H1>
+        <Main>
+          <P>TODO examples</P>
+        </Main>
+      </Rows>
+      <Rows>
+        <H1>FAQ</H1>
+        <Main>
+          <List>
+            <li>What about shallow rendering?</li>
+            <li>Test fail noise?</li>
+            <li>{`Isn't this E2E testing?`}</li>
+            <li>
+              {`Isn't`} this{' '}
+              <a
+                href="https://twitter.com/jamiebuilds/status/954927205099847680"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                integration
+              </a>{' '}
+              <a
+                href="https://twitter.com/kentbeck/status/938461525626437632"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                testing
+              </a>
+              ?
+            </li>
+          </List>
+        </Main>
+      </Rows>
+      <Rows>
+        <H1>Conclusions</H1>
+        <Main>
+          <List>
+            <li>On meaning</li>
+            <li>To mock or not to mock</li>
+            <li>The unit spectrum</li>
+          </List>
+        </Main>
+      </Rows>
+      <Rows>
+        <P>
+          Although I start with the notion of the unit being a class, I often
+          take a bunch of closely related classes and treat them as a single
+          unit.
+        </P>
+        <P>
+          {`Rarely I might take a subset of methods in a class as a unit. However
+          you define [a unit] doesn't really matter.`}
+        </P>
+        <P>
+          <strong>
+            The team decides what makes sense to be a unit for the purposes of
+            their understanding of the system and its testing.
+          </strong>
+        </P>
+        <P>
+          <a
+            href="https://martinfowler.com/bliki/UnitTest.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Martin Fowler
+          </a>
+        </P>
+      </Rows>
+      <Rows>
+        <H1>Thanks.</H1>
+        <Main>
+          <a href="https://twitter.com/skidding">@skidding</a>
+        </Main>
+      </Rows>
     </Pres>
   </ComponentState>
 );
