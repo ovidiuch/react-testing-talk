@@ -1,4 +1,4 @@
-import { number } from 'prop-types';
+import styled from 'styled-components';
 import React from 'react';
 import { ComponentState } from 'react-cosmos-fixture';
 import {
@@ -26,6 +26,13 @@ import {
   WINDOW_SAMPLE
 } from '../../DeclarativeMock/mockSamples';
 import { Pres } from '..';
+
+const SelfLink = styled.a`
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+  text-decoration: none;
+`;
 
 export default (
   <ComponentState>
@@ -96,7 +103,7 @@ export default (
         </Main>
       </Rows>
       <Rows>
-        <UiTestingOverviewHeader idx={0} />
+        <H1>Testing pros</H1>
         <Main>
           <Cols>
             <Rows>
@@ -123,7 +130,7 @@ export default (
         </Main>
       </Rows>
       <Rows>
-        <UiTestingOverviewHeader idx={1} />
+        <H1>Testing cons</H1>
         <Main>
           <Cols>
             <Rows style={{ opacity: 0.5 }}>
@@ -143,11 +150,11 @@ export default (
         </Main>
       </Rows>
       <Rows>
-        <UiTestingOverviewHeader idx={2} />
+        <H1>Testing anatomy</H1>
         <Main>TODO</Main>
       </Rows>
       <Rows>
-        <UiTestingOverviewHeader idx={3} />
+        <H1>Recap</H1>
         <Main>
           <List>
             <li>
@@ -171,8 +178,14 @@ export default (
           onSubmit={() => {}}
         />
       </Center>
-      <TestComparison tests={testMetadata['1-redux-state']} />
-      <TestComparison tests={testMetadata['2-component-state']} />
+      <TestComparison
+        tests={testMetadata['1-redux-state']}
+        title="Redux state"
+      />
+      <TestComparison
+        tests={testMetadata['2-component-state']}
+        title="Component state"
+      />
       <Rows>
         <H1>Takeaway</H1>
         <Main>
@@ -256,7 +269,7 @@ export default (
         <H1>Conclusions</H1>
         <Main>
           <List>
-            <li>On meaning</li>
+            <li>On unit meaning</li>
             <li>To mock or not to mock</li>
             <li>The unit spectrum</li>
           </List>
@@ -291,27 +304,11 @@ export default (
       <Rows>
         <H1>Thanks.</H1>
         <Main>
-          <a href="https://twitter.com/skidding">@skidding</a>
+          <SelfLink href="https://twitter.com/skidding">
+            <DarkBlue>@skidding</DarkBlue>
+          </SelfLink>
         </Main>
       </Rows>
     </Pres>
   </ComponentState>
 );
-
-function UiTestingOverviewHeader({ idx }) {
-  return (
-    <H1>
-      <span style={{ opacity: idx === 0 ? 1 : 0.3 }}>Testing pros</span>
-      <br />
-      <span style={{ opacity: idx === 1 ? 1 : 0.3 }}>Testing cons</span>
-      <br />
-      <span style={{ opacity: idx === 2 ? 1 : 0.3 }}>Test anatomy</span>
-      <br />
-      <span style={{ opacity: idx === 3 ? 1 : 0.3 }}>Recap</span>
-    </H1>
-  );
-}
-
-UiTestingOverviewHeader.propTypes = {
-  idx: number
-};
