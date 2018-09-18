@@ -21,7 +21,10 @@ export class Pres extends Component {
   };
 
   render() {
-    return this.props.children[this.state.slideIndex];
+    const { slideIndex } = this.state;
+    const index = Math.min(Math.max(0, slideIndex), this.getLastSlideIndex());
+
+    return this.props.children[index];
   }
 
   componentDidMount() {

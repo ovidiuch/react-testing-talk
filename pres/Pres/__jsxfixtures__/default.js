@@ -84,7 +84,7 @@ export default (
         </Main>
       </Rows>
       <Rows>
-        <H1>Talk summary</H1>
+        <H1>Summary</H1>
         <Main>
           <List>
             <li>UI testing overview</li>
