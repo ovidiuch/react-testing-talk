@@ -34,6 +34,7 @@
     "jscodeshift": "^0.5.1",
     "lodash": "^4.17.11",
     "prettier": "^1.14.2",
+    "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-cosmos": "^4.7.0-10",

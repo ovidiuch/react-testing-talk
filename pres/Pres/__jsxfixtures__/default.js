@@ -13,6 +13,18 @@ import { LoginForm } from '../../../shared/LoginForm';
 import testMetadata from '../../../test.metadata.json';
 import { Emoji } from '../../Emoji';
 import { TestComparison } from '../../TestComparison';
+import { DeclarativeMock } from '../../DeclarativeMock';
+import {
+  PROPS_SAMPLE,
+  STATE_SAMPLE,
+  REDUX_SAMPLE,
+  STYLED_SAMPLE,
+  INTL_SAMPLE,
+  XHR_SAMPLE,
+  FETCH_SAMPLE,
+  LOCALSTORAGE_SAMPLE,
+  WINDOW_SAMPLE
+} from '../../DeclarativeMock/mockSamples';
 import { Pres } from '..';
 
 export default (
@@ -165,9 +177,9 @@ export default (
         <H1>Takeaway</H1>
         <Main>
           <List>
-            <li>Tight units are unproductive</li>
+            <li>Tight units slow down refactoring</li>
             <li>Many abstractions are transitory</li>
-            <li>Loose units are more stable</li>
+            <li>User-oriented units are more stable</li>
           </List>
         </Main>
       </Rows>
@@ -197,10 +209,19 @@ export default (
           </List>
         </Main>
       </Rows>
+      <DeclarativeMock title="props" code={PROPS_SAMPLE} />
+      <DeclarativeMock title="state" code={STATE_SAMPLE} />
+      <DeclarativeMock title="Redux" code={REDUX_SAMPLE} />
+      <DeclarativeMock title="styled-components" code={STYLED_SAMPLE} />
+      <DeclarativeMock title="react-intl" code={INTL_SAMPLE} />
+      <DeclarativeMock title="XHR" code={XHR_SAMPLE} />
+      <DeclarativeMock title="Fetch" code={FETCH_SAMPLE} />
+      <DeclarativeMock title="LocalStorage" code={LOCALSTORAGE_SAMPLE} />
+      <DeclarativeMock title="window" code={WINDOW_SAMPLE} />
       <Rows>
-        <H1>Declarative mocks</H1>
+        <H1>Recap</H1>
         <Main>
-          <P>TODO examples</P>
+          <P>{`TODO "Declarative mocks" recap`}</P>
         </Main>
       </Rows>
       <Rows>
