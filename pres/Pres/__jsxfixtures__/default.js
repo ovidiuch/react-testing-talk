@@ -174,15 +174,16 @@ export default (
         <Main>
           <List>
             <li>
-              <strong>Setup:</strong> Props, state, context (app, platform,
-              server)
+              <strong>Setup:</strong> Props, state, context{' '}
+              <span style={{ opacity: 0.5 }}>(app, platform, server)</span>
             </li>
             <li>
-              <strong>Action:</strong> Render, event (UI, network, timeout)
+              <strong>Action:</strong> Render, event{' '}
+              <span style={{ opacity: 0.5 }}>(UI, network, timeout)</span>
             </li>
             <li>
-              <strong>Expect:</strong> Render output, side effect (callback
-              prop, app state)
+              <strong>Expect:</strong> Render output, side effect{' '}
+              <span style={{ opacity: 0.5 }}>(callback prop, app state)</span>
             </li>
           </List>
         </Main>

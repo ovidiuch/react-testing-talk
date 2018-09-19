@@ -107,7 +107,7 @@
         "renders error state": "it('renders error state', () => {\n  const { wrapper } = getTestData({ status: 'error' });\n  expect(wrapper.find('[children=\"Oh no.\"]')).toHaveLength(1);\n})"
       },
       "loginForm": {
-        "renders Form": "it('renders Form', () => {\n  const { wrapper } = getTestData();\n  expect(wrapper.find(Form)).toHaveLength(1);\n})",
+        "renders generic form": "it('renders generic form', () => {\n  const { wrapper } = getTestData();\n  expect(wrapper.find(Form)).toHaveLength(1);\n})",
         "passes username input": "it('passes username input', () => {\n  const { wrapper } = getTestData();\n\n  const { inputs } = wrapper.find(Form).props();\n  expect(inputs).toContainEqual({\n    type: 'text',\n    name: 'username',\n    value: 'franko',\n    label: 'Username'\n  });\n})",
         "passes password input": "it('passes password input', () => {\n  const { wrapper } = getTestData();\n\n  const { inputs } = wrapper.find(Form).props();\n  expect(inputs).toContainEqual({\n    type: 'password',\n    name: 'password',\n    value: '#fffferrari',\n    label: 'Password'\n  });\n})",
         "passes status": "it('passes status', () => {\n  const { wrapper } = getTestData({ status: 'loading' });\n\n  expect(wrapper.find(Form).prop('status')).toBe('loading');\n})",
