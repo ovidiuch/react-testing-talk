@@ -1,14 +1,15 @@
-- [ ] Refactor case study
-  - [ ] Create test examples
+- [x] Refactor case study
+  - [x] Create test examples
     - [x] Separate _tight_ action tests
       - [x] Create connect tests
     - [x] Write _tight_ tests for component state example
     - [x] Generate duplicate files automatically
-    - [ ] Create form abstraction example
+    - [x] Create form abstraction example
   - [x] Create static generator for extracting test metadata
-  - [ ] Illustrate _unit_ breakdown between test types
-  - [ ] Illustrate test comparison between test types (per example)
-  - [ ] Illustrate test diff between examples (ie. on refactor)
+  - [x] Illustrate _unit_ breakdown between test types
+  - [x] Illustrate test comparison between test types (per example)
 - [ ] Presentation
   - [x] Create component for rendering slides in succession
   - [x] Integrate SVG emoji library (SVG for infinite scaling)
+- [ ] Optimize
+  - [ ] Load SVGs inline
