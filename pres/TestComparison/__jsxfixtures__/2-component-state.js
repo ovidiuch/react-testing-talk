@@ -5,6 +5,6 @@ import testMetadata from '../../../test.metadata.json';
 export default (
   <TestComparison
     tests={testMetadata['2-component-state']}
-    title="Component state"
+    prevTests={testMetadata['1-redux-state']}
   />
 );

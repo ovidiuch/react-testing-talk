@@ -19,7 +19,7 @@ const getTestData = ({ status = 'pending' } = {}) => {
   return { onChange, onSubmit, wrapper };
 };
 
-it('renders Form', () => {
+it('renders generic form', () => {
   const { wrapper } = getTestData();
   expect(wrapper.find(Form)).toHaveLength(1);
 });

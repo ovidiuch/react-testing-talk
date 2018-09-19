@@ -1,131 +1,131 @@
 {
   "1-redux-state": {
     "loose": {
-      "index": [
-        "renders username input",
-        "renders password input",
-        "updates username input",
-        "updates password input",
-        "posts user data",
-        "renders loading state",
-        "renders error state",
-        "renders success state"
-      ]
+      "index": {
+        "renders username input": "it('renders username input', () => {\n  const { wrapper } = getTestData();\n\n  expect(getInput(wrapper, 'username')).toHaveLength(1);\n})",
+        "renders password input": "it('renders password input', () => {\n  const { wrapper } = getTestData();\n\n  expect(getInput(wrapper, 'password')).toHaveLength(1);\n})",
+        "updates username input": "it('updates username input', () => {\n  const { wrapper } = getTestData();\n  changeInput(wrapper, 'username', 'franko');\n\n  expect(getInput(wrapper, 'username').prop('value')).toBe('franko');\n})",
+        "updates password input": "it('updates password input', () => {\n  const { wrapper } = getTestData();\n  changeInput(wrapper, 'password', '#fffferrari');\n\n  expect(getInput(wrapper, 'password').prop('value')).toBe('#fffferrari');\n})",
+        "posts user data": "it('posts user data', () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n\n  changeInput(wrapper, 'username', 'forrestgump');\n  changeInput(wrapper, 'password', 'pink+white');\n  submitForm(wrapper);\n\n  expect(getLastCallBody('/login', 'post')).toEqual({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n})",
+        "renders loading state": "it('renders loading state', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  expect(wrapper.text()).toMatch('Loading...');\n})",
+        "renders error state": "it('renders error state', async () => {\n  fetchMock.post('/login', delay(401));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch('Oh no.');\n  });\n})",
+        "renders success state": "it('renders success state', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch('Success!');\n  });\n})"
+      }
     },
     "tight": {
-      "actions": [
-        "creates CHANGE action",
-        "posts user data",
-        "dispatches \"loading\" STATUS action",
-        "dispatches \"error\" STATUS action",
-        "dispatches \"success\" STATUS action"
-      ],
-      "connect": [
-        "maps state.status",
-        "maps state.username",
-        "maps state.password",
-        "maps change action",
-        "maps submit action"
-      ],
-      "loginForm": [
-        "renders username input",
-        "renders password input",
-        "responds to username change",
-        "responds to password change",
-        "responds to form submit",
-        "renders loading state",
-        "renders success state",
-        "renders error state"
-      ],
-      "reducer": [
-        "sets username on CHANGE action",
-        "sets password on CHANGE action",
-        "sets status on STATUS action"
-      ]
+      "actions": {
+        "creates CHANGE action": "it('creates CHANGE action', () => {\n  expect(changeForm('password', 'pink+white')).toEqual({\n    type: 'CHANGE',\n    key: 'password',\n    value: 'pink+white'\n  });\n})",
+        "posts user data": "it('posts user data', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const dispatch = jest.fn();\n  const getState = () => ({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n\n  await submitForm()(dispatch, getState);\n  expect(getLastCallBody('/login', 'post')).toEqual({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n})",
+        "dispatches \"loading\" STATUS action": "it('dispatches \"loading\" STATUS action', () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const dispatch = jest.fn();\n  const getState = () => ({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n\n  submitForm()(dispatch, getState);\n  expect(dispatch).toBeCalledWith({\n    type: 'STATUS',\n    status: 'loading'\n  });\n})",
+        "dispatches \"error\" STATUS action": "it('dispatches \"error\" STATUS action', async () => {\n  fetchMock.post('/login', delay(401));\n\n  const dispatch = jest.fn();\n  const getState = () => ({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n\n  await submitForm()(dispatch, getState);\n  expect(dispatch).toBeCalledWith({\n    type: 'STATUS',\n    status: 'error'\n  });\n})",
+        "dispatches \"success\" STATUS action": "it('dispatches \"success\" STATUS action', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const dispatch = jest.fn();\n  const getState = () => ({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n\n  await submitForm()(dispatch, getState);\n  expect(dispatch).toBeCalledWith({\n    type: 'STATUS',\n    status: 'success'\n  });\n})"
+      },
+      "connect": {
+        "maps state.status": "it('maps state.status', () => {\n  expect(mapStateToProps(state).status).toEqual('pending');\n})",
+        "maps state.username": "it('maps state.username', () => {\n  expect(mapStateToProps(state).username).toEqual('franko');\n})",
+        "maps state.password": "it('maps state.password', () => {\n  expect(mapStateToProps(state).password).toEqual('#fffferrari');\n})",
+        "maps change action": "it('maps change action', () => {\n  expect(mapDispatchToProps.onChange).toBe(changeForm);\n})",
+        "maps submit action": "it('maps submit action', () => {\n  expect(mapDispatchToProps.onSubmit).toBe(submitForm);\n})"
+      },
+      "loginForm": {
+        "renders username input": "it('renders username input', () => {\n  const { wrapper } = getTestData();\n  const input = getUserInput(wrapper);\n\n  expect(input).toHaveLength(1);\n  expect(input.prop('value')).toBe('franko');\n})",
+        "renders password input": "it('renders password input', () => {\n  const { wrapper } = getTestData();\n  const input = getPassInput(wrapper);\n\n  expect(input).toHaveLength(1);\n  expect(input.prop('value')).toBe('#fffferrari');\n})",
+        "responds to username change": "it('responds to username change', () => {\n  const { onChange, wrapper } = getTestData();\n  const input = getUserInput(wrapper);\n\n  changeInput(input, 'forrestgump');\n  expect(onChange).toBeCalledWith('username', 'forrestgump');\n})",
+        "responds to password change": "it('responds to password change', () => {\n  const { onChange, wrapper } = getTestData();\n  const input = getPassInput(wrapper);\n\n  changeInput(input, 'pink+white');\n  expect(onChange).toBeCalledWith('password', 'pink+white');\n})",
+        "responds to form submit": "it('responds to form submit', () => {\n  const { onSubmit, wrapper } = getTestData();\n\n  wrapper.find('form').prop('onSubmit')({ preventDefault: jest.fn() });\n  expect(onSubmit).toBeCalled();\n})",
+        "renders loading state": "it('renders loading state', () => {\n  const { wrapper } = getTestData({ status: 'loading' });\n  expect(wrapper.find('[children=\"Loading...\"]')).toHaveLength(1);\n})",
+        "renders success state": "it('renders success state', () => {\n  const { wrapper } = getTestData({ status: 'success' });\n  expect(wrapper.find('[children=\"Success!\"]')).toHaveLength(1);\n})",
+        "renders error state": "it('renders error state', () => {\n  const { wrapper } = getTestData({ status: 'error' });\n  expect(wrapper.find('[children=\"Oh no.\"]')).toHaveLength(1);\n})"
+      },
+      "reducer": {
+        "sets username on CHANGE action": "it('sets username on CHANGE action', () => {\n  const state = formReducer(undefined, {\n    type: 'CHANGE',\n    key: 'username',\n    value: 'forrestgump'\n  });\n  expect(state.username).toEqual('forrestgump');\n})",
+        "sets password on CHANGE action": "it('sets password on CHANGE action', () => {\n  const state = formReducer(undefined, {\n    type: 'CHANGE',\n    key: 'password',\n    value: 'pink+white'\n  });\n  expect(state.password).toEqual('pink+white');\n})",
+        "sets status on STATUS action": "it('sets status on STATUS action', () => {\n  const state = formReducer(undefined, {\n    type: 'STATUS',\n    status: 'loading'\n  });\n  expect(state.status).toEqual('loading');\n})"
+      }
     }
   },
   "2-component-state": {
     "loose": {
-      "index": [
-        "renders username input",
-        "renders password input",
-        "updates username input",
-        "updates password input",
-        "posts user data",
-        "renders loading state",
-        "renders error state",
-        "renders success state"
-      ]
+      "index": {
+        "renders username input": "it('renders username input', () => {\n  const { wrapper } = getTestData();\n\n  expect(getInput(wrapper, 'username')).toHaveLength(1);\n})",
+        "renders password input": "it('renders password input', () => {\n  const { wrapper } = getTestData();\n\n  expect(getInput(wrapper, 'password')).toHaveLength(1);\n})",
+        "updates username input": "it('updates username input', () => {\n  const { wrapper } = getTestData();\n  changeInput(wrapper, 'username', 'franko');\n\n  expect(getInput(wrapper, 'username').prop('value')).toBe('franko');\n})",
+        "updates password input": "it('updates password input', () => {\n  const { wrapper } = getTestData();\n  changeInput(wrapper, 'password', '#fffferrari');\n\n  expect(getInput(wrapper, 'password').prop('value')).toBe('#fffferrari');\n})",
+        "posts user data": "it('posts user data', () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n\n  changeInput(wrapper, 'username', 'forrestgump');\n  changeInput(wrapper, 'password', 'pink+white');\n  submitForm(wrapper);\n\n  expect(getLastCallBody('/login', 'post')).toEqual({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n})",
+        "renders loading state": "it('renders loading state', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  expect(wrapper.text()).toMatch('Loading...');\n})",
+        "renders error state": "it('renders error state', async () => {\n  fetchMock.post('/login', delay(401));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch('Oh no.');\n  });\n})",
+        "renders success state": "it('renders success state', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch('Success!');\n  });\n})"
+      }
     },
     "tight": {
-      "loginForm": [
-        "renders username input",
-        "renders password input",
-        "responds to username change",
-        "responds to password change",
-        "responds to form submit",
-        "renders loading state",
-        "renders success state",
-        "renders error state"
-      ],
-      "state": [
-        "renders LoginForm",
-        "passes \"pending\" status",
-        "passes blank username",
-        "passes blank password",
-        "updates username",
-        "updates password",
-        "posts user data",
-        "passes \"loading\" status on submit",
-        "passes \"error\" status on submit",
-        "passes \"success\" status on submit"
-      ]
+      "loginForm": {
+        "renders username input": "it('renders username input', () => {\n  const { wrapper } = getTestData();\n  const input = getUserInput(wrapper);\n\n  expect(input).toHaveLength(1);\n  expect(input.prop('value')).toBe('franko');\n})",
+        "renders password input": "it('renders password input', () => {\n  const { wrapper } = getTestData();\n  const input = getPassInput(wrapper);\n\n  expect(input).toHaveLength(1);\n  expect(input.prop('value')).toBe('#fffferrari');\n})",
+        "responds to username change": "it('responds to username change', () => {\n  const { onChange, wrapper } = getTestData();\n  const input = getUserInput(wrapper);\n\n  changeInput(input, 'forrestgump');\n  expect(onChange).toBeCalledWith('username', 'forrestgump');\n})",
+        "responds to password change": "it('responds to password change', () => {\n  const { onChange, wrapper } = getTestData();\n  const input = getPassInput(wrapper);\n\n  changeInput(input, 'pink+white');\n  expect(onChange).toBeCalledWith('password', 'pink+white');\n})",
+        "responds to form submit": "it('responds to form submit', () => {\n  const { onSubmit, wrapper } = getTestData();\n\n  wrapper.find('form').prop('onSubmit')({ preventDefault: jest.fn() });\n  expect(onSubmit).toBeCalled();\n})",
+        "renders loading state": "it('renders loading state', () => {\n  const { wrapper } = getTestData({ status: 'loading' });\n  expect(wrapper.find('[children=\"Loading...\"]')).toHaveLength(1);\n})",
+        "renders success state": "it('renders success state', () => {\n  const { wrapper } = getTestData({ status: 'success' });\n  expect(wrapper.find('[children=\"Success!\"]')).toHaveLength(1);\n})",
+        "renders error state": "it('renders error state', () => {\n  const { wrapper } = getTestData({ status: 'error' });\n  expect(wrapper.find('[children=\"Oh no.\"]')).toHaveLength(1);\n})"
+      },
+      "state": {
+        "renders LoginForm": "it('renders LoginForm', () => {\n  const { wrapper } = getTestData();\n  expect(getLoginForm(wrapper)).toHaveLength(1);\n})",
+        "passes \"pending\" status": "it('passes \"pending\" status', () => {\n  const { wrapper } = getTestData();\n  expect(getLoginForm(wrapper).prop('status')).toBe('pending');\n})",
+        "passes blank username": "it('passes blank username', () => {\n  const { wrapper } = getTestData();\n  expect(getLoginForm(wrapper).prop('username')).toBe('');\n})",
+        "passes blank password": "it('passes blank password', () => {\n  const { wrapper } = getTestData();\n  expect(getLoginForm(wrapper).prop('password')).toBe('');\n})",
+        "updates username": "it('updates username', () => {\n  const { wrapper } = getTestData();\n\n  changeForm(wrapper, 'username', 'forrestgump');\n  expect(getLoginForm(wrapper).prop('username')).toBe('forrestgump');\n})",
+        "updates password": "it('updates password', () => {\n  const { wrapper } = getTestData();\n\n  changeForm(wrapper, 'password', 'pink+white');\n  expect(getLoginForm(wrapper).prop('password')).toBe('pink+white');\n})",
+        "posts user data": "it('posts user data', () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n\n  changeForm(wrapper, 'username', 'forrestgump');\n  changeForm(wrapper, 'password', 'pink+white');\n  submitForm(wrapper);\n\n  expect(getLastCallBody('/login', 'post')).toEqual({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n})",
+        "passes \"loading\" status on submit": "it('passes \"loading\" status on submit', () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  expect(getLoginForm(wrapper).prop('status')).toBe('loading');\n})",
+        "passes \"error\" status on submit": "it('passes \"error\" status on submit', async () => {\n  fetchMock.post('/login', delay(401));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(getLoginForm(wrapper).prop('status')).toBe('error');\n  });\n})",
+        "passes \"success\" status on submit": "it('passes \"success\" status on submit', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  getLoginForm(wrapper).prop('onSubmit')();\n\n  await retry(() => {\n    expect(getLoginForm(wrapper).prop('status')).toBe('success');\n  });\n})"
+      }
     }
   },
   "3-generic-form": {
     "loose": {
-      "index": [
-        "renders username input",
-        "renders password input",
-        "updates username input",
-        "updates password input",
-        "posts user data",
-        "renders loading state",
-        "renders error state",
-        "renders success state"
-      ]
+      "index": {
+        "renders username input": "it('renders username input', () => {\n  const { wrapper } = getTestData();\n\n  expect(getInput(wrapper, 'username')).toHaveLength(1);\n})",
+        "renders password input": "it('renders password input', () => {\n  const { wrapper } = getTestData();\n\n  expect(getInput(wrapper, 'password')).toHaveLength(1);\n})",
+        "updates username input": "it('updates username input', () => {\n  const { wrapper } = getTestData();\n  changeInput(wrapper, 'username', 'franko');\n\n  expect(getInput(wrapper, 'username').prop('value')).toBe('franko');\n})",
+        "updates password input": "it('updates password input', () => {\n  const { wrapper } = getTestData();\n  changeInput(wrapper, 'password', '#fffferrari');\n\n  expect(getInput(wrapper, 'password').prop('value')).toBe('#fffferrari');\n})",
+        "posts user data": "it('posts user data', () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n\n  changeInput(wrapper, 'username', 'forrestgump');\n  changeInput(wrapper, 'password', 'pink+white');\n  submitForm(wrapper);\n\n  expect(getLastCallBody('/login', 'post')).toEqual({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n})",
+        "renders loading state": "it('renders loading state', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  expect(wrapper.text()).toMatch('Loading...');\n})",
+        "renders error state": "it('renders error state', async () => {\n  fetchMock.post('/login', delay(401));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch('Oh no.');\n  });\n})",
+        "renders success state": "it('renders success state', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch('Success!');\n  });\n})"
+      }
     },
     "tight": {
-      "form": [
-        "renders username input",
-        "renders password input",
-        "responds to username change",
-        "responds to password change",
-        "responds to form submit",
-        "renders loading state",
-        "renders success state",
-        "renders error state"
-      ],
-      "loginForm": [
-        "renders Form",
-        "passes username input",
-        "passes password input",
-        "passes status",
-        "responds to input change",
-        "responds to form submit"
-      ],
-      "state": [
-        "renders LoginForm",
-        "passes \"pending\" status",
-        "passes blank username",
-        "passes blank password",
-        "updates username",
-        "updates password",
-        "posts user data",
-        "passes \"loading\" status on submit",
-        "passes \"error\" status on submit",
-        "passes \"success\" status on submit"
-      ]
+      "form": {
+        "renders username input": "it('renders username input', () => {\n  const { wrapper } = getTestData();\n  const input = getUserInput(wrapper);\n\n  expect(input).toHaveLength(1);\n  expect(input.prop('value')).toBe('franko');\n})",
+        "renders password input": "it('renders password input', () => {\n  const { wrapper } = getTestData();\n  const input = getPassInput(wrapper);\n\n  expect(input).toHaveLength(1);\n  expect(input.prop('value')).toBe('#fffferrari');\n})",
+        "responds to username change": "it('responds to username change', () => {\n  const { onChange, wrapper } = getTestData();\n  const input = getUserInput(wrapper);\n\n  changeInput(input, 'forrestgump');\n  expect(onChange).toBeCalledWith('username', 'forrestgump');\n})",
+        "responds to password change": "it('responds to password change', () => {\n  const { onChange, wrapper } = getTestData();\n  const input = getPassInput(wrapper);\n\n  changeInput(input, 'pink+white');\n  expect(onChange).toBeCalledWith('password', 'pink+white');\n})",
+        "responds to form submit": "it('responds to form submit', () => {\n  const { onSubmit, wrapper } = getTestData();\n\n  wrapper.find('form').prop('onSubmit')({ preventDefault: jest.fn() });\n  expect(onSubmit).toBeCalled();\n})",
+        "renders loading state": "it('renders loading state', () => {\n  const { wrapper } = getTestData({ status: 'loading' });\n  expect(wrapper.find('[children=\"Loading...\"]')).toHaveLength(1);\n})",
+        "renders success state": "it('renders success state', () => {\n  const { wrapper } = getTestData({ status: 'success' });\n  expect(wrapper.find('[children=\"Success!\"]')).toHaveLength(1);\n})",
+        "renders error state": "it('renders error state', () => {\n  const { wrapper } = getTestData({ status: 'error' });\n  expect(wrapper.find('[children=\"Oh no.\"]')).toHaveLength(1);\n})"
+      },
+      "loginForm": {
+        "renders Form": "it('renders Form', () => {\n  const { wrapper } = getTestData();\n  expect(wrapper.find(Form)).toHaveLength(1);\n})",
+        "passes username input": "it('passes username input', () => {\n  const { wrapper } = getTestData();\n\n  const { inputs } = wrapper.find(Form).props();\n  expect(inputs).toContainEqual({\n    type: 'text',\n    name: 'username',\n    value: 'franko',\n    label: 'Username'\n  });\n})",
+        "passes password input": "it('passes password input', () => {\n  const { wrapper } = getTestData();\n\n  const { inputs } = wrapper.find(Form).props();\n  expect(inputs).toContainEqual({\n    type: 'password',\n    name: 'password',\n    value: '#fffferrari',\n    label: 'Password'\n  });\n})",
+        "passes status": "it('passes status', () => {\n  const { wrapper } = getTestData({ status: 'loading' });\n\n  expect(wrapper.find(Form).prop('status')).toBe('loading');\n})",
+        "responds to input change": "it('responds to input change', () => {\n  const { onChange, wrapper } = getTestData();\n\n  const props = wrapper.find(Form).props();\n  props.onChange('username', 'forrestgump');\n\n  expect(onChange).toBeCalledWith('username', 'forrestgump');\n})",
+        "responds to form submit": "it('responds to form submit', () => {\n  const { onSubmit, wrapper } = getTestData();\n\n  const props = wrapper.find(Form).props();\n  props.onSubmit();\n\n  expect(onSubmit).toBeCalled();\n})"
+      },
+      "state": {
+        "renders LoginForm": "it('renders LoginForm', () => {\n  const { wrapper } = getTestData();\n  expect(getLoginForm(wrapper)).toHaveLength(1);\n})",
+        "passes \"pending\" status": "it('passes \"pending\" status', () => {\n  const { wrapper } = getTestData();\n  expect(getLoginForm(wrapper).prop('status')).toBe('pending');\n})",
+        "passes blank username": "it('passes blank username', () => {\n  const { wrapper } = getTestData();\n  expect(getLoginForm(wrapper).prop('username')).toBe('');\n})",
+        "passes blank password": "it('passes blank password', () => {\n  const { wrapper } = getTestData();\n  expect(getLoginForm(wrapper).prop('password')).toBe('');\n})",
+        "updates username": "it('updates username', () => {\n  const { wrapper } = getTestData();\n\n  changeForm(wrapper, 'username', 'forrestgump');\n  expect(getLoginForm(wrapper).prop('username')).toBe('forrestgump');\n})",
+        "updates password": "it('updates password', () => {\n  const { wrapper } = getTestData();\n\n  changeForm(wrapper, 'password', 'pink+white');\n  expect(getLoginForm(wrapper).prop('password')).toBe('pink+white');\n})",
+        "posts user data": "it('posts user data', () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n\n  changeForm(wrapper, 'username', 'forrestgump');\n  changeForm(wrapper, 'password', 'pink+white');\n  submitForm(wrapper);\n\n  expect(getLastCallBody('/login', 'post')).toEqual({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n})",
+        "passes \"loading\" status on submit": "it('passes \"loading\" status on submit', () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  expect(getLoginForm(wrapper).prop('status')).toBe('loading');\n})",
+        "passes \"error\" status on submit": "it('passes \"error\" status on submit', async () => {\n  fetchMock.post('/login', delay(401));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(getLoginForm(wrapper).prop('status')).toBe('error');\n  });\n})",
+        "passes \"success\" status on submit": "it('passes \"success\" status on submit', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  getLoginForm(wrapper).prop('onSubmit')();\n\n  await retry(() => {\n    expect(getLoginForm(wrapper).prop('status')).toBe('success');\n  });\n})"
+      }
     }
   }
 }

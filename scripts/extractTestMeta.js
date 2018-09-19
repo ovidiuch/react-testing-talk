@@ -35,10 +35,12 @@ const OUTPUT_PATH = join(__dirname, '../test.metadata.json');
       join(EXAMPLES_DIR, testPath)
     );
 
-    // TODO: Include test.body as well
-    const titles = testMetadata.map(test => test.title);
+    const t = {};
+    testMetadata.forEach(({ title, body }) => {
+      t[title] = body;
+    });
 
-    set(tests, `${exampleName}.${testType}.${fileName}`, titles);
+    set(tests, `${exampleName}.${testType}.${fileName}`, t);
   }
 
   await writeFile(OUTPUT_PATH, JSON.stringify(tests, null, 2), 'utf8');

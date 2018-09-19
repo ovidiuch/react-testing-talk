@@ -1,4 +1,4 @@
-import { arrayOf, element, string } from 'prop-types';
+import { oneOfType, arrayOf, element, string } from 'prop-types';
 import styled from 'styled-components';
 import React, { Children } from 'react';
 import { Rows, Cols } from '../../shared/style/layout';
@@ -25,7 +25,7 @@ export function Box({ children, title }) {
 
 Box.propTypes = {
   title: string,
-  children: arrayOf(element)
+  children: oneOfType([element, arrayOf(element)])
 };
 
 const BoxContainer = styled(Rows)`

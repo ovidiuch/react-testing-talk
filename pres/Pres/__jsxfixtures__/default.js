@@ -10,10 +10,11 @@ import {
 } from '../../../shared/style/layout';
 import { P, H1, H2, List, DarkBlue, NoWrap } from '../../../shared/style/text';
 import { LoginForm } from '../../../shared/LoginForm';
-import testMetadata from '../../../test.metadata.json';
 import { Emoji } from '../../Emoji';
 import { refactor1, refactor2 } from '../../Box/examples';
-import { TestComparison } from '../../TestComparison';
+import testComparison1 from '../../TestComparison/__jsxfixtures__/1-redux-state';
+import testComparison2 from '../../TestComparison/__jsxfixtures__/2-component-state';
+import testComparison3 from '../../TestComparison/__jsxfixtures__/3-generic-form';
 import { DeclarativeMock } from '../../DeclarativeMock';
 import {
   PROPS_SAMPLE,
@@ -221,26 +222,17 @@ export default (
           onSubmit={() => {}}
         />
       </Center>
-      <TestComparison
-        tests={testMetadata['1-redux-state']}
-        title="1. Redux state"
-      />
+      {testComparison1}
       <Rows>
         <H2>Refactor: Change data source</H2>
         <Main>{refactor1}</Main>
       </Rows>
-      <TestComparison
-        tests={testMetadata['2-component-state']}
-        title="2. Component state"
-      />
+      {testComparison2}
       <Rows>
         <H2>Refactor: Extract generic form</H2>
         <Main>{refactor2}</Main>
       </Rows>
-      <TestComparison
-        tests={testMetadata['3-generic-form']}
-        title="3. Generic form"
-      />
+      {testComparison3}
       <Rows>
         <H1>Recap</H1>
         <Main>
