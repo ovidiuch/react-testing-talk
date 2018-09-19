@@ -3,8 +3,8 @@ import { join } from 'path';
 import { readFile, writeFile } from 'fs-extra';
 
 const FILES = {
-  '1-redux-state/__tests__/tight/ui.js':
-    '2-component-state/__tests__/tight/ui.js',
+  '1-redux-state/__tests__/tight/loginForm.js':
+    '2-component-state/__tests__/tight/loginForm.js',
   '2-component-state/StatefulLoginForm.js':
     '3-generic-form/StatefulLoginForm.js',
   '2-component-state/__tests__/tight/state.js':

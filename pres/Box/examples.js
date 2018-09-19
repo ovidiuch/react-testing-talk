@@ -5,7 +5,6 @@ import { Box } from '.';
 
 export const refactor1 = (
   <Cols>
-    <ColSeparator />
     <Box title="ReduxProvider">
       <Box title="ConnectedLoginForm">
         <Box title="LoginForm" />
@@ -19,13 +18,11 @@ export const refactor1 = (
     <Box title="StatefulLoginForm">
       <Box title="LoginForm" />
     </Box>
-    <ColSeparator />
   </Cols>
 );
 
 export const refactor2 = (
   <Cols>
-    <ColSeparator />
     <Box title="StatefulLoginForm">
       <Box title="LoginForm" />
     </Box>
@@ -37,6 +34,5 @@ export const refactor2 = (
         <Box title="Form" />
       </Box>
     </Box>
-    <ColSeparator />
   </Cols>
 );

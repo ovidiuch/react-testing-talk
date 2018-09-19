@@ -56,7 +56,7 @@ export class TestComparison extends Component {
 
 const TestCategory = styled.h3`
   margin: 16px 0 0 0;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 600;
   opacity: 0.9;
 `;

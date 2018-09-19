@@ -2,6 +2,7 @@ import { arrayOf, element, string } from 'prop-types';
 import styled from 'styled-components';
 import React, { Children } from 'react';
 import { Rows, Cols } from '../../shared/style/layout';
+import { P } from '../../shared/style/text';
 
 export function Box({ children, title }) {
   return (
@@ -32,7 +33,8 @@ const BoxContainer = styled(Rows)`
   padding: 16px;
 `;
 
-const BoxTitle = styled.div`
+const BoxTitle = styled(P)`
+  margin: 0;
   text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
 `;
 

@@ -27,12 +27,7 @@
         "maps change action",
         "maps submit action"
       ],
-      "reducer": [
-        "sets username on CHANGE action",
-        "sets password on CHANGE action",
-        "sets status on STATUS action"
-      ],
-      "ui": [
+      "loginForm": [
         "renders username input",
         "renders password input",
         "responds to username change",
@@ -41,6 +36,11 @@
         "renders loading state",
         "renders success state",
         "renders error state"
+      ],
+      "reducer": [
+        "sets username on CHANGE action",
+        "sets password on CHANGE action",
+        "sets status on STATUS action"
       ]
     }
   },
@@ -58,6 +58,16 @@
       ]
     },
     "tight": {
+      "loginForm": [
+        "renders username input",
+        "renders password input",
+        "responds to username change",
+        "responds to password change",
+        "responds to form submit",
+        "renders loading state",
+        "renders success state",
+        "renders error state"
+      ],
       "state": [
         "renders LoginForm",
         "passes \"pending\" status",
@@ -69,16 +79,6 @@
         "passes \"loading\" status on submit",
         "passes \"error\" status on submit",
         "passes \"success\" status on submit"
-      ],
-      "ui": [
-        "renders username input",
-        "renders password input",
-        "responds to username change",
-        "responds to password change",
-        "responds to form submit",
-        "renders loading state",
-        "renders success state",
-        "renders error state"
       ]
     }
   },
@@ -96,6 +96,24 @@
       ]
     },
     "tight": {
+      "form": [
+        "renders username input",
+        "renders password input",
+        "responds to username change",
+        "responds to password change",
+        "responds to form submit",
+        "renders loading state",
+        "renders success state",
+        "renders error state"
+      ],
+      "loginForm": [
+        "renders Form",
+        "passes username input",
+        "passes password input",
+        "passes status",
+        "responds to input change",
+        "responds to form submit"
+      ],
       "state": [
         "renders LoginForm",
         "passes \"pending\" status",
@@ -107,24 +125,6 @@
         "passes \"loading\" status on submit",
         "passes \"error\" status on submit",
         "passes \"success\" status on submit"
-      ],
-      "ui-form": [
-        "renders username input",
-        "renders password input",
-        "responds to username change",
-        "responds to password change",
-        "responds to form submit",
-        "renders loading state",
-        "renders success state",
-        "renders error state"
-      ],
-      "ui-loginForm": [
-        "renders Form",
-        "passes username input",
-        "passes password input",
-        "passes status",
-        "responds to input change",
-        "responds to form submit"
       ]
     }
   }

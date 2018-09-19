@@ -1,4 +1,4 @@
-// NOTE: Auto copied from 1-redux-state/__tests__/tight/ui.js.
+// NOTE: Auto copied from 1-redux-state/__tests__/tight/loginForm.js.
 // Don't edit by hand! Edit source and run `yarn copy-example-files` instead.
 import React from 'react';
 import { shallow } from 'enzyme';
