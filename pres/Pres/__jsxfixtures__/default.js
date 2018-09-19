@@ -67,7 +67,7 @@ export default (
         <H1>Audience</H1>
         <Main>
           <Cols>
-            <Rows>
+            <Rows style={{ opacity: 0.8 }}>
               <Emoji>😶</Emoji>
               <P>
                 <NoWrap>No testing</NoWrap>
@@ -81,7 +81,7 @@ export default (
               </P>
             </Rows>
             <ColSeparator />
-            <Rows style={{ opacity: 0.5 }}>
+            <Rows style={{ opacity: 0.6 }}>
               <Emoji>😇</Emoji>
               <P>
                 <NoWrap>Testing nirvana</NoWrap>
@@ -95,7 +95,7 @@ export default (
         <Main>
           <List>
             <li>UI testing overview</li>
-            <li>Testing and refactoring</li>
+            <li>Testing vs refactoring</li>
             <li>Component setup</li>
             <li>FAQ</li>
             <li>Conclusion</li>
@@ -172,7 +172,8 @@ export default (
         <Main>
           <List>
             <li>
-              <strong>Setup:</strong> Props, state, context
+              <strong>Setup:</strong> Props, state, context (app, platform,
+              server)
             </li>
             <li>
               <strong>Action:</strong> Render, event (UI, network, timeout)
@@ -262,8 +263,8 @@ export default (
         <Main>
           <List>
             <li>Props</li>
-            <li>State (explicit, implicit)</li>
-            <li>Env (platform, external)</li>
+            <li>State</li>
+            <li>Context (app, platform, server)</li>
           </List>
         </Main>
       </Rows>
