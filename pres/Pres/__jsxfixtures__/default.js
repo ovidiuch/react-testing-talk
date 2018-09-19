@@ -12,6 +12,7 @@ import { P, H1, H2, List, DarkBlue, NoWrap } from '../../../shared/style/text';
 import { LoginForm } from '../../../shared/LoginForm';
 import testMetadata from '../../../test.metadata.json';
 import { Emoji } from '../../Emoji';
+import { refactor1, refactor2 } from '../../Box/examples';
 import { TestComparison } from '../../TestComparison';
 import { DeclarativeMock } from '../../DeclarativeMock';
 import {
@@ -222,15 +223,23 @@ export default (
       </Center>
       <TestComparison
         tests={testMetadata['1-redux-state']}
-        title="Redux state"
+        title="1. Redux state"
       />
+      <Rows>
+        <H2>Refactor: Change data source</H2>
+        <Main>{refactor1}</Main>
+      </Rows>
       <TestComparison
         tests={testMetadata['2-component-state']}
-        title="Component state"
+        title="2. Component state"
       />
+      <Rows>
+        <H2>Refactor: Extract generic form</H2>
+        <Main>{refactor2}</Main>
+      </Rows>
       <TestComparison
         tests={testMetadata['3-generic-form']}
-        title="Generic form"
+        title="3. Generic form"
       />
       <Rows>
         <H1>Takeaway</H1>
