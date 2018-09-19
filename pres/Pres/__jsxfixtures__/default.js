@@ -242,7 +242,7 @@ export default (
         title="3. Generic form"
       />
       <Rows>
-        <H1>Takeaway</H1>
+        <H1>Recap</H1>
         <Main>
           <List>
             <li>Tight units slow down refactoring</li>
@@ -291,7 +291,13 @@ export default (
       <Rows>
         <H1>Recap</H1>
         <Main>
-          <P>{`TODO "Declarative mocks" recap`}</P>
+          <List>
+            <li>
+              Component context <em>can</em> be mocked
+            </li>
+            <li>Declarative mocks simplify test setup</li>
+            <li>Mocking context reveals implicit deps</li>
+          </List>
         </Main>
       </Rows>
       <Rows>
