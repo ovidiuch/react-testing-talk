@@ -339,30 +339,68 @@ export default (
         </Main>
       </Rows>
       <Rows>
-        <P>
-          Although I start with the notion of the unit being a class, I often
-          take a bunch of closely related classes and treat them as a single
-          unit.
-        </P>
-        <P>
-          {`Rarely I might take a subset of methods in a class as a unit. However
-          you define [a unit] doesn't really matter.`}
-        </P>
-        <P>
-          <strong>
-            The team decides what makes sense to be a unit for the purposes of
-            their understanding of the system and its testing.
-          </strong>
-        </P>
-        <P>
-          <a
-            href="https://martinfowler.com/bliki/UnitTest.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Martin Fowler
-          </a>
-        </P>
+        <Cols>
+          <div style={{ width: '20%' }} />
+          <Rows>
+            <P style={{ fontStyle: 'italic' }}>
+              Although I start with the notion of the unit being a class, I
+              often take a bunch of closely related classes and treat them as a
+              single unit.
+            </P>
+          </Rows>
+          <div style={{ width: '20%' }} />
+        </Cols>
+      </Rows>
+      <Rows>
+        <Cols>
+          <div style={{ width: '20%' }} />
+          <Rows>
+            <P style={{ fontStyle: 'italic', opacity: 0.5 }}>
+              Although I start with the notion of the unit being a class, I
+              often take a bunch of closely related classes and treat them as a
+              single unit.
+            </P>
+            <P style={{ fontStyle: 'italic' }}>
+              Rarely I might take a subset of methods in a class as a unit.{' '}
+              <strong>
+                {`However you define [a unit] doesn't really matter.`}
+              </strong>
+            </P>
+          </Rows>
+          <div style={{ width: '20%' }} />
+        </Cols>
+      </Rows>
+      <Rows>
+        <Cols>
+          <div style={{ width: '20%' }} />
+          <Rows>
+            <P style={{ fontStyle: 'italic', opacity: 0.5 }}>
+              Although I start with the notion of the unit being a class, I
+              often take a bunch of closely related classes and treat them as a
+              single unit.
+            </P>
+            <P style={{ fontStyle: 'italic', opacity: 0.5 }}>
+              Rarely I might take a subset of methods in a class as a unit.{' '}
+              <strong>
+                {`However you define [a unit] doesn't really matter.`}
+              </strong>
+            </P>
+            <P style={{ fontStyle: 'italic' }}>
+              The team decides what makes sense to be a unit for the purposes of
+              their understanding of the system and its testing.
+            </P>
+            <P>
+              <a
+                href="https://martinfowler.com/bliki/UnitTest.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Martin Fowler
+              </a>
+            </P>
+          </Rows>
+          <div style={{ width: '20%' }} />
+        </Cols>
       </Rows>
       <Rows>
         <H1>Thanks.</H1>
