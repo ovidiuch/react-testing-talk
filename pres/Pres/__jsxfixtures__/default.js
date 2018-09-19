@@ -150,8 +150,39 @@ export default (
         </Main>
       </Rows>
       <Rows>
-        <H1>Testing anatomy</H1>
-        <Main>TODO</Main>
+        <H1>Test anatomy</H1>
+        <H2>Pure function</H2>
+        <Main>
+          <List>
+            <li>
+              <strong>Setup:</strong> Arguments
+            </li>
+            <li>
+              <strong>Action:</strong> Call
+            </li>
+            <li>
+              <strong>Expect:</strong> Return value
+            </li>
+          </List>
+        </Main>
+      </Rows>
+      <Rows>
+        <H1>Test anatomy</H1>
+        <H2>UI component</H2>
+        <Main>
+          <List>
+            <li>
+              <strong>Setup:</strong> Props, state, context
+            </li>
+            <li>
+              <strong>Action:</strong> Render, event (UI, network, timeout)
+            </li>
+            <li>
+              <strong>Expect:</strong> Render output, side effect (callback
+              prop, app state)
+            </li>
+          </List>
+        </Main>
       </Rows>
       <Rows>
         <H1>Recap</H1>
