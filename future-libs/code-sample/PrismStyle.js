@@ -23,8 +23,8 @@ export const PrismStyle = styled.div`
   pre.prism-code {
     height: auto !important;
     margin: 0;
-    font-size: 18px;
-    line-height: 26px;
+    font-size: 24px;
+    line-height: 36px;
     white-space: pre-wrap;
     word-break: break-word;
   }

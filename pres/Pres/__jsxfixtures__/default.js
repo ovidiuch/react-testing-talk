@@ -29,8 +29,8 @@ import {
 import { Pres } from '..';
 
 const SelfLink = styled.a`
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 36px;
+  line-height: 42px;
   font-weight: 600;
   text-decoration: none;
 `;
@@ -262,9 +262,11 @@ export default (
         </Main>
       </Rows>
       <Rows>
-        <H1>f=(props, state, env)</H1>
+        <H1>
+          f=(props, state, <em>context</em>)
+        </H1>
         <Main>
-          <Emoji>🐵</Emoji>
+          <Emoji>🤯</Emoji>
         </Main>
       </Rows>
       <Rows>
