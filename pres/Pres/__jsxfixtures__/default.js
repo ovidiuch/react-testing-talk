@@ -200,6 +200,16 @@ export default (
           </List>
         </Main>
       </Rows>
+      <Rows>
+        <H1>
+          Testing <em>vs</em> refactoring
+        </H1>
+        <Main>
+          <Cols>
+            <Emoji>⚔️</Emoji>
+          </Cols>
+        </Main>
+      </Rows>
       <Center>
         <LoginForm
           status="pending"
