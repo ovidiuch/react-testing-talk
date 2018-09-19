@@ -1,19 +1,31 @@
-// NOTE: Auto copied from 1-redux-state/__tests__/tight/ui.js.
-// Don't edit by hand! Edit source and run `yarn copy-example-files` instead.
 import React from 'react';
 import { shallow } from 'enzyme';
-import { LoginForm } from '../../LoginForm';
+import { Form } from '../../Form';
 
 const getTestData = ({ status = 'pending' } = {}) => {
   const onChange = jest.fn();
   const onSubmit = jest.fn();
   const wrapper = shallow(
-    <LoginForm
+    <Form
+      title="Hello!"
       status={status}
-      username="franko"
-      password="#fffferrari"
+      inputs={[
+        {
+          type: 'text',
+          name: 'username',
+          value: 'franko',
+          label: 'Username'
+        },
+        {
+          type: 'password',
+          name: 'password',
+          value: '#fffferrari',
+          label: 'Password'
+        }
+      ]}
       onChange={onChange}
       onSubmit={onSubmit}
+      submitLabel="Log in"
     />
   );
 

@@ -186,6 +186,10 @@ export default (
         tests={testMetadata['2-component-state']}
         title="Component state"
       />
+      <TestComparison
+        tests={testMetadata['3-generic-form']}
+        title="Generic form"
+      />
       <Rows>
         <H1>Takeaway</H1>
         <Main>

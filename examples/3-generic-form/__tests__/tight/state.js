@@ -1,3 +1,5 @@
+// NOTE: Auto copied from 2-component-state/__tests__/tight/state.js.
+// Don't edit by hand! Edit source and run `yarn copy-example-files` instead.
 import React from 'react';
 import { shallow } from 'enzyme';
 import fetchMock from 'fetch-mock';

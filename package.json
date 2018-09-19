@@ -5,7 +5,9 @@
     "copy-emojis": "babel-node ./scripts/copyEmojis.js",
     "lint": "eslint '**/*.js' --quiet",
     "test": "yarn copy-example-files && jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "cosmos": "yarn extract-test-meta && cosmos",
+    "cosmos-export": "yarn extract-test-meta && cosmos-export"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",

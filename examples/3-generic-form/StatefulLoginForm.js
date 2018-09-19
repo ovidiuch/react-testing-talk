@@ -1,3 +1,5 @@
+// NOTE: Auto copied from 2-component-state/StatefulLoginForm.js.
+// Don't edit by hand! Edit source and run `yarn copy-example-files` instead.
 import React, { Component } from 'react';
 import { LoginForm } from './LoginForm';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { LoginForm } from '../../../../shared/LoginForm';
+import { LoginForm } from '../../LoginForm';
 
 const getTestData = ({ status = 'pending' } = {}) => {
   const onChange = jest.fn();
@@ -24,7 +24,7 @@ const getPassInput = wrapper => wrapper.find('#password');
 const changeInput = (input, value) =>
   input.prop('onChange')({ currentTarget: { value } });
 
-it('renders input input', () => {
+it('renders username input', () => {
   const { wrapper } = getTestData();
   const input = getUserInput(wrapper);
 

@@ -33,7 +33,7 @@
         "sets status on STATUS action"
       ],
       "ui": [
-        "renders input input",
+        "renders username input",
         "renders password input",
         "responds to username change",
         "responds to password change",
@@ -71,7 +71,7 @@
         "passes \"success\" status on submit"
       ],
       "ui": [
-        "renders input input",
+        "renders username input",
         "renders password input",
         "responds to username change",
         "responds to password change",
@@ -79,6 +79,52 @@
         "renders loading state",
         "renders success state",
         "renders error state"
+      ]
+    }
+  },
+  "3-generic-form": {
+    "loose": {
+      "index": [
+        "renders username input",
+        "renders password input",
+        "updates username input",
+        "updates password input",
+        "posts user data",
+        "renders loading state",
+        "renders error state",
+        "renders success state"
+      ]
+    },
+    "tight": {
+      "state": [
+        "renders LoginForm",
+        "passes \"pending\" status",
+        "passes blank username",
+        "passes blank password",
+        "updates username",
+        "updates password",
+        "posts user data",
+        "passes \"loading\" status on submit",
+        "passes \"error\" status on submit",
+        "passes \"success\" status on submit"
+      ],
+      "ui-form": [
+        "renders username input",
+        "renders password input",
+        "responds to username change",
+        "responds to password change",
+        "responds to form submit",
+        "renders loading state",
+        "renders success state",
+        "renders error state"
+      ],
+      "ui-loginForm": [
+        "renders Form",
+        "passes username input",
+        "passes password input",
+        "passes status",
+        "responds to input change",
+        "responds to form submit"
       ]
     }
   }
