@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import fetchMock from 'fetch-mock';
-import { retry } from '../../../../future-libs/async-retry';
+import retry from '@skidding/async-retry';
 import { delay } from '../../../../future-libs/delay';
 import { ConnectedLoginForm } from '../../ConnectedLoginForm';
 import { createStore } from '../../store';

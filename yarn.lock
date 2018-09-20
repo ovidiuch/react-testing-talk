@@ -638,6 +638,13 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@skidding/async-retry@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@skidding/async-retry/-/async-retry-1.0.1.tgz#f9020084b60d24214b0ea443b02282ec4cdeb5e9"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    async-until "^1.2.2"
+
 "@skidding/linked-list@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@skidding/linked-list/-/linked-list-1.0.2.tgz#e3fc74a22a5f745d61a2baae1e396813014ef115"
