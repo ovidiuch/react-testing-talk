@@ -1,9 +1,9 @@
 import React from 'react';
-import { ComponentState } from 'react-cosmos-fixture';
+import { StateMock } from '@react-mock/state';
 import { StatefulLoginForm } from '../StatefulLoginForm';
 
 export default (
-  <ComponentState
+  <StateMock
     state={{
       status: 'pending',
       username: 'franko',
@@ -11,5 +11,5 @@ export default (
     }}
   >
     <StatefulLoginForm />
-  </ComponentState>
+  </StateMock>
 );
