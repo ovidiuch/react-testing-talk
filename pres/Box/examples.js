@@ -1,6 +1,6 @@
 import React from 'react';
 import { Cols, ColSeparator } from '../../shared/style/layout';
-import { Emoji } from '../Emoji';
+import { Emoji } from '../shared/Emoji';
 import { Box } from '.';
 
 export const refactor1 = (

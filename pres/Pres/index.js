@@ -1,65 +1,101 @@
-/* eslint-env browser */
+import { memoize, pick } from 'lodash';
+import styled from 'styled-components';
+import React, { Component } from 'react';
+import { H1, DarkBlue } from '../../shared/style/text';
+import {
+  getNumSteps,
+  getElementsForStep,
+  getElIndexForStep
+} from '../shared/steps';
+import { KeyNav } from '../shared/KeyNav';
+import { Slide } from '../shared/Slide';
+import { CodeVsTest } from '../slides/CodeVsTest';
+import { Audience } from '../slides/Audience';
 
-import { arrayOf, element } from 'prop-types';
-import { Component } from 'react';
-
-const LEFT = 37;
-const RIGHT = 39;
-const PAGE_UP = 33;
-const PAGE_DOWN = 34;
-
-// Use `keydown` for debugging and `keyup` when presenting!
-const KEY_EVENT = 'keydown';
+const SLIDES = [
+  <H1>
+    Testing <DarkBlue>React</DarkBlue> components
+  </H1>,
+  <H1>Why testing?</H1>,
+  <CodeVsTest />,
+  <H1>Audience</H1>,
+  <Audience />,
+  <H1>Talk summary</H1>
+];
 
 export class Pres extends Component {
   state = {
-    slideIndex: 0
-  };
-
-  static propTypes = {
-    children: arrayOf(element)
+    step: 0,
+    offsets: {}
   };
 
   render() {
-    const { slideIndex } = this.state;
-    const index = Math.min(Math.max(0, slideIndex), this.getLastSlideIndex());
+    const { step } = this.state;
+    const selIdx = getElIndexForStep(SLIDES, step);
 
-    return this.props.children[index];
+    return (
+      <KeyNav onPrev={this.handlePrev} onNext={this.handleNext}>
+        <Container style={{ marginTop: this.getMarginTop() }}>
+          {getElementsForStep(SLIDES, step).map((slide, idx) => (
+            <Slide
+              key={idx}
+              idx={idx}
+              selIdx={selIdx}
+              innerRef={this.createSlideRef(idx)}
+            >
+              {slide}
+            </Slide>
+          ))}
+        </Container>
+      </KeyNav>
+    );
   }
 
-  componentDidMount() {
-    window.addEventListener(KEY_EVENT, this.handleKeyPress);
-  }
+  createSlideRef = memoize(idx => elRef => {
+    this.setState(({ offsets }) => ({
+      offsets: {
+        ...offsets,
+        [idx]: elRef ? pick(elRef, 'offsetTop', 'offsetHeight') : undefined
+      }
+    }));
+  });
 
-  componentWillUnmount() {
-    window.removeEventListener(KEY_EVENT, this.handleKeyPress);
-  }
-
-  handleKeyPress = e => {
-    switch (e.keyCode) {
-      case LEFT:
-      case PAGE_UP:
-        return this.goBack();
-      case RIGHT:
-      case PAGE_DOWN:
-        return this.goForward();
-      default:
-    }
+  handlePrev = () => {
+    this.setState({
+      step: Math.max(this.state.step - 1, 0)
+    });
   };
 
-  goBack() {
+  handleNext = () => {
     this.setState({
-      slideIndex: Math.max(this.state.slideIndex - 1, 0)
+      step: Math.min(this.state.step + 1, getNumSteps(SLIDES) - 1)
     });
-  }
+  };
 
-  goForward() {
-    this.setState({
-      slideIndex: Math.min(this.state.slideIndex + 1, this.getLastSlideIndex())
-    });
-  }
+  getMarginTop() {
+    const { step, offsets } = this.state;
+    const selIdx = getElIndexForStep(SLIDES, step);
 
-  getLastSlideIndex() {
-    return this.props.children.length - 1;
+    return Object.keys(offsets).length === SLIDES.length
+      ? getOffsetTop(offsets, selIdx)
+      : 0;
   }
 }
+
+function getOffsetTop(offsets, slideIdx) {
+  const { offsetTop, offsetHeight } = offsets[slideIdx];
+
+  return -offsetTop - Math.round(offsetHeight / 2);
+}
+
+const Container = styled.div`
+  position: relative;
+  top: 50%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transition: margin 0.6s;
+`;

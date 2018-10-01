@@ -20,5 +20,5 @@ export const Main = styled.div`
 `;
 
 export const ColSeparator = styled.div`
-  width: 64px;
+  width: 6vw;
 `;

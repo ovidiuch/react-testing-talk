@@ -21,11 +21,12 @@ module.exports = {
   rules: {
     'no-console': 1,
     // I don't believe in default exports anymore
-    'import/default': 0
+    'import/default': 0,
+    'react/jsx-key': 0
   },
   overrides: [
     {
-      files: ['**/__tests__/**'],
+      files: ['**/__tests__/**', '**/*.test.js'],
       env: {
         jest: true
       }

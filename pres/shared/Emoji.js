@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import { string } from 'prop-types';
 import React, { Component } from 'react';
 import twemoji from 'twemoji';
@@ -9,8 +10,7 @@ export class Emoji extends Component {
 
   render() {
     return (
-      <div
-        style={{ width: 128, height: 128 }}
+      <Root
         dangerouslySetInnerHTML={{
           __html: twemoji.parse(this.props.children, {
             ext: '.svg',
@@ -21,3 +21,8 @@ export class Emoji extends Component {
     );
   }
 }
+
+const Root = styled.div`
+  width: 192px;
+  height: 192px;
+`;

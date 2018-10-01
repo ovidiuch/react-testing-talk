@@ -1,25 +1,24 @@
 import styled from 'styled-components';
 
 export const P = styled.p`
-  margin-top: 24px;
-  font-size: 32px;
-  line-height: 48px;
+  margin-top: 36px;
+  font-size: 48px;
+  line-height: 72px;
 `;
 
 export const H1 = styled.h1`
-  font-size: 56px;
-  line-height: 70px;
+  font-size: 80px;
   font-weight: 600;
-  text-align: left;
+  line-height: 28vh;
+  white-space: nowrap;
 `;
 
 export const H2 = styled.h2`
-  margin-top: 48px;
-  font-size: 36px;
-  line-height: 42px;
-  font-weight: 600;
-  color: rgb(32, 35, 42);
-  opacity: 0.6;
+  margin-top: 56px;
+  font-size: 56px;
+  line-height: 1em;
+  font-weight: 500;
+  white-space: nowrap;
 `;
 
 export const List = styled.ul`
