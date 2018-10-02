@@ -13,10 +13,12 @@ export function getElementsForStep(elements, step) {
     }
 
     const numSteps = type.getNumSteps();
-    const relStep = step > curStep ? Math.min(step - curStep, numSteps - 1) : 0;
+    const future = step < curStep;
+    const past = step >= curStep + numSteps;
+    const relStep = !future ? Math.min(step - curStep, numSteps - 1) : 0;
     curStep += numSteps;
 
-    return [...acc, cloneElement(el, { step: relStep })];
+    return [...acc, cloneElement(el, { step: relStep, past, future })];
   }, []);
 }
 

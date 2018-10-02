@@ -8,7 +8,7 @@ import { Emoji } from './Emoji';
 export const EmojiLabel = ({ emoji, label }) => (
   <Root>
     <Emoji>{emoji}</Emoji>
-    <H2>{label}</H2>
+    <Label>{label}</Label>
   </Root>
 );
 
@@ -20,4 +20,8 @@ EmojiLabel.propTypes = {
 const Root = styled(Rows)`
   width: 384px;
   margin: 64px 0;
+`;
+
+const Label = styled(H2)`
+  margin-top: 56px;
 `;

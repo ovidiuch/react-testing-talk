@@ -18,7 +18,7 @@ it('returns elements for step', () => {
       Testing <DarkBlue>React</DarkBlue> components
     </H1>,
     <H1>Why testing?</H1>,
-    <CodeVsTest step={0} />,
+    <CodeVsTest step={0} future={true} past={false} />,
     <H1>Audience</H1>
   ]);
 
@@ -27,7 +27,7 @@ it('returns elements for step', () => {
       Testing <DarkBlue>React</DarkBlue> components
     </H1>,
     <H1>Why testing?</H1>,
-    <CodeVsTest step={0} />,
+    <CodeVsTest step={0} future={true} past={false} />,
     <H1>Audience</H1>
   ]);
 
@@ -36,7 +36,7 @@ it('returns elements for step', () => {
       Testing <DarkBlue>React</DarkBlue> components
     </H1>,
     <H1>Why testing?</H1>,
-    <CodeVsTest step={0} />,
+    <CodeVsTest step={0} future={false} past={false} />,
     <H1>Audience</H1>
   ]);
 
@@ -45,7 +45,7 @@ it('returns elements for step', () => {
       Testing <DarkBlue>React</DarkBlue> components
     </H1>,
     <H1>Why testing?</H1>,
-    <CodeVsTest step={1} />,
+    <CodeVsTest step={1} future={false} past={false} />,
     <H1>Audience</H1>
   ]);
 
@@ -54,7 +54,7 @@ it('returns elements for step', () => {
       Testing <DarkBlue>React</DarkBlue> components
     </H1>,
     <H1>Why testing?</H1>,
-    <CodeVsTest step={1} />,
+    <CodeVsTest step={1} future={false} past={true} />,
     <H1>Audience</H1>
   ]);
 });

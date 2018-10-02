@@ -14,7 +14,6 @@ export const H1 = styled.h1`
 `;
 
 export const H2 = styled.h2`
-  margin-top: 56px;
   font-size: 56px;
   line-height: 1em;
   font-weight: 500;

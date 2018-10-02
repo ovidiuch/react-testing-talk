@@ -34,6 +34,6 @@ function getSlideOpacity(idx, selIdx) {
 }
 
 const Container = styled.div`
-  transition: opacity 1s;
+  transition: opacity 0.8s;
   opacity: ${props => props.opacity};
 `;

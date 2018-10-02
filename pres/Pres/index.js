@@ -13,6 +13,7 @@ import { CodeVsTest } from '../slides/CodeVsTest';
 import { Audience } from '../slides/Audience';
 import { TestingPros } from '../slides/TestingPros';
 import { TestingCons } from '../slides/TestingCons';
+import { TestAnatomy } from '../slides/TestAnatomy';
 
 const SLIDES = [
   <H1>
@@ -25,7 +26,8 @@ const SLIDES = [
   <H1>Testing pros</H1>,
   <TestingPros />,
   <H1>Testing cons</H1>,
-  <TestingCons />
+  <TestingCons />,
+  <TestAnatomy />
 ];
 
 export class Pres extends Component {
@@ -125,5 +127,5 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  transition: margin 0.6s;
+  transition: margin 0.8s;
 `;
