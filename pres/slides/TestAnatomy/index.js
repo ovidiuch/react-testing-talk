@@ -1,22 +1,14 @@
 import styled from 'styled-components';
 import { includes } from 'lodash';
-import { number } from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 import { Center, Rows, Cols } from '../../../shared/style/layout';
 import { H1, H2 } from '../../../shared/style/text';
+import { Steps } from '../../shared/createSteps';
 
-export class TestAnatomy extends Component {
+export class TestAnatomy extends Steps {
   static getNumSteps() {
     return 17;
   }
-
-  static propTypes = {
-    step: number.isRequired
-  };
-
-  static defaultProps = {
-    step: 0
-  };
 
   render() {
     const { step } = this.props;

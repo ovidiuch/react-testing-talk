@@ -1,8 +1,8 @@
 import React from 'react';
-import { createSteps } from '../../shared/createSteps';
+import { createSlider } from '../../shared/createSteps';
 import { EmojiLabel } from '../../shared/EmojiLabel';
 
-export const TestingCons = createSteps([
+export const TestingCons = createSlider([
   <EmojiLabel emoji="⌨️" label="More typing" />,
   <EmojiLabel emoji="🐌" label="Less agility" />
 ]);
