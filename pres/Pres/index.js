@@ -1,7 +1,8 @@
 import { memoize, pick } from 'lodash';
 import styled from 'styled-components';
 import React, { Component } from 'react';
-import { H1, DarkBlue } from '../../shared/style/text';
+import { Rows, Main } from '../../shared/style/layout';
+import { H1, DarkBlue, List } from '../../shared/style/text';
 import {
   getNumSteps,
   getElementsForStep,
@@ -35,17 +36,19 @@ export class Pres extends Component {
 
     return (
       <KeyNav onPrev={this.handlePrev} onNext={this.handleNext}>
-        <Container style={{ marginTop: this.getMarginTop() }}>
-          {getElementsForStep(SLIDES, step).map((slide, idx) => (
-            <Slide
-              key={idx}
-              idx={idx}
-              selIdx={selIdx}
-              innerRef={this.createSlideRef(idx)}
-            >
-              {slide}
-            </Slide>
-          ))}
+        <Container>
+          <Content style={{ marginTop: this.getMarginTop() }}>
+            {getElementsForStep(SLIDES, step).map((slide, idx) => (
+              <Slide
+                key={idx}
+                idx={idx}
+                selIdx={selIdx}
+                innerRef={this.createSlideRef(idx)}
+              >
+                {slide}
+              </Slide>
+            ))}
+          </Content>
         </Container>
       </KeyNav>
     );
@@ -89,10 +92,17 @@ function getOffsetTop(offsets, slideIdx) {
 }
 
 const Container = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+`;
+
+const Content = styled.div`
   position: relative;
   top: 50%;
-  width: 100%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
