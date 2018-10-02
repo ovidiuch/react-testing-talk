@@ -32,7 +32,7 @@ export class Pres extends Component {
 
   render() {
     const { step } = this.state;
-    const selIdx = getElIndexForStep(SLIDES, step);
+    const selIdx = getElIndexForStep(SLIDES, getSafeStep(step));
 
     return (
       <KeyNav onPrev={this.handlePrev} onNext={this.handleNext}>
@@ -65,24 +65,28 @@ export class Pres extends Component {
 
   handlePrev = () => {
     this.setState({
-      step: Math.max(this.state.step - 1, 0)
+      step: getSafeStep(this.state.step - 1)
     });
   };
 
   handleNext = () => {
     this.setState({
-      step: Math.min(this.state.step + 1, getNumSteps(SLIDES) - 1)
+      step: getSafeStep(this.state.step + 1)
     });
   };
 
   getMarginTop() {
     const { step, offsets } = this.state;
-    const selIdx = getElIndexForStep(SLIDES, step);
+    const selIdx = getElIndexForStep(SLIDES, getSafeStep(step));
 
     return Object.keys(offsets).length === SLIDES.length
       ? getOffsetTop(offsets, selIdx)
       : 0;
   }
+}
+
+function getSafeStep(step) {
+  return Math.max(Math.min(step, getNumSteps(SLIDES) - 1), 0);
 }
 
 function getOffsetTop(offsets, slideIdx) {
