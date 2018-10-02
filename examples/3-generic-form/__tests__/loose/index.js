@@ -77,7 +77,7 @@ it('renders loading state', async () => {
   const { wrapper } = getTestData();
   submitForm(wrapper);
 
-  expect(wrapper.text()).toMatch('Loading...');
+  expect(wrapper.text()).toMatch('Just a sec...');
 });
 
 it('renders error state', async () => {
@@ -87,7 +87,7 @@ it('renders error state', async () => {
   submitForm(wrapper);
 
   await retry(() => {
-    expect(wrapper.text()).toMatch('Oh no.');
+    expect(wrapper.text()).toMatch('Come again?');
   });
 });
 
@@ -98,6 +98,6 @@ it('renders success state', async () => {
   submitForm(wrapper);
 
   await retry(() => {
-    expect(wrapper.text()).toMatch('Success!');
+    expect(wrapper.text()).toMatch(`You're in!`);
   });
 });

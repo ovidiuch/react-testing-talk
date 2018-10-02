@@ -65,15 +65,15 @@ it('responds to form submit', () => {
 
 it('renders loading state', () => {
   const { wrapper } = getTestData({ status: 'loading' });
-  expect(wrapper.find('[children="Loading..."]')).toHaveLength(1);
+  expect(wrapper.find('[children="Just a sec..."]')).toHaveLength(1);
 });
 
 it('renders success state', () => {
   const { wrapper } = getTestData({ status: 'success' });
-  expect(wrapper.find('[children="Success!"]')).toHaveLength(1);
+  expect(wrapper.find('[children="You\'re in!"]')).toHaveLength(1);
 });
 
 it('renders error state', () => {
   const { wrapper } = getTestData({ status: 'error' });
-  expect(wrapper.find('[children="Oh no."]')).toHaveLength(1);
+  expect(wrapper.find('[children="Come again?"]')).toHaveLength(1);
 });

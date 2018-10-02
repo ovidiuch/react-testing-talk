@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { getTitle } from '../../../../shared/LoginForm';
 import { Form } from '../../Form';
 
 const getTestData = ({ status = 'pending' } = {}) => {
@@ -7,7 +8,7 @@ const getTestData = ({ status = 'pending' } = {}) => {
   const onSubmit = jest.fn();
   const wrapper = shallow(
     <Form
-      title="Hello!"
+      title={getTitle(status)}
       status={status}
       inputs={[
         {
@@ -79,15 +80,15 @@ it('responds to form submit', () => {
 
 it('renders loading state', () => {
   const { wrapper } = getTestData({ status: 'loading' });
-  expect(wrapper.find('[children="Loading..."]')).toHaveLength(1);
+  expect(wrapper.find('[children="Just a sec..."]')).toHaveLength(1);
 });
 
 it('renders success state', () => {
   const { wrapper } = getTestData({ status: 'success' });
-  expect(wrapper.find('[children="Success!"]')).toHaveLength(1);
+  expect(wrapper.find('[children="You\'re in!"]')).toHaveLength(1);
 });
 
 it('renders error state', () => {
   const { wrapper } = getTestData({ status: 'error' });
-  expect(wrapper.find('[children="Oh no."]')).toHaveLength(1);
+  expect(wrapper.find('[children="Come again?"]')).toHaveLength(1);
 });

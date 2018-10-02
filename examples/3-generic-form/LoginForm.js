@@ -1,5 +1,6 @@
 import { string, func, oneOf } from 'prop-types';
 import React, { Component } from 'react';
+import { getTitle } from '../../shared/LoginForm';
 import { Form } from './Form';
 
 export class LoginForm extends Component {
@@ -16,7 +17,7 @@ export class LoginForm extends Component {
 
     return (
       <Form
-        title="Hello!"
+        title={getTitle(status)}
         status={status}
         inputs={[
           {
