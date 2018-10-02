@@ -65,7 +65,7 @@ export class LoginForm extends Component {
 
 export const Header = styled(H1)`
   line-height: 80px;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
 `;
 
 export const Input = styled.input`
@@ -74,7 +74,11 @@ export const Input = styled.input`
   padding: 32px 48px;
   border: 0;
   border-radius: 8px;
-  box-shadow: 0 30px 70px 0 rgba(43, 81, 173, 0.16),
+  box-shadow: 0 30px 70px 0
+      ${props =>
+        props.status === 'error'
+          ? 'rgba(178, 34, 34, 0.32)'
+          : 'rgba(43, 81, 173, 0.16)'},
     0 10px 30px rgba(0, 0, 0, 0.08);
   font-size: 40px;
   line-height: 40px;
@@ -82,7 +86,7 @@ export const Input = styled.input`
     props.status === 'error' ? 'rgba(178, 34, 34, 0.1)' : 'rgb(255, 255, 255)'};
   color: ${props =>
     props.status === 'error' ? 'rgb(178, 34, 34)' : 'rgb(32, 35, 42)'};
-  transition: background 0.8s, color 0.8s;
+  transition: background 0.8s, color 0.8s, box-shadow 0.8s;
 
   :disabled {
     color: rgba(32, 35, 42, 0.75);
