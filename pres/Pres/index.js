@@ -1,8 +1,7 @@
-import { memoize, pick } from 'lodash';
+import { pick, isEqual } from 'lodash';
 import styled from 'styled-components';
 import React, { Component } from 'react';
-import { Rows, Main } from '../../shared/style/layout';
-import { H1, DarkBlue, List } from '../../shared/style/text';
+import { H1, DarkBlue } from '../../shared/style/text';
 import {
   getNumSteps,
   getElementsForStep,
@@ -12,6 +11,8 @@ import { KeyNav } from '../shared/KeyNav';
 import { Slide } from '../shared/Slide';
 import { CodeVsTest } from '../slides/CodeVsTest';
 import { Audience } from '../slides/Audience';
+import { TestingPros } from '../slides/TestingPros';
+import { TestingCons } from '../slides/TestingCons';
 
 const SLIDES = [
   <H1>
@@ -21,7 +22,10 @@ const SLIDES = [
   <CodeVsTest />,
   <H1>Audience</H1>,
   <Audience />,
-  <H1>Talk summary</H1>
+  <H1>Testing pros</H1>,
+  <TestingPros />,
+  <H1>Testing cons</H1>,
+  <TestingCons />
 ];
 
 export class Pres extends Component {
@@ -54,14 +58,24 @@ export class Pres extends Component {
     );
   }
 
-  createSlideRef = memoize(idx => elRef => {
+  createSlideRef = idx => elRef => {
+    if (!elRef) {
+      return;
+    }
+
+    const elOffsets = pick(elRef, 'offsetTop', 'offsetHeight');
+
+    if (isEqual(elOffsets, this.state.offsets[idx])) {
+      return;
+    }
+
     this.setState(({ offsets }) => ({
       offsets: {
         ...offsets,
-        [idx]: elRef ? pick(elRef, 'offsetTop', 'offsetHeight') : undefined
+        [idx]: elOffsets
       }
     }));
-  });
+  };
 
   handlePrev = () => {
     this.setState({
@@ -79,7 +93,7 @@ export class Pres extends Component {
     const { step, offsets } = this.state;
     const selIdx = getElIndexForStep(SLIDES, getSafeStep(step));
 
-    return Object.keys(offsets).length === SLIDES.length
+    return Object.keys(offsets).length >= SLIDES.length
       ? getOffsetTop(offsets, selIdx)
       : 0;
   }

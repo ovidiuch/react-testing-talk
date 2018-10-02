@@ -1,21 +1,4 @@
-import { Component, cloneElement } from 'react';
-import { number } from 'prop-types';
-
-export class Steps extends Component {
-  static slides = [];
-
-  static getNumSteps() {
-    throw new Error('Implement getNumSteps');
-  }
-
-  static propTypes = {
-    step: number.isRequired
-  };
-
-  static defaultProps = {
-    step: 0
-  };
-}
+import { cloneElement } from 'react';
 
 export function getElementsForStep(elements, step) {
   let curStep = 0;

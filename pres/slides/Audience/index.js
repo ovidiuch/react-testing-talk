@@ -1,31 +1,9 @@
 import React from 'react';
-import { Cols } from '../../../shared/style/layout';
-import { Steps } from '../../shared/steps';
+import { createSteps } from '../../shared/createSteps';
 import { EmojiLabel } from '../../shared/EmojiLabel';
-import { Slide } from '../../shared/Slide';
 
-const SLIDES = [
+export const Audience = createSteps([
   <EmojiLabel emoji="😶" label="No testing" />,
   <EmojiLabel emoji="🤕" label="Testing pain" />,
   <EmojiLabel emoji="😇" label="Testing bliss" />
-];
-
-export class Audience extends Steps {
-  static getNumSteps() {
-    return SLIDES.length;
-  }
-
-  render() {
-    const { step } = this.props;
-
-    return (
-      <Cols>
-        {SLIDES.map((slide, idx) => (
-          <Slide key={idx} idx={idx} selIdx={step}>
-            {slide}
-          </Slide>
-        ))}
-      </Cols>
-    );
-  }
-}
+]);
