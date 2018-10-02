@@ -4,5 +4,5 @@ import { EmojiLabel } from '../../shared/EmojiLabel';
 
 export const TestingCons = createSlider([
   <EmojiLabel emoji="⌨️" label="More typing" />,
-  <EmojiLabel emoji="🐌" label="Less agility" />
+  <EmojiLabel emoji="🐌" label="Refactor drag" />
 ]);

@@ -1,6 +1,7 @@
 import { pick, isEqual } from 'lodash';
 import styled from 'styled-components';
 import React, { Component } from 'react';
+import { Rows } from '../../shared/style/layout';
 import { H1, DarkBlue } from '../../shared/style/text';
 import {
   getNumSteps,
@@ -9,11 +10,13 @@ import {
 } from '../shared/steps';
 import { KeyNav } from '../shared/KeyNav';
 import { Slide } from '../shared/Slide';
+import { Emoji } from '../shared/Emoji';
 import { CodeVsTest } from '../slides/CodeVsTest';
 import { Audience } from '../slides/Audience';
 import { TestingPros } from '../slides/TestingPros';
 import { TestingCons } from '../slides/TestingCons';
 import { TestAnatomy } from '../slides/TestAnatomy';
+import { LoginFormSlide } from '../slides/LoginFormSlide';
 
 const SLIDES = [
   <H1>
@@ -27,7 +30,14 @@ const SLIDES = [
   <TestingPros />,
   <H1>Testing cons</H1>,
   <TestingCons />,
-  <TestAnatomy />
+  <TestAnatomy />,
+  <Rows>
+    <H1>
+      Testing <em>vs</em> refactoring
+    </H1>
+    <Emoji>⚔️</Emoji>
+  </Rows>,
+  <LoginFormSlide />
 ];
 
 export class Pres extends Component {

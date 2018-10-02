@@ -79,9 +79,7 @@ export const Input = styled.input`
   font-size: 40px;
   line-height: 40px;
   background: ${props =>
-    props.status === 'error'
-      ? 'rgba(178, 34, 34, 0.15)'
-      : 'rgb(255, 255, 255)'};
+    props.status === 'error' ? 'rgba(178, 34, 34, 0.1)' : 'rgb(255, 255, 255)'};
   color: ${props =>
     props.status === 'error' ? 'rgb(178, 34, 34)' : 'rgb(32, 35, 42)'};
   transition: background 0.8s, color 0.8s;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React, { Component } from 'react';
 import { number, node, func } from 'prop-types';
 
+// TODO: Rename
 export class Slide extends Component {
   static propTypes = {
     children: node,
