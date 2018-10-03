@@ -9,7 +9,7 @@ export function BoxStep({ children, title, step, appearAt, brightAt }) {
   const opacity = getOpacity({ step, appearAt, brightAt });
 
   return (
-    <BoxContainer title={title} opacity={opacity}>
+    <BoxContainer title={title} opacity={opacity} rotSeed={title + appearAt}>
       <BoxTitle opacity={opacity}>{title}</BoxTitle>
       {children && <BoxChildren>{children}</BoxChildren>}
     </BoxContainer>
@@ -33,7 +33,11 @@ const BoxContainer = styled(Rows)`
   box-shadow: 0 15px 35px 0 rgba(45, 114, 178, ${props => props.opacity * 0.16}),
     0 5px 15px rgba(0, 0, 0, ${props => props.opacity * 0.08});
   transform: rotate(
-    ${props => getStepRotation({ str: props.title, opacity: props.opacity })}deg
+    ${props =>
+      getStepRotation({
+        str: props.rotSeed,
+        opacity: props.opacity
+      })}deg
   );
   transition: border ${TRANS_TIME}, box-shadow ${TRANS_TIME},
     transform ${TRANS_TIME};

@@ -20,6 +20,7 @@ import { TestingCons } from '../slides/TestingCons';
 import { TestAnatomy } from '../slides/TestAnatomy';
 import { LoginFormSlide } from '../slides/LoginFormSlide';
 import { RefactorVisual1 } from '../slides/RefactorVisual1';
+import { RefactorVisual2 } from '../slides/RefactorVisual2';
 
 const SLIDES = [
   <H1>
@@ -43,7 +44,10 @@ const SLIDES = [
   <LoginFormSlide />,
   <H1>Refactor #1</H1>,
   <EmojiLabel emoji="🔌" label="Replace Redux with setState" />,
-  <RefactorVisual1 />
+  <RefactorVisual1 />,
+  <H1>Refactor #2</H1>,
+  <EmojiLabel emoji="🎨" label="Extract Form abstraction" />,
+  <RefactorVisual2 />
 ];
 
 export class Pres extends Component {

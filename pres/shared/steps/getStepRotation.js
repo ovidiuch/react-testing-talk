@@ -1,6 +1,6 @@
 import { LOW_OPACITY, HIGH_OPACITY } from './shared';
 
-export function getStepRotation({ str, opacity, deg = 2, granularity = 15 }) {
+export function getStepRotation({ str, opacity, deg = 2, granularity = 10 }) {
   const numCharCodes = str
     .split('')
     .map(char => char.charCodeAt(0))
