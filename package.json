@@ -6,6 +6,7 @@
     "lint": "eslint '**/*.js' --quiet",
     "test": "yarn copy-example-files && jest",
     "test:watch": "jest --watch",
+    "build": "babel-node ./scripts/build.js",
     "cosmos": "yarn extract-test-meta && cosmos",
     "cosmos-export": "yarn extract-test-meta && cosmos-export"
   },
@@ -25,6 +26,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
+    "cpy": "^7.0.1",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "eslint": "^5.6.1",
