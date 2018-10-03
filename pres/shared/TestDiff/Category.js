@@ -55,7 +55,7 @@ function Category({ DiffType, name, tests, showTests }) {
 
 Category.propTypes = {
   ...categoryPropTypes,
-  DiffType: oneOfType(func, string).isRequired
+  DiffType: oneOfType([func, string]).isRequired
 };
 
 const Container = styled(Rows)`
