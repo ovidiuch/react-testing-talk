@@ -20,16 +20,6 @@ export const H2 = styled.h2`
   white-space: nowrap;
 `;
 
-// TODO: Remove?
-export const List = styled.ul`
-  font-size: 32px;
-  line-height: 48px;
-
-  li {
-    margin-bottom: 12px;
-  }
-`;
-
 export const DarkBlue = styled.span`
   color: rgb(43, 81, 173);
 `;
