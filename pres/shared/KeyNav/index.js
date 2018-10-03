@@ -3,6 +3,7 @@
 import { func, node } from 'prop-types';
 import { Component } from 'react';
 
+const TAB = 9;
 const LEFT = 37;
 const RIGHT = 39;
 const PAGE_UP = 33;
@@ -34,6 +35,9 @@ export class KeyNav extends Component {
     const { onPrev, onNext } = this.props;
 
     switch (e.keyCode) {
+      case TAB:
+        e.preventDefault();
+        return;
       case LEFT:
       case PAGE_UP:
         e.preventDefault();
