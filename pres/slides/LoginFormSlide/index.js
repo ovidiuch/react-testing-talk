@@ -1,7 +1,7 @@
 import React from 'react';
 import { FullScreen } from '../../../shared/style/layout';
 import { LoginForm } from '../../../shared/LoginForm';
-import { Steps } from '../../shared/createSteps';
+import { StepsBase } from '../../shared/steps';
 
 const baseProps = {
   status: 'pending',
@@ -27,7 +27,7 @@ const SLIDES = [
   }
 ];
 
-export class LoginFormSlide extends Steps {
+export class LoginFormSlide extends StepsBase {
   static getNumSteps() {
     return SLIDES.length;
   }

@@ -21,22 +21,3 @@ export function getElementsForStep(elements, step) {
     return [...acc, cloneElement(el, { step: relStep, past, future })];
   }, []);
 }
-
-export function getNumSteps(elements) {
-  return elements.reduce((acc, el) => {
-    const { getNumSteps } = el.type;
-
-    return acc + (typeof getNumSteps === 'function' ? getNumSteps() : 1);
-  }, 0);
-}
-
-export function getElIndexForStep(elements, step) {
-  for (let i = 0, curStep = 0; i < elements.length; i++) {
-    const { type } = elements[i];
-    curStep += typeof type.getNumSteps === 'function' ? type.getNumSteps() : 1;
-
-    if (curStep > step) {
-      return i;
-    }
-  }
-}

@@ -1,7 +1,7 @@
 import React from 'react';
-import { H1, DarkBlue } from '../../shared/style/text';
-import { getElementsForStep, getNumSteps, getElIndexForStep } from './steps';
-import { CodeVsTest } from '../slides/CodeVsTest';
+import { H1, DarkBlue } from '../../../../shared/style/text';
+import { getElementsForStep, getNumSteps, getElIndexForStep } from '..';
+import { CodeVsTest } from '../../../slides/CodeVsTest';
 
 const SLIDES = [
   <H1>

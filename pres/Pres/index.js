@@ -4,19 +4,22 @@ import React, { Component } from 'react';
 import { Rows } from '../../shared/style/layout';
 import { H1, DarkBlue } from '../../shared/style/text';
 import {
+  TRANS_TIME,
   getNumSteps,
   getElementsForStep,
-  getElIndexForStep
+  getElIndexForStep,
+  SliderStep
 } from '../shared/steps';
 import { KeyNav } from '../shared/KeyNav';
-import { Slide } from '../shared/Slide';
 import { Emoji } from '../shared/Emoji';
+import { EmojiLabel } from '../shared/EmojiLabel';
 import { CodeVsTest } from '../slides/CodeVsTest';
 import { Audience } from '../slides/Audience';
 import { TestingPros } from '../slides/TestingPros';
 import { TestingCons } from '../slides/TestingCons';
 import { TestAnatomy } from '../slides/TestAnatomy';
 import { LoginFormSlide } from '../slides/LoginFormSlide';
+import { RefactorVisual1 } from '../slides/RefactorVisual1';
 
 const SLIDES = [
   <H1>
@@ -37,7 +40,10 @@ const SLIDES = [
     </H1>
     <Emoji>⚔️</Emoji>
   </Rows>,
-  <LoginFormSlide />
+  <LoginFormSlide />,
+  <H1>Refactor #1</H1>,
+  <EmojiLabel emoji="🔌" label="Replace Redux with setState" />,
+  <RefactorVisual1 />
 ];
 
 export class Pres extends Component {
@@ -55,14 +61,14 @@ export class Pres extends Component {
         <Container>
           <Content style={{ marginTop: this.getMarginTop() }}>
             {getElementsForStep(SLIDES, step).map((slide, idx) => (
-              <Slide
+              <SliderStep
                 key={idx}
                 idx={idx}
                 selIdx={selIdx}
                 innerRef={this.createSlideRef(idx)}
               >
                 {slide}
-              </Slide>
+              </SliderStep>
             ))}
           </Content>
         </Container>
@@ -91,13 +97,17 @@ export class Pres extends Component {
 
   handlePrev = () => {
     this.setState({
-      step: getSafeStep(this.state.step - 1)
+      // TEMP: Go from first to last slide during dev
+      step: this.state.step > 0 ? this.state.step - 1 : getLastStep()
+      // step: getSafeStep(this.state.step - 1)
     });
   };
 
   handleNext = () => {
     this.setState({
-      step: getSafeStep(this.state.step + 1)
+      // TEMP: Go from first to last slide during dev
+      step: this.state.step < getLastStep() ? this.state.step + 1 : 0
+      // step: getSafeStep(this.state.step + 1)
     });
   };
 
@@ -112,7 +122,11 @@ export class Pres extends Component {
 }
 
 function getSafeStep(step) {
-  return Math.max(Math.min(step, getNumSteps(SLIDES) - 1), 0);
+  return Math.max(Math.min(step, getLastStep()), 0);
+}
+
+function getLastStep() {
+  return getNumSteps(SLIDES) - 1;
 }
 
 function getOffsetTop(offsets, slideIdx) {
@@ -137,5 +151,5 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  transition: margin 0.8s;
+  transition: margin ${TRANS_TIME};
 `;

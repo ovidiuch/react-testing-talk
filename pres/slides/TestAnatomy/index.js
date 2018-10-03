@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { includes } from 'lodash';
 import React from 'react';
 import { Center, Rows, Cols } from '../../../shared/style/layout';
 import { H1, H2 } from '../../../shared/style/text';
-import { Steps } from '../../shared/createSteps';
+import { StepsBase, FadeStep, RotateStep } from '../../shared/steps';
 
-export class TestAnatomy extends Steps {
+export class TestAnatomy extends StepsBase {
   static getNumSteps() {
     return 17;
   }
@@ -23,93 +22,93 @@ export class TestAnatomy extends Steps {
     return (
       <Container>
         <H1>
-          <Step step={step} appearAt={0} brightAt={[0, 1, 2, 3]}>
+          <FadeStep step={step} appearAt={0} brightAt={[0, 1, 2, 3]}>
             Test anatomy
-          </Step>
+          </FadeStep>
         </H1>
         <Body>
           <AutoRows>
             <Cell />
             <Cell>
               <H2>
-                <Step step={step} appearAt={1} brightAt={setupSteps}>
+                <FadeStep step={step} appearAt={1} brightAt={setupSteps}>
                   Setup
-                </Step>
+                </FadeStep>
               </H2>
             </Cell>
             <Cell>
               <H2>
-                <Step step={step} appearAt={2} brightAt={actionSteps}>
+                <FadeStep step={step} appearAt={2} brightAt={actionSteps}>
                   Action
-                </Step>
+                </FadeStep>
               </H2>
             </Cell>
             <Cell>
               <H2>
-                <Step step={step} appearAt={3} brightAt={expectSteps}>
+                <FadeStep step={step} appearAt={3} brightAt={expectSteps}>
                   Expect
-                </Step>
+                </FadeStep>
               </H2>
             </Cell>
           </AutoRows>
           <AutoRows>
             <Cell>
               <Header>
-                <Step step={step} appearAt={4} brightAt={purefnSteps}>
+                <FadeStep step={step} appearAt={4} brightAt={purefnSteps}>
                   Pure function
-                </Step>
+                </FadeStep>
               </Header>
             </Cell>
             <Cell>
-              <Step step={step} appearAt={5} brightAt={[5, finalStep]}>
-                <Highlight>arguments</Highlight>
-              </Step>
+              <HlStep step={step} appearAt={5} brightAt={[5, finalStep]}>
+                arguments
+              </HlStep>
             </Cell>
             <Cell>
-              <Step step={step} appearAt={6} brightAt={[6, finalStep]}>
-                <Highlight>function call</Highlight>
-              </Step>
+              <HlStep step={step} appearAt={6} brightAt={[6, finalStep]}>
+                function call
+              </HlStep>
             </Cell>
             <Cell>
-              <Step step={step} appearAt={7} brightAt={[7, finalStep]}>
-                <Highlight>return value</Highlight>
-              </Step>
+              <HlStep step={step} appearAt={7} brightAt={[7, finalStep]}>
+                return value
+              </HlStep>
             </Cell>
           </AutoRows>
           <AutoRows>
             <Cell>
               <Header>
-                <Step step={step} appearAt={8} brightAt={uicompSteps}>
+                <FadeStep step={step} appearAt={8} brightAt={uicompSteps}>
                   UI component
-                </Step>
+                </FadeStep>
               </Header>
             </Cell>
             <Cell>
-              <Step step={step} appearAt={9} brightAt={[9, finalStep]}>
-                <Highlight>props</Highlight>
-              </Step>{' '}
-              <Step step={step} appearAt={10} brightAt={[10, finalStep]}>
-                <Highlight>state</Highlight>
-              </Step>{' '}
-              <Step step={step} appearAt={11} brightAt={[11, finalStep]}>
-                <Highlight>context</Highlight>
-              </Step>
+              <HlStep step={step} appearAt={9} brightAt={[9, finalStep]}>
+                props
+              </HlStep>{' '}
+              <HlStep step={step} appearAt={10} brightAt={[10, finalStep]}>
+                state
+              </HlStep>{' '}
+              <HlStep step={step} appearAt={11} brightAt={[11, finalStep]}>
+                context
+              </HlStep>
             </Cell>
             <Cell>
-              <Step step={step} appearAt={12} brightAt={[12, finalStep]}>
-                <Highlight>render</Highlight>
-              </Step>{' '}
-              <Step step={step} appearAt={13} brightAt={[13, finalStep]}>
-                <Highlight>user event</Highlight>
-              </Step>
+              <HlStep step={step} appearAt={12} brightAt={[12, finalStep]}>
+                render
+              </HlStep>{' '}
+              <HlStep step={step} appearAt={13} brightAt={[13, finalStep]}>
+                user event
+              </HlStep>
             </Cell>
             <Cell>
-              <Step step={step} appearAt={14} brightAt={[14, finalStep]}>
-                <Highlight>render output</Highlight>
-              </Step>{' '}
-              <Step step={step} appearAt={15} brightAt={[15, finalStep]}>
-                <Highlight>side effects</Highlight>
-              </Step>
+              <HlStep step={step} appearAt={14} brightAt={[14, finalStep]}>
+                render output
+              </HlStep>{' '}
+              <HlStep step={step} appearAt={15} brightAt={[15, finalStep]}>
+                side effects
+              </HlStep>
             </Cell>
           </AutoRows>
         </Body>
@@ -144,32 +143,9 @@ const Header = styled(H2)`
   color: rgb(250, 200, 99);
 `;
 
-const Step = styled.span`
-  opacity: ${({ step, appearAt, brightAt }) =>
-    step >= appearAt ? (includes(brightAt, step) ? 1 : 0.5) : 0};
-  transition: opacity 0.8s;
-`;
-
-const Highlight = styled.span`
-  display: inline-block;
+const HlStep = styled(RotateStep)`
   background: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   margin: 0 8px;
   padding: 4px 16px;
-  transform: rotate(${props => getRotationForString(props.children)}deg);
 `;
-
-function getRotationForString(str) {
-  const MAX_ROTATION = 2;
-  const GRANULARITY = 10;
-  const numCharCodes = str
-    .split('')
-    .map(char => char.charCodeAt(0))
-    .reduce((acc, next) => acc + next, 0);
-
-  return (
-    ((numCharCodes % (MAX_ROTATION * 2 * GRANULARITY)) -
-      MAX_ROTATION * GRANULARITY) /
-    GRANULARITY
-  );
-}

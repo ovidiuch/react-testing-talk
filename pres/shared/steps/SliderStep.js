@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import React, { Component } from 'react';
 import { number, node, func } from 'prop-types';
+import { TRANS_TIME, LOW_OPACITY, HIGH_OPACITY } from './shared';
 
-// TODO: Rename
-export class Slide extends Component {
+export class SliderStep extends Component {
   static propTypes = {
     children: node,
     idx: number.isRequired,
@@ -24,17 +24,17 @@ export class Slide extends Component {
 
 function getSlideOpacity(idx, selIdx) {
   if (idx === selIdx) {
-    return 1;
+    return HIGH_OPACITY;
   }
 
   if (idx < selIdx) {
-    return 0.4;
+    return LOW_OPACITY;
   }
 
   return 0;
 }
 
 const Container = styled.div`
-  transition: opacity 0.8s;
+  transition: opacity ${TRANS_TIME};
   opacity: ${props => props.opacity};
 `;
