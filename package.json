@@ -6,7 +6,7 @@
     "lint": "eslint '**/*.js' --quiet",
     "test": "yarn copy-example-files && jest",
     "test:watch": "jest --watch",
-    "build": "babel-node ./scripts/build.js",
+    "build": "yarn extract-test-meta && babel-node ./scripts/build.js",
     "cosmos": "yarn extract-test-meta && cosmos",
     "cosmos-export": "yarn extract-test-meta && cosmos-export"
   },
