@@ -1,7 +1,7 @@
 import { pick, isEqual } from 'lodash';
 import styled from 'styled-components';
 import React, { Component } from 'react';
-import { Rows, FullScreen, Main } from '../../shared/style/layout';
+import { Rows, FullScreen } from '../../shared/style/layout';
 import { H1, H2, P, Bullet, DarkBlue } from '../../shared/style/text';
 import {
   TRANS_TIME,
@@ -24,9 +24,7 @@ import { RefactorVisual2 } from '../slides/RefactorVisual2';
 import { TestDiff1 } from '../slides/TestDiff1';
 import { TestDiff2 } from '../slides/TestDiff2';
 import { TestDiff3 } from '../slides/TestDiff3';
-import { Thanks } from '../slides/Thanks';
-
-import { DeclarativeMock } from '../DeclarativeMock';
+import { DeclarativeMock } from '../slides/DeclarativeMock';
 import {
   PROPS_SAMPLE,
   STATE_SAMPLE,
@@ -35,7 +33,8 @@ import {
   FETCH_SAMPLE,
   LOCALSTORAGE_SAMPLE,
   WINDOW_SAMPLE
-} from '../DeclarativeMock/mockSamples';
+} from '../slides/DeclarativeMock/mockSamples';
+import { Thanks } from '../slides/Thanks';
 
 const Q = styled(H2)`
   line-height: 20vh;
@@ -93,27 +92,21 @@ const SLIDES = [
   <EmojiLabel emoji="🎚" label="Test setup complexity" />,
   <Rows>
     <H1>f=(props, state)</H1>
-    <Main>
-      <Emoji>🙈</Emoji>
-    </Main>
+    <Emoji>🙈</Emoji>
   </Rows>,
   <Rows>
     <H1>
       f=(props, state, <em>context*</em>)
     </H1>
-    <Main>
-      <Emoji>🤯</Emoji>
-    </Main>
+    <Emoji>🤯</Emoji>
   </Rows>,
   <Rows>
     <H1>Component input</H1>
-    <Main>
-      <ul>
-        <li>Props</li>
-        <li>State</li>
-        <li>Context (app, platform, server)</li>
-      </ul>
-    </Main>
+    <ul>
+      <li>Props</li>
+      <li>State</li>
+      <li>Context (app, platform, server)</li>
+    </ul>
   </Rows>,
   <H1>Declarative mocks</H1>,
   <DeclarativeMock title="props" code={PROPS_SAMPLE} />,

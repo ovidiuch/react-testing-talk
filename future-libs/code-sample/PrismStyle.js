@@ -5,8 +5,8 @@ import styled from 'styled-components';
 export const PrismStyle = styled.div`
   background: #282c34;
   color: #ffffff;
-  border-radius: 10px;
-  padding: 16px 24px;
+  border-radius: 16px;
+  padding: 32px 48px;
   overflow: auto;
 
   pre,
