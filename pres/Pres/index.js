@@ -209,16 +209,16 @@ export class Pres extends Component {
   handlePrev = () => {
     this.setState({
       // TEMP: Go from first to last slide during dev
-      step: this.state.step > 0 ? this.state.step - 1 : getLastStep()
-      // step: getSafeStep(this.state.step - 1)
+      // step: this.state.step > 0 ? this.state.step - 1 : getLastStep()
+      step: getSafeStep(this.state.step - 1)
     });
   };
 
   handleNext = () => {
     this.setState({
       // TEMP: Go from first to last slide during dev
-      step: this.state.step < getLastStep() ? this.state.step + 1 : 0
-      // step: getSafeStep(this.state.step + 1)
+      // step: this.state.step < getLastStep() ? this.state.step + 1 : 0
+      step: getSafeStep(this.state.step + 1)
     });
   };
 
