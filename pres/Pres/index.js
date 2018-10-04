@@ -1,8 +1,8 @@
 import { pick, isEqual } from 'lodash';
 import styled from 'styled-components';
 import React, { Component } from 'react';
-import { Rows, Main } from '../../shared/style/layout';
-import { H1, H2, P, DarkBlue } from '../../shared/style/text';
+import { Rows, FullScreen, Main } from '../../shared/style/layout';
+import { H1, H2, P, Bullet, DarkBlue } from '../../shared/style/text';
 import {
   TRANS_TIME,
   getNumSteps,
@@ -36,6 +36,21 @@ import {
   LOCALSTORAGE_SAMPLE,
   WINDOW_SAMPLE
 } from '../DeclarativeMock/mockSamples';
+
+const Q = styled(H2)`
+  line-height: 20vh;
+
+  :before {
+    content: 'Q: ';
+    opacity: 0.4;
+  }
+`;
+
+const QuoteLine = styled(P)`
+  text-align: left;
+  width: 1152px;
+  white-space: nowrap;
+`;
 
 const SLIDES = [
   <H1>
@@ -71,9 +86,9 @@ const SLIDES = [
   <RefactorVisual2 />,
   <TestDiff3 />,
   <H1>Takeaways</H1>,
-  <H2>Tight units slow down refactoring</H2>,
-  <H2>Tech abstractions are transitory</H2>,
-  <H2>Feature-oriented units are more stable</H2>,
+  <Bullet>Tight units slow down refactoring</Bullet>,
+  <Bullet>Tech abstractions are transitory</Bullet>,
+  <Bullet>Feature-oriented units are more stable</Bullet>,
   <H1>The catch</H1>,
   <EmojiLabel emoji="🎚" label="Test setup complexity" />,
   <Rows>
@@ -109,17 +124,22 @@ const SLIDES = [
   <DeclarativeMock title="LocalStorage" code={LOCALSTORAGE_SAMPLE} />,
   <DeclarativeMock title="window" code={WINDOW_SAMPLE} />,
   <H1>Recap</H1>,
-  <H2>
-    <em>Loose</em> units increase test setup
-  </H2>,
-  <H2>Declarative mocks simplify test setup</H2>,
-  <H1>FAQ</H1>,
-  <H2>To mock or not to mock?</H2>,
-  <H2>What about shallow rendering?</H2>,
-  <H2>How to handle fail noise?</H2>,
-  <H2>What level to test at?</H2>,
-  <H2>{`Isn't`} this E2E testing?</H2>,
-  <H2>
+  <Bullet>
+    <em>Loose</em> units complicate test setup
+  </Bullet>,
+  <Bullet>Declarative mocks simplify test setup</Bullet>,
+  <Rows style={{ marginBottom: 48 }}>
+    <H1>FAQ</H1>
+    <Emoji>🤔</Emoji>
+  </Rows>,
+  <Q>To mock or not to mock?</Q>,
+  <Q>
+    How about <em>shallow</em> rendering?
+  </Q>,
+  <Q>How to handle fail noise?</Q>,
+  <Q>What level to test at?</Q>,
+  <Q>{`Isn't`} this E2E testing?</Q>,
+  <Q>
     {`Isn't`} this{' '}
     <a
       href="https://twitter.com/jamiebuilds/status/954927205099847680"
@@ -136,35 +156,37 @@ const SLIDES = [
       testing
     </a>
     ?
-  </H2>,
-  <H1>
+  </Q>,
+  <FullScreen>
     <Emoji>💡</Emoji>
-  </H1>,
-  <P>
+  </FullScreen>,
+  <QuoteLine>
     <em>
+      {`"`}
       Although I start with the notion of the unit being a class,
       <br />I often take a bunch of closely related classes
       <br />
       and treat them as a single unit.
     </em>
-  </P>,
-  <P>
+  </QuoteLine>,
+  <QuoteLine>
     <em>
       Rarely I might take a subset of methods in a class as a unit.
       <br />
       <strong>{`However you define [a unit] doesn't really matter.`}</strong>
     </em>
-  </P>,
-  <P>
+  </QuoteLine>,
+  <QuoteLine>
     <em>
       The team decides what makes sense to be a unit
       <br />
       for the purposes of their understanding
       <br />
       of the system and its testing.
+      {`"`}
     </em>
-  </P>,
-  <P>Martin Fowler</P>,
+  </QuoteLine>,
+  <P>–Martin Fowler</P>,
   <Thanks />
 ];
 
