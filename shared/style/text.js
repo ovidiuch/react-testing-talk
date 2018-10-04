@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// TODO: Remove or adapt
 export const P = styled.p`
   margin-top: 36px;
   font-size: 48px;

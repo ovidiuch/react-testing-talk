@@ -1,8 +1,8 @@
 import { pick, isEqual } from 'lodash';
 import styled from 'styled-components';
 import React, { Component } from 'react';
-import { Rows } from '../../shared/style/layout';
-import { H1, DarkBlue } from '../../shared/style/text';
+import { Rows, Main } from '../../shared/style/layout';
+import { H1, H2, P, DarkBlue } from '../../shared/style/text';
 import {
   TRANS_TIME,
   getNumSteps,
@@ -24,6 +24,18 @@ import { RefactorVisual2 } from '../slides/RefactorVisual2';
 import { TestDiff1 } from '../slides/TestDiff1';
 import { TestDiff2 } from '../slides/TestDiff2';
 import { TestDiff3 } from '../slides/TestDiff3';
+import { Thanks } from '../slides/Thanks';
+
+import { DeclarativeMock } from '../DeclarativeMock';
+import {
+  PROPS_SAMPLE,
+  STATE_SAMPLE,
+  REDUX_SAMPLE,
+  STYLED_SAMPLE,
+  FETCH_SAMPLE,
+  LOCALSTORAGE_SAMPLE,
+  WINDOW_SAMPLE
+} from '../DeclarativeMock/mockSamples';
 
 const SLIDES = [
   <H1>
@@ -57,7 +69,103 @@ const SLIDES = [
   <H1>Refactor #2</H1>,
   <EmojiLabel emoji="🎨" label="Extract Form abstraction" />,
   <RefactorVisual2 />,
-  <TestDiff3 />
+  <TestDiff3 />,
+  <H1>Takeaways</H1>,
+  <H2>Tight units slow down refactoring</H2>,
+  <H2>Tech abstractions are transitory</H2>,
+  <H2>Feature-oriented units are more stable</H2>,
+  <H1>The catch</H1>,
+  <EmojiLabel emoji="🎚" label="Test setup complexity" />,
+  <Rows>
+    <H1>f=(props, state)</H1>
+    <Main>
+      <Emoji>🙈</Emoji>
+    </Main>
+  </Rows>,
+  <Rows>
+    <H1>
+      f=(props, state, <em>context*</em>)
+    </H1>
+    <Main>
+      <Emoji>🤯</Emoji>
+    </Main>
+  </Rows>,
+  <Rows>
+    <H1>Component input</H1>
+    <Main>
+      <ul>
+        <li>Props</li>
+        <li>State</li>
+        <li>Context (app, platform, server)</li>
+      </ul>
+    </Main>
+  </Rows>,
+  <H1>Declarative mocks</H1>,
+  <DeclarativeMock title="props" code={PROPS_SAMPLE} />,
+  <DeclarativeMock title="state" code={STATE_SAMPLE} />,
+  <DeclarativeMock title="Redux" code={REDUX_SAMPLE} />,
+  <DeclarativeMock title="styled-components" code={STYLED_SAMPLE} />,
+  <DeclarativeMock title="Fetch" code={FETCH_SAMPLE} />,
+  <DeclarativeMock title="LocalStorage" code={LOCALSTORAGE_SAMPLE} />,
+  <DeclarativeMock title="window" code={WINDOW_SAMPLE} />,
+  <H1>Recap</H1>,
+  <H2>
+    <em>Loose</em> units increase test setup
+  </H2>,
+  <H2>Declarative mocks simplify test setup</H2>,
+  <H1>FAQ</H1>,
+  <H2>To mock or not to mock?</H2>,
+  <H2>What about shallow rendering?</H2>,
+  <H2>How to handle fail noise?</H2>,
+  <H2>What level to test at?</H2>,
+  <H2>{`Isn't`} this E2E testing?</H2>,
+  <H2>
+    {`Isn't`} this{' '}
+    <a
+      href="https://twitter.com/jamiebuilds/status/954927205099847680"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      integration
+    </a>{' '}
+    <a
+      href="https://twitter.com/kentbeck/status/938461525626437632"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      testing
+    </a>
+    ?
+  </H2>,
+  <H1>
+    <Emoji>💡</Emoji>
+  </H1>,
+  <P>
+    <em>
+      Although I start with the notion of the unit being a class,
+      <br />I often take a bunch of closely related classes
+      <br />
+      and treat them as a single unit.
+    </em>
+  </P>,
+  <P>
+    <em>
+      Rarely I might take a subset of methods in a class as a unit.
+      <br />
+      <strong>{`However you define [a unit] doesn't really matter.`}</strong>
+    </em>
+  </P>,
+  <P>
+    <em>
+      The team decides what makes sense to be a unit
+      <br />
+      for the purposes of their understanding
+      <br />
+      of the system and its testing.
+    </em>
+  </P>,
+  <P>Martin Fowler</P>,
+  <Thanks />
 ];
 
 export class Pres extends Component {
