@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
-import { FullScreen, Rows } from '../../../shared/style/layout';
+import { FullScreen, Rows, Space } from '../../../shared/style/layout';
 import { H1, H2 } from '../../../shared/style/text';
 import { Emoji } from '../../shared/Emoji';
 import { StepsBase, FadeStep } from '../../shared/steps';
@@ -23,13 +23,14 @@ export class Thanks extends StepsBase {
           <FadeStep step={step} appearAt={2} brightAt={[2, finalStep]}>
             <H2>Indie web developer</H2>
             <Emoji size={128}>🇷🇴</Emoji>
-            <Space />
+            <Space height={36} />
           </FadeStep>
           <FadeStep step={step} appearAt={3} brightAt={[3, finalStep]}>
             <H2>
               <Faded>twitter.com/</Faded>
               skidding
             </H2>
+            <Space height={36} />
           </FadeStep>
           <FadeStep step={step} appearAt={4} brightAt={[4, finalStep]}>
             <H1>Thanks.</H1>
@@ -56,11 +57,6 @@ const Content = styled(Rows)`
   padding-left: 12vw;
   color: rgb(245, 247, 249);
   align-items: flex-start;
-`;
-
-const Space = styled.div`
-  height: 36px;
-  flex-shrink: 0;
 `;
 
 const Faded = styled.span`

@@ -1,7 +1,7 @@
 import { pick, isEqual } from 'lodash';
 import styled from 'styled-components';
 import React, { Component } from 'react';
-import { Rows, FullScreen } from '../../shared/style/layout';
+import { Rows, Space } from '../../shared/style/layout';
 import { H1, H2, P, Bullet, DarkBlue } from '../../shared/style/text';
 import {
   TRANS_TIME,
@@ -114,32 +114,25 @@ const SLIDES = [
   <Q>How to handle fail noise?</Q>,
   <Q>What level to test at?</Q>,
   <Q>{`Isn't`} this E2E testing?</Q>,
-  <Q>
-    {`Isn't`} this{' '}
-    <a
-      href="https://twitter.com/jamiebuilds/status/954927205099847680"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      integration
-    </a>{' '}
-    <a
-      href="https://twitter.com/kentbeck/status/938461525626437632"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      testing
-    </a>
-    ?
-  </Q>,
-  <FullScreen>
+  <Q>{`Isn't`} this integration testing ?</Q>,
+  <Rows>
+    <Space height={128} />
+    <QuoteLine>
+      <em>{`"Unit versus integration testing" never helped me much.`}</em>
+    </QuoteLine>
+    <P>–Kent Beck</P>
+  </Rows>,
+  <Rows>
+    <Space height={128} />
     <Emoji>💡</Emoji>
-  </FullScreen>,
+    <Space height={128} />
+  </Rows>,
+  <QuoteLine>
+    <em>Although I start with the notion of the unit being a class,</em>
+  </QuoteLine>,
   <QuoteLine>
     <em>
-      {`"`}
-      Although I start with the notion of the unit being a class,
-      <br />I often take a bunch of closely related classes
+      I often take a bunch of closely related classes
       <br />
       and treat them as a single unit.
     </em>
@@ -158,7 +151,6 @@ const SLIDES = [
       for the purposes of their understanding
       <br />
       of the system and its testing.
-      {`"`}
     </em>
   </QuoteLine>,
   <P>–Martin Fowler</P>,

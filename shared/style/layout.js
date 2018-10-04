@@ -19,3 +19,8 @@ export const FullScreen = styled(Center)`
   width: 100vw;
   height: 100vh;
 `;
+
+export const Space = styled.div`
+  height: ${props => props.height}px;
+  flex-shrink: 0;
+`;
