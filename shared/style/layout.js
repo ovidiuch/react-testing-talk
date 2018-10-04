@@ -19,13 +19,3 @@ export const FullScreen = styled(Center)`
   width: 100vw;
   height: 100vh;
 `;
-
-// TODO: Remove
-export const Main = styled.div`
-  margin-top: 64px;
-`;
-
-// TODO: Remove
-export const ColSeparator = styled.div`
-  width: 6vw;
-`;

@@ -5,8 +5,8 @@ import styled from 'styled-components';
 export const PrismStyle = styled.div`
   background: #282c34;
   color: #ffffff;
-  border-radius: 10px;
-  padding: 16px 24px;
+  border-radius: 16px;
+  padding: 32px 48px;
   overflow: auto;
 
   pre,
@@ -23,8 +23,8 @@ export const PrismStyle = styled.div`
   pre.prism-code {
     height: auto !important;
     margin: 0;
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 36px;
+    line-height: 54px;
     white-space: pre-wrap;
     word-break: break-word;
   }

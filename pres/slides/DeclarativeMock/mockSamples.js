@@ -1,25 +1,16 @@
-// TODO: Move to individual files
-export const PROPS_SAMPLE = `<Event title="React.js Bucharest" />`;
+export const PROPS_SAMPLE = `<Event title="reactjsday 2018" />`;
 
-export const STATE_SAMPLE = `<StateMock state={{ count: 5 }}>
-  <Counter />
+export const STATE_SAMPLE = `<StateMock state={{ isOpen: true }}>
+  <MyComponent />
 </StateMock>`;
 
 export const REDUX_SAMPLE = `<Provider store={createStore(mockedState)}>
-  <LoginForm />
+  <MyComponent />
 </Provider>`;
 
 export const STYLED_SAMPLE = `<ThemeProvider theme="light">
   <MyComponent />
 </ThemeProvider>`;
-
-export const INTL_SAMPLE = `<IntlProvider theme={theme}>
-  <MyComponent />
-</IntlProvider>`;
-
-export const XHR_SAMPLE = `<XhrMock url="/login" method="POST" response={403}>
-  <MyComponent />
-</XhrMock>`;
 
 export const FETCH_SAMPLE = `<FetchMock url="/login" method="POST" response={403}>
   <MyComponent />

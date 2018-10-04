@@ -1,8 +1,8 @@
 import { pick, isEqual } from 'lodash';
 import styled from 'styled-components';
 import React, { Component } from 'react';
-import { Rows } from '../../shared/style/layout';
-import { H1, DarkBlue } from '../../shared/style/text';
+import { Rows, FullScreen } from '../../shared/style/layout';
+import { H1, H2, P, Bullet, DarkBlue } from '../../shared/style/text';
 import {
   TRANS_TIME,
   getNumSteps,
@@ -24,6 +24,33 @@ import { RefactorVisual2 } from '../slides/RefactorVisual2';
 import { TestDiff1 } from '../slides/TestDiff1';
 import { TestDiff2 } from '../slides/TestDiff2';
 import { TestDiff3 } from '../slides/TestDiff3';
+import { ComponentInput } from '../slides/ComponentInput';
+import { DeclarativeMock } from '../slides/DeclarativeMock';
+import {
+  PROPS_SAMPLE,
+  STATE_SAMPLE,
+  REDUX_SAMPLE,
+  STYLED_SAMPLE,
+  FETCH_SAMPLE,
+  LOCALSTORAGE_SAMPLE,
+  WINDOW_SAMPLE
+} from '../slides/DeclarativeMock/mockSamples';
+import { Thanks } from '../slides/Thanks';
+
+const Q = styled(H2)`
+  line-height: 20vh;
+
+  :before {
+    content: 'Q: ';
+    opacity: 0.4;
+  }
+`;
+
+const QuoteLine = styled(P)`
+  text-align: left;
+  width: 1152px;
+  white-space: nowrap;
+`;
 
 const SLIDES = [
   <H1>
@@ -57,7 +84,85 @@ const SLIDES = [
   <H1>Refactor #2</H1>,
   <EmojiLabel emoji="🎨" label="Extract Form abstraction" />,
   <RefactorVisual2 />,
-  <TestDiff3 />
+  <TestDiff3 />,
+  <H1>Takeaways</H1>,
+  <Bullet>Tight units slow down refactoring</Bullet>,
+  <Bullet>Tech abstractions are transitory</Bullet>,
+  <Bullet>Feature-oriented units are more stable</Bullet>,
+  <ComponentInput />,
+  <H1>Declarative mocks</H1>,
+  <DeclarativeMock title="props" code={PROPS_SAMPLE} />,
+  <DeclarativeMock title="state" code={STATE_SAMPLE} />,
+  <DeclarativeMock title="Redux" code={REDUX_SAMPLE} />,
+  <DeclarativeMock title="styled-components" code={STYLED_SAMPLE} />,
+  <DeclarativeMock title="Fetch" code={FETCH_SAMPLE} />,
+  <DeclarativeMock title="LocalStorage" code={LOCALSTORAGE_SAMPLE} />,
+  <DeclarativeMock title="window" code={WINDOW_SAMPLE} />,
+  <H1>Recap</H1>,
+  <Bullet>
+    <em>Loose</em> units increase test setup
+  </Bullet>,
+  <Bullet>Declarative mocks simplify test setup</Bullet>,
+  <Rows style={{ marginBottom: 48 }}>
+    <H1>FAQ</H1>
+    <Emoji>🤔</Emoji>
+  </Rows>,
+  <Q>To mock or not to mock?</Q>,
+  <Q>
+    How about <em>shallow</em> rendering?
+  </Q>,
+  <Q>How to handle fail noise?</Q>,
+  <Q>What level to test at?</Q>,
+  <Q>{`Isn't`} this E2E testing?</Q>,
+  <Q>
+    {`Isn't`} this{' '}
+    <a
+      href="https://twitter.com/jamiebuilds/status/954927205099847680"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      integration
+    </a>{' '}
+    <a
+      href="https://twitter.com/kentbeck/status/938461525626437632"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      testing
+    </a>
+    ?
+  </Q>,
+  <FullScreen>
+    <Emoji>💡</Emoji>
+  </FullScreen>,
+  <QuoteLine>
+    <em>
+      {`"`}
+      Although I start with the notion of the unit being a class,
+      <br />I often take a bunch of closely related classes
+      <br />
+      and treat them as a single unit.
+    </em>
+  </QuoteLine>,
+  <QuoteLine>
+    <em>
+      Rarely I might take a subset of methods in a class as a unit.
+      <br />
+      <strong>{`However you define [a unit] doesn't really matter.`}</strong>
+    </em>
+  </QuoteLine>,
+  <QuoteLine>
+    <em>
+      The team decides what makes sense to be a unit
+      <br />
+      for the purposes of their understanding
+      <br />
+      of the system and its testing.
+      {`"`}
+    </em>
+  </QuoteLine>,
+  <P>–Martin Fowler</P>,
+  <Thanks />
 ];
 
 export class Pres extends Component {
