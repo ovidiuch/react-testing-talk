@@ -24,6 +24,7 @@ import { RefactorVisual2 } from '../slides/RefactorVisual2';
 import { TestDiff1 } from '../slides/TestDiff1';
 import { TestDiff2 } from '../slides/TestDiff2';
 import { TestDiff3 } from '../slides/TestDiff3';
+import { ComponentInput } from '../slides/ComponentInput';
 import { DeclarativeMock } from '../slides/DeclarativeMock';
 import {
   PROPS_SAMPLE,
@@ -88,26 +89,7 @@ const SLIDES = [
   <Bullet>Tight units slow down refactoring</Bullet>,
   <Bullet>Tech abstractions are transitory</Bullet>,
   <Bullet>Feature-oriented units are more stable</Bullet>,
-  <H1>The catch</H1>,
-  <EmojiLabel emoji="🎚" label="Test setup complexity" />,
-  <Rows>
-    <H1>f=(props, state)</H1>
-    <Emoji>🙈</Emoji>
-  </Rows>,
-  <Rows>
-    <H1>
-      f=(props, state, <em>context*</em>)
-    </H1>
-    <Emoji>🤯</Emoji>
-  </Rows>,
-  <Rows>
-    <H1>Component input</H1>
-    <ul>
-      <li>Props</li>
-      <li>State</li>
-      <li>Context (app, platform, server)</li>
-    </ul>
-  </Rows>,
+  <ComponentInput />,
   <H1>Declarative mocks</H1>,
   <DeclarativeMock title="props" code={PROPS_SAMPLE} />,
   <DeclarativeMock title="state" code={STATE_SAMPLE} />,
@@ -118,7 +100,7 @@ const SLIDES = [
   <DeclarativeMock title="window" code={WINDOW_SAMPLE} />,
   <H1>Recap</H1>,
   <Bullet>
-    <em>Loose</em> units complicate test setup
+    <em>Loose</em> units increase test setup
   </Bullet>,
   <Bullet>Declarative mocks simplify test setup</Bullet>,
   <Rows style={{ marginBottom: 48 }}>
