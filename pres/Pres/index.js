@@ -114,7 +114,7 @@ const SLIDES = [
   <Q>How to handle fail noise?</Q>,
   <Q>What level to test at?</Q>,
   <Q>{`Isn't`} this E2E testing?</Q>,
-  <Q>{`Isn't`} this integration testing ?</Q>,
+  <Q>{`Isn't`} this integration testing?</Q>,
   <Rows>
     <Space height={128} />
     <QuoteLine>

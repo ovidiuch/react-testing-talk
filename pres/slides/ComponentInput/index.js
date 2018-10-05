@@ -17,7 +17,7 @@ export class ComponentInput extends StepsBase {
     return (
       <Container>
         <H1>
-          f=(props, state
+          f(props, state
           {step > 0 ? (
             <>
               , <em>context*</em>)
