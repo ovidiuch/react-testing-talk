@@ -797,10 +797,19 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.2.tgz#54c5a964462be3d4d78af631363c18d6fa91ac26"
   integrity sha512-yprFYuno9FtNsSHVlSWd+nRlmGoAbqbeCwOryP6sC/zoCjhpArcRMYp19EvpSUSizJAlsXEwJv+wcWS9XaXdMw==
 
-"@react-mock/state@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@react-mock/state/-/state-0.1.3.tgz#d3d7329affba107c7de58d2eef9da30bd3bb7b83"
-  integrity sha512-8zKgupGJo1ZdFt5wPBDfu9Hck44t8//CN8xEoUEmaVqK9aPhcXzT2SopOka2rXrZdSFOs7ED6Vw9U7+AK1DDsw==
+"@react-mock/fetch@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@react-mock/fetch/-/fetch-0.2.0.tgz#bfe15ea078f024557da1d413b7858aff76b34b4b"
+  integrity sha512-833HnmJxkqcOnsOoy/xrsN8j8/qkp6l/Vv/bWcSjqlAn2IgpG/n+mpKFGIXeWGRtfiQvi+q8wnHHPAReGhanwQ==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    fetch-mock "^7.0.7"
+    lodash "^4.17.11"
+
+"@react-mock/state@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@react-mock/state/-/state-0.1.4.tgz#91d2dcde53b942468ea3a5f9968379c47c59e614"
+  integrity sha512-SBgeMa8dxo/Z3IMYDNvIjRZsfAVPvXb1ubsE74JEq9WbGPWom9ciLozI8BB6U3aIt9gQ8K40f83pg88hCIU2MQ==
   dependencies:
     "@babel/runtime" "^7.0.0"
     lodash "^4.17.11"
@@ -3878,6 +3887,16 @@ fetch-mock@^7.0.6:
     path-to-regexp "^2.2.1"
     whatwg-url "^6.5.0"
 
+fetch-mock@^7.0.7:
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-7.0.7.tgz#f9795dd56cc1b2314c4961a7bf012982438c2c5c"
+  integrity sha512-9HfmHxlbUfKRdIqknHEq/NUcIuEz97iVLAgFbiMeRNiNSWV8dB8VX42Snyv9yN5VOqEeZSAyJAs6rX03KvZnOg==
+  dependencies:
+    babel-polyfill "^6.26.0"
+    glob-to-regexp "^0.4.0"
+    path-to-regexp "^2.2.1"
+    whatwg-url "^6.5.0"
+
 figures@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/figures/-/figures-2.0.0.tgz#3ab1a2d2a62c8bfb431a0c94cb797a2fce27c962"
@@ -6237,6 +6256,11 @@ node-fetch@^1.0.1:
   dependencies:
     encoding "^0.1.11"
     is-stream "^1.0.1"
+
+node-fetch@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.2.0.tgz#4ee79bde909262f9775f731e3656d0db55ced5b5"
+  integrity sha512-OayFWziIxiHY8bCUyLX6sTpDH8Jsbp4FfYd1j1f7vZyfgkcOnAyM4oQR16f8a0s7Gl/viMGRey8eScYk4V4EZA==
 
 node-int64@^0.4.0:
   version "0.4.0"

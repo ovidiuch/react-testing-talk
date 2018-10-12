@@ -1,17 +1,25 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
-import fetchMock from 'fetch-mock';
+import { FetchMock, fetchMock } from '@react-mock/fetch';
 import retry from '@skidding/async-retry';
 import { delay } from '../../../../future-libs/delay';
 import { ConnectedLoginForm } from '../../ConnectedLoginForm';
 import { createStore } from '../../store';
 
-const getTestData = () => {
+const getTestData = res => {
   const wrapper = mount(
-    <Provider store={createStore()}>
-      <ConnectedLoginForm />
-    </Provider>
+    <FetchMock
+      options={{
+        matcher: '/login',
+        response: delay(res),
+        method: 'POST'
+      }}
+    >
+      <Provider store={createStore()}>
+        <ConnectedLoginForm />
+      </Provider>
+    </FetchMock>
   );
 
   return { wrapper };
@@ -31,8 +39,6 @@ const submitForm = wrapper =>
 
 const getLastCallBody = (url, method) =>
   JSON.parse(fetchMock.lastCall(url, method)[1].body);
-
-afterEach(fetchMock.reset);
 
 it('renders username input', () => {
   const { wrapper } = getTestData();
@@ -61,9 +67,7 @@ it('updates password input', () => {
 });
 
 it('posts user data', () => {
-  fetchMock.post('/login', delay({ ok: true }));
-
-  const { wrapper } = getTestData();
+  const { wrapper } = getTestData({ ok: true });
 
   changeInput(wrapper, 'username', 'forrestgump');
   changeInput(wrapper, 'password', 'pink+white');
@@ -76,18 +80,14 @@ it('posts user data', () => {
 });
 
 it('renders loading state', async () => {
-  fetchMock.post('/login', delay({ ok: true }));
-
-  const { wrapper } = getTestData();
+  const { wrapper } = getTestData({ ok: true });
   submitForm(wrapper);
 
   expect(wrapper.text()).toMatch('Just a sec...');
 });
 
 it('renders error state', async () => {
-  fetchMock.post('/login', delay(401));
-
-  const { wrapper } = getTestData();
+  const { wrapper } = getTestData(401);
   submitForm(wrapper);
 
   await retry(() => {
@@ -96,9 +96,7 @@ it('renders error state', async () => {
 });
 
 it('renders success state', async () => {
-  fetchMock.post('/login', delay({ ok: true }));
-
-  const { wrapper } = getTestData();
+  const { wrapper } = getTestData({ ok: true });
   submitForm(wrapper);
 
   await retry(() => {
