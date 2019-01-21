@@ -15,6 +15,7 @@ import {
 import { KeyNav } from '../shared/KeyNav';
 import { Emoji } from '../shared/Emoji';
 import { EmojiLabel } from '../shared/EmojiLabel';
+import { Photoslice } from '../slides/Photoslice';
 import { Cosmos } from '../slides/Cosmos';
 import { CodeVsTest } from '../slides/CodeVsTest';
 import { Audience } from '../slides/Audience';
@@ -57,6 +58,7 @@ const QuoteLine = styled(P)`
 
 const SLIDES = [
   <H1>{`Hello, I'm Ovidiu`} 👋</H1>,
+  <Photoslice />,
   <Cosmos />,
   <FullScreen>
     <H1>

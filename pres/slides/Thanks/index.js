@@ -17,7 +17,7 @@ export class Thanks extends StepsBase {
       <Container>
         <Content>
           <FadeStep step={step} appearAt={1} brightAt={[1, finalStep]}>
-            <H1>Ovidiu</H1>
+            <H1 style={{ lineHeight: '20vh' }}>Ovidiu</H1>
           </FadeStep>
           <FadeStep step={step} appearAt={2} brightAt={[2, finalStep]}>
             <H2>Indie web developer</H2>
@@ -38,7 +38,7 @@ export class Thanks extends StepsBase {
           </FadeStep>
           <FadeStep step={step} appearAt={5} brightAt={[5, finalStep]}>
             <Space height={36} />
-            <H1>Thanks.</H1>
+            <H1>Thanks!</H1>
           </FadeStep>
         </Content>
       </Container>
