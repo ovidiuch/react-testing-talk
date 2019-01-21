@@ -1,7 +1,9 @@
+/* eslint-env browser */
+
 import { pick, isEqual } from 'lodash';
 import styled from 'styled-components';
 import React, { Component } from 'react';
-import { Rows, Space } from '../../shared/style/layout';
+import { Rows, Space, FullScreen } from '../../shared/style/layout';
 import { H1, H2, P, Bullet, DarkBlue } from '../../shared/style/text';
 import {
   TRANS_TIME,
@@ -13,6 +15,7 @@ import {
 import { KeyNav } from '../shared/KeyNav';
 import { Emoji } from '../shared/Emoji';
 import { EmojiLabel } from '../shared/EmojiLabel';
+import { Cosmos } from '../slides/Cosmos';
 import { CodeVsTest } from '../slides/CodeVsTest';
 import { Audience } from '../slides/Audience';
 import { TestingPros } from '../slides/TestingPros';
@@ -53,12 +56,20 @@ const QuoteLine = styled(P)`
 `;
 
 const SLIDES = [
-  <H1>
-    Testing <DarkBlue>React</DarkBlue> components
-  </H1>,
-  <H1>Why testing?</H1>,
+  <H1>{`Hello, I'm Ovidiu`} 👋</H1>,
+  <Cosmos />,
+  <FullScreen>
+    <H1>
+      Testing <DarkBlue>React</DarkBlue> components
+    </H1>
+  </FullScreen>,
+  <Rows>
+    <H1>Disclaimer</H1>
+    <Emoji>✌️</Emoji>
+  </Rows>,
+  <H1>Why talk about testing?</H1>,
   <CodeVsTest />,
-  <H1>Who cares?</H1>,
+  <H1>Audience</H1>,
   <Audience />,
   <H1>Testing pros</H1>,
   <TestingPros />,
@@ -88,7 +99,7 @@ const SLIDES = [
   <H1>Takeaways</H1>,
   <Bullet>Tight units slow down refactoring</Bullet>,
   <Bullet>Tech abstractions are transitory</Bullet>,
-  <Bullet>Feature-oriented units are more stable</Bullet>,
+  <Bullet>Feature-oriented units are more stable*</Bullet>,
   <ComponentInput />,
   <H1>Declarative mocks</H1>,
   <DeclarativeMock title="props" code={PROPS_SAMPLE} />,
@@ -114,7 +125,7 @@ const SLIDES = [
   <Q>How to handle fail noise?</Q>,
   <Q>What level to test at?</Q>,
   <Q>{`Isn't`} this E2E testing?</Q>,
-  <Q>{`Isn't`} this integration testing?</Q>,
+  <Q>Is this integration testing?</Q>,
   <Rows>
     <Space height={128} />
     <QuoteLine>
@@ -186,6 +197,18 @@ export class Pres extends Component {
       </KeyNav>
     );
   }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleWindowResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowResize);
+  }
+
+  handleWindowResize = () => {
+    this.forceUpdate();
+  };
 
   createSlideRef = idx => elRef => {
     if (!elRef) {

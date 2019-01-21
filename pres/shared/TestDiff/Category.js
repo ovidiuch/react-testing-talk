@@ -86,8 +86,8 @@ function getTestLineHeight(numCats) {
 const TestName = styled.span`
   font-size: 24px;
   line-height: ${TEST_LINE_HEIGHT}px;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace !important;
+  font-family: 'FiraCode-Regular', source-code-pro, Menlo, Monaco, Consolas,
+    'Courier New', monospace !important;
   white-space: nowrap;
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
