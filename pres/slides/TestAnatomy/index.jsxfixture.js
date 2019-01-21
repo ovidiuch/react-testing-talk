@@ -1,4 +1,4 @@
 import React from 'react';
-import { TestAnatomy } from '..';
+import { TestAnatomy } from '.';
 
 export default <TestAnatomy />;

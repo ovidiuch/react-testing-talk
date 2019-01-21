@@ -1,4 +1,4 @@
 import React from 'react';
-import { Audience } from '..';
+import { Audience } from '.';
 
 export default <Audience />;

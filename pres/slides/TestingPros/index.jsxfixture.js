@@ -1,4 +1,4 @@
 import React from 'react';
-import { TestingPros } from '..';
+import { TestingPros } from '.';
 
 export default <TestingPros />;

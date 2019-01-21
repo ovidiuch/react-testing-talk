@@ -1,4 +1,4 @@
 import React from 'react';
-import { TestingCons } from '..';
+import { TestingCons } from '.';
 
 export default <TestingCons />;
