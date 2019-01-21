@@ -6,10 +6,10 @@
         "renders password input": "it('renders password input', () => {\n  const { wrapper } = getTestData();\n\n  expect(getInput(wrapper, 'password')).toHaveLength(1);\n})",
         "updates username input": "it('updates username input', () => {\n  const { wrapper } = getTestData();\n  changeInput(wrapper, 'username', 'franko');\n\n  expect(getInput(wrapper, 'username').prop('value')).toBe('franko');\n})",
         "updates password input": "it('updates password input', () => {\n  const { wrapper } = getTestData();\n  changeInput(wrapper, 'password', '#fffferrari');\n\n  expect(getInput(wrapper, 'password').prop('value')).toBe('#fffferrari');\n})",
-        "posts user data": "it('posts user data', () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n\n  changeInput(wrapper, 'username', 'forrestgump');\n  changeInput(wrapper, 'password', 'pink+white');\n  submitForm(wrapper);\n\n  expect(getLastCallBody('/login', 'post')).toEqual({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n})",
-        "renders loading state": "it('renders loading state', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  expect(wrapper.text()).toMatch('Just a sec...');\n})",
-        "renders error state": "it('renders error state', async () => {\n  fetchMock.post('/login', delay(401));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch('Come again?');\n  });\n})",
-        "renders success state": "it('renders success state', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch(`You're in!`);\n  });\n})"
+        "posts user data": "it('posts user data', () => {\n  const { wrapper } = getTestData({ ok: true });\n\n  changeInput(wrapper, 'username', 'forrestgump');\n  changeInput(wrapper, 'password', 'pink+white');\n  submitForm(wrapper);\n\n  expect(getLastCallBody('/login', 'post')).toEqual({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n})",
+        "renders loading state": "it('renders loading state', async () => {\n  const { wrapper } = getTestData({ ok: true });\n  submitForm(wrapper);\n\n  expect(wrapper.text()).toMatch('Just a sec...');\n})",
+        "renders error state": "it('renders error state', async () => {\n  const { wrapper } = getTestData(401);\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch('Come again?');\n  });\n})",
+        "renders success state": "it('renders success state', async () => {\n  const { wrapper } = getTestData({ ok: true });\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch(`You're in!`);\n  });\n})"
       }
     },
     "tight": {
@@ -51,10 +51,10 @@
         "renders password input": "it('renders password input', () => {\n  const { wrapper } = getTestData();\n\n  expect(getInput(wrapper, 'password')).toHaveLength(1);\n})",
         "updates username input": "it('updates username input', () => {\n  const { wrapper } = getTestData();\n  changeInput(wrapper, 'username', 'franko');\n\n  expect(getInput(wrapper, 'username').prop('value')).toBe('franko');\n})",
         "updates password input": "it('updates password input', () => {\n  const { wrapper } = getTestData();\n  changeInput(wrapper, 'password', '#fffferrari');\n\n  expect(getInput(wrapper, 'password').prop('value')).toBe('#fffferrari');\n})",
-        "posts user data": "it('posts user data', () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n\n  changeInput(wrapper, 'username', 'forrestgump');\n  changeInput(wrapper, 'password', 'pink+white');\n  submitForm(wrapper);\n\n  expect(getLastCallBody('/login', 'post')).toEqual({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n})",
-        "renders loading state": "it('renders loading state', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  expect(wrapper.text()).toMatch('Just a sec...');\n})",
-        "renders error state": "it('renders error state', async () => {\n  fetchMock.post('/login', delay(401));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch('Come again?');\n  });\n})",
-        "renders success state": "it('renders success state', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch(`You're in!`);\n  });\n})"
+        "posts user data": "it('posts user data', () => {\n  const { wrapper } = getTestData({ ok: true });\n\n  changeInput(wrapper, 'username', 'forrestgump');\n  changeInput(wrapper, 'password', 'pink+white');\n  submitForm(wrapper);\n\n  expect(getLastCallBody('/login', 'post')).toEqual({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n})",
+        "renders loading state": "it('renders loading state', async () => {\n  const { wrapper } = getTestData({ ok: true });\n  submitForm(wrapper);\n\n  expect(wrapper.text()).toMatch('Just a sec...');\n})",
+        "renders error state": "it('renders error state', async () => {\n  const { wrapper } = getTestData(401);\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch('Come again?');\n  });\n})",
+        "renders success state": "it('renders success state', async () => {\n  const { wrapper } = getTestData({ ok: true });\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch(`You're in!`);\n  });\n})"
       }
     },
     "tight": {
@@ -89,10 +89,10 @@
         "renders password input": "it('renders password input', () => {\n  const { wrapper } = getTestData();\n\n  expect(getInput(wrapper, 'password')).toHaveLength(1);\n})",
         "updates username input": "it('updates username input', () => {\n  const { wrapper } = getTestData();\n  changeInput(wrapper, 'username', 'franko');\n\n  expect(getInput(wrapper, 'username').prop('value')).toBe('franko');\n})",
         "updates password input": "it('updates password input', () => {\n  const { wrapper } = getTestData();\n  changeInput(wrapper, 'password', '#fffferrari');\n\n  expect(getInput(wrapper, 'password').prop('value')).toBe('#fffferrari');\n})",
-        "posts user data": "it('posts user data', () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n\n  changeInput(wrapper, 'username', 'forrestgump');\n  changeInput(wrapper, 'password', 'pink+white');\n  submitForm(wrapper);\n\n  expect(getLastCallBody('/login', 'post')).toEqual({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n})",
-        "renders loading state": "it('renders loading state', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  expect(wrapper.text()).toMatch('Just a sec...');\n})",
-        "renders error state": "it('renders error state', async () => {\n  fetchMock.post('/login', delay(401));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch('Come again?');\n  });\n})",
-        "renders success state": "it('renders success state', async () => {\n  fetchMock.post('/login', delay({ ok: true }));\n\n  const { wrapper } = getTestData();\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch(`You're in!`);\n  });\n})"
+        "posts user data": "it('posts user data', () => {\n  const { wrapper } = getTestData({ ok: true });\n\n  changeInput(wrapper, 'username', 'forrestgump');\n  changeInput(wrapper, 'password', 'pink+white');\n  submitForm(wrapper);\n\n  expect(getLastCallBody('/login', 'post')).toEqual({\n    username: 'forrestgump',\n    password: 'pink+white'\n  });\n})",
+        "renders loading state": "it('renders loading state', async () => {\n  const { wrapper } = getTestData({ ok: true });\n  submitForm(wrapper);\n\n  expect(wrapper.text()).toMatch('Just a sec...');\n})",
+        "renders error state": "it('renders error state', async () => {\n  const { wrapper } = getTestData(401);\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch('Come again?');\n  });\n})",
+        "renders success state": "it('renders success state', async () => {\n  const { wrapper } = getTestData({ ok: true });\n  submitForm(wrapper);\n\n  await retry(() => {\n    expect(wrapper.text()).toMatch(`You're in!`);\n  });\n})"
       }
     },
     "tight": {
