@@ -23,6 +23,7 @@ import { TestingPros } from '../slides/TestingPros';
 import { TestingCons } from '../slides/TestingCons';
 import { TestAnatomy } from '../slides/TestAnatomy';
 import { LoginFormSlide } from '../slides/LoginFormSlide';
+import { AppVisual } from '../slides/AppVisual';
 import { RefactorVisual1 } from '../slides/RefactorVisual1';
 import { RefactorVisual2 } from '../slides/RefactorVisual2';
 import { TestDiff1 } from '../slides/TestDiff1';
@@ -85,6 +86,7 @@ const SLIDES = [
     <Emoji>⚔️</Emoji>
   </Rows>,
   <LoginFormSlide />,
+  <AppVisual />,
   <Rows>
     <H1>Show me some tests!</H1>
     <Emoji>🤓</Emoji>

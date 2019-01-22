@@ -25,6 +25,7 @@ BoxStep.propTypes = {
 };
 
 const BoxContainer = styled(Rows)`
+  flex-grow: 0;
   margin: 32px;
   margin-top: 0;
   background: rgba(255, 255, 255, ${props => props.opacity});
