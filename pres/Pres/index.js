@@ -102,6 +102,7 @@ const SLIDES = [
   <Bullet>Tight units slow down refactoring</Bullet>,
   <Bullet>Tech abstractions are transitory</Bullet>,
   <Bullet>Feature-oriented units are more stable*</Bullet>,
+  <Bullet>*When building apps (libs are different)</Bullet>,
   <ComponentInput />,
   <H1>Declarative mocks</H1>,
   <DeclarativeMock title="props" code={PROPS_SAMPLE} />,
