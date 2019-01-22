@@ -79,7 +79,7 @@ export class TestAnatomy extends StepsBase {
             <Cell>
               <Header>
                 <FadeStep step={step} appearAt={8} brightAt={uicompSteps}>
-                  UI component
+                  React component
                 </FadeStep>
               </Header>
             </Cell>
