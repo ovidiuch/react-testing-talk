@@ -7,8 +7,8 @@ const FILES = {
     '2-component-state/__tests__/tight/loginForm.js',
   '2-component-state/StatefulLoginForm.js':
     '3-generic-form/StatefulLoginForm.js',
-  '2-component-state/__tests__/tight/state.js':
-    '3-generic-form/__tests__/tight/state.js',
+  '2-component-state/__tests__/tight/statefulLoginForm.js':
+    '3-generic-form/__tests__/tight/statefulLoginForm.js',
   '2-component-state/__tests__/loose/index.js':
     '3-generic-form/__tests__/loose/index.js'
 };
