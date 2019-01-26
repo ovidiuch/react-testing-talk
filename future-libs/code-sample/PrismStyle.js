@@ -11,8 +11,8 @@ export const PrismStyle = styled.div`
 
   pre,
   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace !important;
+    font-family: 'FiraCode-Regular', source-code-pro, Menlo, Monaco, Consolas,
+      'Courier New', monospace !important;
     font-smooth: always;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

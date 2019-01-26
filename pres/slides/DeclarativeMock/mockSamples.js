@@ -1,4 +1,4 @@
-export const PROPS_SAMPLE = `<Event title="reactjsday 2018" />`;
+export const PROPS_SAMPLE = `<Event title="JSHeroes 2019" />`;
 
 export const STATE_SAMPLE = `<StateMock state={{ isOpen: true }}>
   <MyComponent />

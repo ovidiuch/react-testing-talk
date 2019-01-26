@@ -19,7 +19,8 @@ import { getUserWebpackConfig } from 'react-cosmos/dist/server/web/webpack/user-
 
   // HACK: Do not try this at home!!!
   webpackConfig.output.path = join(__dirname, '../build');
-  webpackConfig.entry[1] = join(__dirname, '../pres/index.js');
+  webpackConfig.entry[1] = join(__dirname, '../shared/style/global.js');
+  webpackConfig.entry[2] = join(__dirname, '../pres/index.js');
   webpackConfig.plugins[0].options.filename = 'index.html';
 
   const compiler = webpack(webpackConfig);

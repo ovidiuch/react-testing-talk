@@ -2,12 +2,11 @@ import styled from 'styled-components';
 import React from 'react';
 import { FullScreen, Rows, Space } from '../../../shared/style/layout';
 import { H1, H2 } from '../../../shared/style/text';
-import { Emoji } from '../../shared/Emoji';
 import { StepsBase, FadeStep } from '../../shared/steps';
 
 export class Thanks extends StepsBase {
   static getNumSteps() {
-    return 6;
+    return 7;
   }
 
   render() {
@@ -18,11 +17,10 @@ export class Thanks extends StepsBase {
       <Container>
         <Content>
           <FadeStep step={step} appearAt={1} brightAt={[1, finalStep]}>
-            <H1>Ovidiu</H1>
+            <H1 style={{ lineHeight: '20vh' }}>Ovidiu</H1>
           </FadeStep>
           <FadeStep step={step} appearAt={2} brightAt={[2, finalStep]}>
             <H2>Indie web developer</H2>
-            <Emoji size={128}>🇷🇴</Emoji>
             <Space height={36} />
           </FadeStep>
           <FadeStep step={step} appearAt={3} brightAt={[3, finalStep]}>
@@ -33,7 +31,14 @@ export class Thanks extends StepsBase {
             <Space height={36} />
           </FadeStep>
           <FadeStep step={step} appearAt={4} brightAt={[4, finalStep]}>
-            <H1>Thanks.</H1>
+            <H2>
+              <Faded>twitter.com/</Faded>
+              ReactCosmos
+            </H2>
+          </FadeStep>
+          <FadeStep step={step} appearAt={5} brightAt={[5, finalStep]}>
+            <Space height={36} />
+            <H1>Thanks!</H1>
           </FadeStep>
         </Content>
       </Container>

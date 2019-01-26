@@ -45,7 +45,7 @@
     "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
-    "react-cosmos": "^4.7.0-15",
+    "react-cosmos": "^4.7.0",
     "react-dom": "^16.5.2",
     "react-is": "^16.5.2",
     "react-redux": "^5.0.7",

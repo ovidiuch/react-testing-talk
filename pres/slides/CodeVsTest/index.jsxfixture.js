@@ -1,4 +1,4 @@
 import React from 'react';
-import { CodeVsTest } from '..';
+import { CodeVsTest } from '.';
 
 export default <CodeVsTest />;
